@@ -1,5 +1,5 @@
 # railsチュートリアルと同一のものを使用
-FROM ruby:2.6.3
+FROM ruby:2.7.6
 
     # 最新のパッケージ情報を取得
 RUN apt-get update && apt-get install -y \

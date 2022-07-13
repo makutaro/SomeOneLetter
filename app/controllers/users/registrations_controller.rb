@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# deviseによる新規登録処理
+# => /usr/local/bundle/gems/devise-4.8.1/app/controllers/devise/registrations_controller.rb
+
+
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
