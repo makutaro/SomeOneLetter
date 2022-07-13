@@ -1,0 +1,28 @@
+<!--特に指定をしない限り、全てのコントローラから呼び出されるviewはすべて、このlayoutをベースとする-->
+<!--対象のviewは"yield"で呼び出す-->
+<!--このレイアウトを適応したくない場合 => コントローラに "render layout: false" --> 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+   <body>
+     <%= render 'layouts/header' %> 
+     <div class="container">
+      <!--flashに格納されたメッセージがあれば、全て表示-->
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= bootstrap_alert(message_type) %>" ><%= message %></div>
+      <% end %>
+      <%= yield %>
+     </div>
+     <%= render 'layouts/footer' %>
+  </body>
+</html>
