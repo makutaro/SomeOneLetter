@@ -1,13 +1,22 @@
 require "test_helper"
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get static_pages_home_url
-    assert_response :success
+  include Devise::Test::IntegrationHelpers
+
+  def setup
+    @user = users(:user_01)
   end
 
-  test "should get contact" do
-    get static_pages_contact_url
+# 画面遷移系
+  test "should get home" do
+    get root_path
     assert_response :success
   end
-end
+  test "should get contact" do
+    get contact_path
+    assert_response :redirect
+    sign_in(@user)
+    get contact_path
+    assert_response :success
+  end
+ end

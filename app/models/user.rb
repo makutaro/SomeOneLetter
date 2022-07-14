@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # nameのバリデーションを追加
-  validates :name,  presence: true, length: { in: 4..20  }
+  # valid_name
+  validates :name,  presence: true, length: { in: 4..20  },
+                    uniqueness: { case_sensitive: false } #重複を認めない
+
+  # valid_email
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  #valid_password
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 end
