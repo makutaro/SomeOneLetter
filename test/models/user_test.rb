@@ -1,6 +1,7 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
+  # devise系のモジュールは今回使用しない為、コメントアウト
   #include Devise::Test::ControllerHelpers
 
   def setup

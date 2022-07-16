@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_07_16_182556) do
     t.string "title", default: "", null: false
     t.text "content", default: "", null: false
     t.integer "to_user_id", null: false
-    t.string "reply_flag", default: "f", null: false
+    t.boolean "reply_flag", default: false, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

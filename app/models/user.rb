@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # ユーザは複数のletterを持つ
+  has_many :letters 
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

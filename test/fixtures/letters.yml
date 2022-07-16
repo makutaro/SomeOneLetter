@@ -1,17 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 
-  title: MyString
-  content: MyString
-  to_user_id: 
-  reply_flag: MyString
-  user: one
+user_01_01:
+  user: user_01
+  title: 手紙_1
+  content: "初めまして!僕の名前はuser_01です"
+  to_user_id: 2
+  reply_flag: false
+  
 
-two:
-  user_id: 
-  title: MyString
-  content: MyString
-  to_user_id: 
-  reply_flag: MyString
-  user: two
+user_02_01:
+  user: user_02
+  title: 手紙_2
+  content: "初めまして!僕の名前はuser_02です"
+  to_user_id: 1
+  reply_flag: false
