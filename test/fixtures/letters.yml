@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  title: MyString
+  content: MyString
+  to_user_id: 
+  reply_flag: MyString
+  user: one
+
+two:
+  user_id: 
+  title: MyString
+  content: MyString
+  to_user_id: 
+  reply_flag: MyString
+  user: two
