@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_07_16_182556) do
   create_table "letters", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.text "content", default: "", null: false
-    t.integer "to_user_id", null: false
+    t.integer "to_user_id"
     t.boolean "reply_flag", default: false, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

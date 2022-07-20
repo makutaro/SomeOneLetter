@@ -1,0 +1,19 @@
+<h1>手紙を作成</h1>
+
+<div class="center jumbotron">
+  <%= form_with(model: @letter, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_field :title, autofocus: true, placeholder: "タイトル", size: "48x5" %>
+    </div>
+    <br />
+    <div class="text">
+      <%= f.text_area :content, autofocus: true, placeholder: "本文",size: "50x5" %>
+    </div>
+
+    <br />
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+
+
+  <% end %>
+</div>

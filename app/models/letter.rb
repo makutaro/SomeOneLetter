@@ -8,6 +8,5 @@ class Letter < ApplicationRecord
    # バリデーション
    validates :title, presence: true, length: { maximum: 20 }
    validates :content, presence: true, length: { maximum: 300 } # 手紙の有効文字数は要件等
-   validates :to_user_id, presence: true                        # 宛先ユーザidをpresence:trueにするかは要検討
 
 end

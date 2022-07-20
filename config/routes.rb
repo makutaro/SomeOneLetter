@@ -14,12 +14,13 @@ Rails.application.routes.draw do
   }
 
 
-  # 静的ページroute定義(home,about,contact)
+  # 静的ページ(home,about,contact)
   root 'static_pages#home'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
 
   # letterモデルを使用
-  #resources :letters
-
+  resources :letters, only: [:new,:create]
+   # GET   /letters/new    new
+   # POST  /letters        create
 end

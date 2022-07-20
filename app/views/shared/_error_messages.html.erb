@@ -1,0 +1,12 @@
+<!--エラーメッセージを取得した場合、画面に表示するパーシャル-->
+
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+    <ul style=list-style:none>
+        <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+  </div>
+<% end %>

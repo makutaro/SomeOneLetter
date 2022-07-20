@@ -3,7 +3,7 @@ class CreateLetters < ActiveRecord::Migration[6.1]
     create_table :letters do |t|
       t.string :title,           null: false, default: ""
       t.text :content,           null: false, default: ""
-      t.integer :to_user_id,     null: false
+      t.integer :to_user_id
       t.boolean :reply_flag,      null: false, default: false
 
       # referenceで、自動で外部キーであるuser_idが作られる

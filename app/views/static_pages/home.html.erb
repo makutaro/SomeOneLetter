@@ -3,21 +3,34 @@
 
 <!--ログインしている場合-->
 <% if user_signed_in? %>
+
+
+
   <div class="center jumbotron">
     <h1>ログイン済み</h1>
     <h2></h2>
-    <div><%= link_to "手紙を送る",??, class: "btn btn-lg btn-primary" %></div>
+    <div><%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary" %></div>
     <h2></h2>
     <div><%= link_to "ポストを見る",??, class: "btn btn-lg btn-primary" %></div>
   </div>
 
 <!--ログインしていない場合-->
 <% else %>
-    <div class="center jumbotron">
-    <h1>拝啓 だれか</h1>
-    <h2></h2>
-    <div><%= link_to "Twitterで始める",??, class: "btn btn-lg btn-primary" %></div>
-    <h2></h2>
-    <div><%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary" %></div>
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">拝啓 だれか</h1>
+      <h2></h2>
+      <div><%= link_to "Twitterで始める",??, class: "btn btn-lg btn-primary" %></div>
+      <h2></h2>
+      <div><%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary" %></div>
+    </div>
   </div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 <% end %> 

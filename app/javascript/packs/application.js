@@ -1,7 +1,7 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+// このファイルは、Webpackによって自動的にコンパイルされます。
+// このディレクトリに存在する他のファイルと一緒に。実際のアプリケーションロジックは、app/javascript内の関連する構造体に置くことをお勧めします。
+// app/javascript 内の関連する構造体に配置し、これらの pack ファイルはそのコードを参照するためにのみ使用することをお勧めします。
+// コンパイルされるように、そのコードを参照するためにのみ、これらのパックファイルを使用することをお勧めします。
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -11,7 +11,8 @@ import "channels"
 // 必要なJavaScriptファイルをrequireまたはimportする
 require("jquery")
 import "bootstrap"
-
+// import "/myapp/app/assets/stylesheets/custom.scss"
+import "../stylesheets/application.scss";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
