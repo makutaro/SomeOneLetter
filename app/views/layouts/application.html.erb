@@ -14,16 +14,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
+
    <body>
+   <!--header-->
      <%= render 'layouts/header' %> 
-     <div class="center">
-      <!--flashに格納されたメッセージがあれば、全て表示-->
+   <!--flash-->
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= bootstrap_alert(message_type) %>" ><%= message %></div>
+        <div class="alert alert-<%= bootstrap_alert(message_type) %> " id="flash" ><%= message %></div>
       <% end %>
-        <%= yield %>
-     </div>
-     </body>
+   <!--main-->
+     <main><%= yield %></main>
+   <!--footer-->
      <%= render 'layouts/footer' %>
-  
+  </body>
 </html>
