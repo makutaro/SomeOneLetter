@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     unlocks:             'users/unlocks'
   }
 
+  #userモデル(edit,inbox)
+  resources :users, only: [:edit] do
+    member do
+      get :inbox  # GET  /users/[user_id]/inbox
+    end
+  end
 
   # 静的ページ(home,about,contact)
   root 'static_pages#home'
@@ -21,6 +27,16 @@ Rails.application.routes.draw do
 
   # letterモデルを使用
   resources :letters, only: [:new,:create]
+   # GET   /letters/[user_id]        index
    # GET   /letters/new    new
    # POST  /letters        create
-end
+  end
+
+# ※メモ
+# GET   /users        index
+# GET   /users/1      show
+# GET   /users        new
+# POST  /users        create
+# GET   /users/1/edit edit
+# PATCH /users/1      update
+# DELETE /users/1     destory

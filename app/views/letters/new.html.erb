@@ -1,18 +1,22 @@
 <div class="center jumbotron">
   <h2>手紙を作成</h2>
   <%= form_with(model: @letter, local: true) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <div class="field">
-      <%= f.text_field :title, autofocus: true, placeholder: "タイトル", size: "48x5" %>
-    </div>
-    <br />
-    <div class="text">
-      <%= f.text_area :content, autofocus: true, placeholder: "本文",size: "50x5" %>
-    </div>
-
-    <br />
-    <%= f.submit "投稿", class: "btn btn-primary" %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :title, autofocus: true, placeholder: "タイトル", size: "48x5" %>
+  </div>
+  <br />
+  <div class="text">
+    <%= f.text_area :content, autofocus: true, placeholder: "本文",size: "50x5" %>
+  </div>
+  <div class ="select">
+    レイアウト
+    <%= f.select :layout_id, @layout_hash,{selected:1},class:"form-select  w-25 center-block" %>
+  </div>
+  <br />
+  <%= f.submit "投稿", class: "btn btn-primary" %>
 
 
   <% end %>
 </div>
+

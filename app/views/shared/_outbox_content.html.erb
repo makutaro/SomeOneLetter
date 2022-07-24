@@ -1,0 +1,21 @@
+<div class="center jumbotron">
+    <div class="accordion w-75 center-block" id="accordionExample">
+        <% @send_letters.each do |letter| %>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading<%=letter.id%>">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse<%=letter.id%>" aria-expanded="false"
+                    aria-controls="collapse<%=letter.id%>">
+                    <%= letter.title %>
+                </button>
+            </h2>
+            <div id="collapse<%=letter.id%>" class="accordion-collapse collapse" aria-labelledby="heading<%=letter.id%>"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <%= render 'shared/letter_content', letter: letter %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

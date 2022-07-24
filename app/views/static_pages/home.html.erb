@@ -9,7 +9,7 @@
     <h1>ログイン済み</h1>
     <div class="center"><%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary" %></div>
     <h2></h2>
-    <div class="center"><%= link_to "ポストを見る",??, class: "btn btn-lg btn-primary" %></div>
+    <div class="center"><%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary" %></div>
   </div>
 </div>
 

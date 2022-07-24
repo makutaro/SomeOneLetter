@@ -67,6 +67,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # strong_parameterを追加
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :like_thing, :location])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :like_thing, :location])
   end
 end
