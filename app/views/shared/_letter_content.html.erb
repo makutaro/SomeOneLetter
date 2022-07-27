@@ -1,6 +1,9 @@
 <!--手紙のレイアウトを動的に切り替える-->
 
-<div class="LL_<%= letter.layout_id %>">
-  <%= letter.content %>
+<div class="LL_<%= letter.layout_id %>" , id="letter">
+  <div id=letter-title></div>
+  <div id="letter_text-wrapper">
+    <div class="letter_text"> <%= letter.content %> </div>
+  </div>
+  <div id=letter-title></div>
 </div>
-

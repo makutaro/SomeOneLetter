@@ -1,0 +1,25 @@
+#header {
+  width: 600px;      //横幅指定
+  margin: 0 auto;    //ブロック要素レベルで中央揃え
+
+}
+
+.header_column {
+  font-size: 1.3rem;
+  }
+
+#logo {
+  padding: 0;
+  height: auto;
+  float: left;
+  margin-right: 10px;
+  font-size: 1.5em;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+  &:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+}

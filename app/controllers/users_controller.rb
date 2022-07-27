@@ -6,8 +6,15 @@ class UsersController < ApplicationController
     # GET  /users/:id/inbox 
     def inbox
         # @user = User.find(params[:id])
-        @send_letters = Letter.where(user_id: params[:id])
         @receive_letters = Letter.where(to_user_id: params[:id])
+        @send_letters    = Letter.where(user_id: params[:id])
+
+        logger.debug("#####################")
+        logger.debug("## @receive_letters    => #{@receive_letters.first} ##")    
+        logger.debug("#####################")
+        logger.debug("## @send_letters    => #{@send_letters.first} ##")
+        logger.debug("#####################")
+
     end
 
 

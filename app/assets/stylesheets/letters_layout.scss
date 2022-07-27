@@ -1,3 +1,28 @@
+//
+// 全体のレイアウト
+//
+
+#letter_title{
+	padding: auto;
+	align-items: center;
+}
+
+#letter_text-wrapper{
+  min-height: 130px;
+  padding: 42px 0px 20px;
+  align-items: center;
+}
+
+.letter_text{
+	max-width: max-content;
+	font-size: 15px;
+	font-weight: bold;
+	overflow-wrap: break-word;
+	text-align: left;
+	margin: auto;
+	line-height: 44px;
+
+}
 // 
 // 01_ピンク
 //
@@ -5,8 +30,8 @@
 .LL_1{
 	background-color: #F6D4D8;  /* 背景色 */
 	border-radius: 5px;
-	margin: 20px 5px; /* 外側の余白 上下・左右 */
-	padding: 30px 20px 20px 20px; /* 内側の余白 上・右・下・左 */
+	margin: 0px; /* 外側の余白 上下・左右 */
+	padding: 0; /* 内側の余白 上・右・下・左 */
 	position: relative;
 	z-index: 0;
 }
@@ -15,7 +40,7 @@
 	border-radius: 5px;
 	content: '';
 	display: block;
-	margin: 4px;
+	margin: 0px;
 	position: absolute;
 	top: 0px;
 	bottom: 0px;
@@ -29,9 +54,9 @@
 //
 
 .LL_2 {
-	margin: 2em auto;
+	margin: 0;
 	padding: 1em;
-	width: 90%; /* ボックス幅 */
+	width: 100%; /* ボックス幅 */
 	background-color: #EEFFFF; /* ボックス背景色 */
 	color: #666; /* 文章色 */
 	box-shadow: 0 0 5px 1px #c0c0c0; /* 影 */

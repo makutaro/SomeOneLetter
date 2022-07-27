@@ -1,5 +1,5 @@
 <div class="center jumbotron">
-    <div class="accordion w-75 center-block" id="accordionExample">
+    <div class="accordion w-75 center-block" id="outbox_accordion">
         <% @send_letters.each do |letter| %>
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading<%=letter.id%>">
@@ -10,7 +10,7 @@
                 </button>
             </h2>
             <div id="collapse<%=letter.id%>" class="accordion-collapse collapse" aria-labelledby="heading<%=letter.id%>"
-                data-bs-parent="#accordionExample">
+                data-bs-parent="#outbox_accordion">
                 <div class="accordion-body">
                   <%= render 'shared/letter_content', letter: letter %>
                 </div>

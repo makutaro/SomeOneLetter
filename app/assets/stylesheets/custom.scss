@@ -7,14 +7,6 @@
 
 $gray-medium-light: #eaeaea;
 
-/* universal */
-
-#header {
-  width: 600px;      //横幅指定
-  margin: 0 auto;    //ブロック要素レベルで中央揃え
-
-}
-
 #flash {
   width: 600px;      //横幅指定
   margin: 0 auto;    //ブロック要素レベルで中央揃え
@@ -26,31 +18,6 @@ main {
 
    padding-top: 20px; //headerとの余白
 }
-
-#footer {
-  width: 600px;      //横幅指定
-  margin: 0 auto;    //ブロック要素レベルで中央揃え
-
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-
-  ul {
-    float: inline-start;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-
   section {
     //ブロック幅に収まらない場合の処理
     overflow: auto;
@@ -94,24 +61,7 @@ main {
     line-height: 1.7em;
   }
   
-  
-  /* header */
-  
-  #logo {
-    padding: 0;
-    height: auto;
-    float: left;
-    margin-right: 10px;
-    font-size: 2.0em;
-    color: rgb(255, 255, 255);
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    font-weight: bold;
-    &:hover {
-      color: rgb(255, 255, 255);
-      text-decoration: none;
-    }
-  }
+
 
 /* inbox */
 #inbox-tab {

@@ -6,7 +6,6 @@ class Letter < ApplicationRecord
    default_scope -> { order(created_at: :desc) }
 
    # getter,setter定義
-   attr_accessor :to_user_id
 
    # バリデーション
    validates :title, presence: true, length: { maximum: 20 }
