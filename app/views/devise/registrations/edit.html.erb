@@ -5,6 +5,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :ニックネーム %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -28,18 +33,18 @@
   </div>
 
   <div class="field">
-    <%= f.label "パスワード(変更前)" %><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="field">
     <%= f.label :すきなもの %><br />
     <%= f.text_field :like_thing %>
   </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :すんでいるところ %><br />
     <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label "現在のパスワード ※必須" %><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
@@ -52,7 +57,6 @@
 
 <h3 class="center">会員情報削除</h3>
 <div class="jumbotron center">
-<h4>※全ての情報が削除されます</h4>
+  <h4>※全ての情報が削除されます</h4>
   <%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 </div>
-

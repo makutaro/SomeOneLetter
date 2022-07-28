@@ -1,11 +1,8 @@
 
 ◆やること
-1.seed実装
-2.to_user_id の割り当てアルゴリズム実装
-3.送信boxの実装
+1.ログイン際に以下の情報を入力 ウィザード方式
+　・ニックネーム(重複OK)
+　・すきなもの
+　・住んでる場所
 
-profileに「すきなもの(like_thing,)」「住んでいるところ(location_id,location_etc),lovcationsテーブル」を追加
-  ・テーブル作成 => locationList,その他、
-  ・カラム追加 => (users,location_id,location_etc,like_thing,null:true)
-  ・
 
