@@ -12,7 +12,10 @@ $gray-medium-light: #eaeaea;
   margin: 0 auto;    //ブロック要素レベルで中央揃え
 }
 
+
 main {
+   background-color: rgba(0, 255, 0, 0.5);
+
    width: 600px;      //横幅指定
    margin: 0 auto;    //ブロック要素レベルで中央揃え
 

@@ -1,0 +1,24 @@
+.custom-form {
+    margin: 0px 150px 50px 150px; //上右下左
+
+    .form-column {
+
+        .form-control {
+            width: 100%;
+        }
+        .form-select {
+        }
+    }
+
+    .form-action {
+        margin: 40px 0px 0px 0px;
+        
+        .btn{
+            width:150px;
+            height: 40px;
+            font-size: 1.5rem;
+
+        }
+    }
+
+}

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     unlocks:             'users/unlocks'
   }
 
+  devise_scope :user do
+    post 'new_user_step1', to: 'users/registrations#step1'
+  end
+
   #userモデル(edit,inbox)
   resources :users, only: [:edit] do
     member do

@@ -1,0 +1,26 @@
+  <%= form_with(model: @user, class:"custom-form",url: user_registration_path ) do |f| %>
+    <%= render "devise/shared/error_messages", resource: @user %>
+
+    <%= f.hidden_field :email, :value => @user.email %> 
+    <%= f.hidden_field :password, :value => @user.password %>
+    <%= f.hidden_field :password_confirmation, :value => @user.password_confirmation %> 
+
+    <div class="form-column">
+      <%= f.label "あなたのペンネームを教えてください" %><br />
+      <%= f.text_field :name, placeholder: "手紙書き太郎", class: "form-control", value: "" %>
+    </div>
+
+    <div class="form-column">
+      <%= f.label "あなたの住んでいるところを教えてください" %><br />
+      <%= f.select :location, User.locations.keys,{include_blank: '選択してください'},class: "form-select"%>
+    </div>
+
+    <div class="form-column">
+      <%= f.label "あなたの好きなものを教えてください" %><br />
+      <%= f.text_field :like_thing, placeholder: "〇〇の味噌ラーメン", class: "form-control", value: "" %>
+    </div>
+
+    <div class="form-action text-center">
+      <%= f.submit "登録",class: "btn btn-primary" %>
+    </div>
+  <% end %>

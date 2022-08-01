@@ -9,8 +9,8 @@
     <h2>ようこそ。<%= current_user.name%>さん</h2>
 
     <div id="home_button-row" class="row"> 
-      <%= link_to "手紙を送る",new_letter_url, id: "home_button_column", class: "btn btn-lg btn-primary col" %>
-      <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), id: "home_button_column", class: "btn btn-lg btn-primary col  home_button_column" %>
+      <%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary col home-button-column" %>
+      <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary col  home-button-column" %>
     </div>
 
   </div>
@@ -18,13 +18,14 @@
 
 <!--ログインしていない場合-->
 <% else %>
-  <div class="card">
-    <div class="card-body">
-      <h1 class="card-title">拝啓 だれか</h1>
-      <div class="row">
-        <%= link_to "Twitterで始める",??, class: "btn btn-lg btn-primary col" %>
-        <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary col" %>
+<div class="container-fluid" >
+  <div class="jumbotron">
+      <h2>拝啓 だれか</h2>
+      
+      <div id="home_button-row" class="row">
+        <%= link_to "Twitterで始める",?? ,class: "btn btn-lg btn-primary col home-button-column" %>
+        <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary col home-button-column" %>
       </div>
-    </div>
   </div>
+</div>
 <% end %> 
