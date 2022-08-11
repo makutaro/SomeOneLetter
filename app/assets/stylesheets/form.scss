@@ -1,20 +1,20 @@
 .custom-form {
-    margin: 0px 150px 50px 150px; //上右下左
+    margin: auto; //上右下左
 
     .form-column {
-
+        margin: 10px 0px 0px 0px;
+                
         .form-control {
             width: 100%;
-        }
-        .form-select {
-        }
+            &.text { height: 80px; }
+       }
     }
 
     .form-action {
         margin: 40px 0px 0px 0px;
         
         .btn{
-            width:150px;
+            width:100px;
             height: 40px;
             font-size: 1.5rem;
 

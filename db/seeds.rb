@@ -8,7 +8,6 @@
 #############
 
     admin = User.create(
-        :id       => '1',
         :name     => 'admin',
         :email    => 'admin@example.com', 
         :password => 'makutaro',
@@ -16,7 +15,6 @@
         :like_thing=> 'くまさん')
 
     user01 = User.create(
-        :id       => '2',
         :name     => 'user01',
         :email    => 'user01@example.com', 
         :password => 'makutaro',
@@ -24,7 +22,6 @@
         :like_thing=> 'うさぎさん')
 
     user02 = User.create(
-        :id       => '3',
         :name     => 'user02',
         :email    => 'user02@example.com', 
         :password => 'makutaro',
@@ -39,8 +36,8 @@
 
     Letter.create(
         :user_id    => admin.id,
-        :title      => '1通目',
-        :content    => 'テスト！',
+        :title      => '子供が野菜をたべません',
+        :content    => '初めまして! 私には悩みがあります。私には６歳になる子供がいるのですが、最近になってまったく野菜を食べてくれません。主人も「子供は肉を食え」と意にもしないのですが、私は子供が将来偏食のなってしまうのではないかととても不安です。なにかアドバイスをいたああだけないでしょうか。',
         :to_user_id => user01.id,
         :layout_id  => 1
     )
@@ -55,10 +52,11 @@
 
     Letter.create(
         :user_id    => user01.id,
-        :title      => 'user01です',
+        :title      => 'user01です_返信です',
         :content    => 'テスト',
         :to_user_id => admin.id,
-        :layout_id  => 1
+        :layout_id  => 1,
+        :reply_flag => true
     )
 
     Letter.create(

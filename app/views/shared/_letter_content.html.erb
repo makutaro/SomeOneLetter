@@ -1,9 +1,10 @@
 <!--手紙のレイアウトを動的に切り替える-->
 
-<div class="LL_<%= letter.layout_id %>" , id="letter">
-  <div id=letter-title></div>
-  <div id="letter_text-wrapper">
-    <div class="letter_text"> <%= letter.content %> </div>
+<div class="LL_<%= letter.layout_id_before_type_cast %>" , id="letter">
+  <div class="letter_header"><%= letter.title %></div>
+  <div class="letter_text"> <%= letter.content %></div>
+  <div class="letter_footer row">
+    <div class="col letter_date"><%= letter.created_at.strftime('%Y年 %m月 %d日') %></div>
+    <div class="col" style="text-align: right"><%= letter.user.name %></div>
   </div>
-  <div id=letter-title></div>
 </div>

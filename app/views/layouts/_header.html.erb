@@ -1,6 +1,11 @@
 <header id = "header">
-<nav class="navbar navbar-expand-sm navbar-light bg-light header_column">
-  <%= link_to "Some_One_Letter", root_path, class: "navbar-brand", id:"logo" %>
+<nav class="navbar navbar-expand-lg navbar-light  header_column">
+
+  <a id="logo", class="navbar-brand" href="<%= root_path %>">
+    <%= image_tag "bottle_ship.png",size:"35x35", class:"d-inline-block align-top" %>
+    Some_One_Letter
+  </a>
+
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,7 +13,6 @@
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item"><%= link_to "ホーム", root_path, class: "nav-link active" %></li>
         <li class="nav-item"><%= link_to "問い合わせ", contact_path, class: "nav-link active" %></li>
-        
         
       <% if user_signed_in? %>
       <!--ログインしている場合-->

@@ -3,16 +3,22 @@
         <% @send_letters.each do |letter| %>
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading<%=letter.id%>">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed inbox_header row" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapse<%=letter.id%>" aria-expanded="false"
                     aria-controls="collapse<%=letter.id%>">
-                    <%= letter.title %>
+
+                    <% if letter.reply_flag %>
+                      <div class="col-1 reply_icon">返信</div>
+                    <% end %>
+
+                    <div class="col-7"><%= letter.title %></div>
+                    <div class="col"><h6 class="time_stamp"><%= letter.created_at.strftime('%Y/%m/%d') %></h6></div>
                 </button>
             </h2>
-            <div id="collapse<%=letter.id%>" class="accordion-collapse collapse" aria-labelledby="heading<%=letter.id%>"
-                data-bs-parent="#outbox_accordion">
+            <div id="collapse<%=letter.id%>" class="accordion-collapse collapse"
+                aria-labelledby="heading<%=letter.id%>," data-bs-parent="#outbox_accordion">
                 <div class="accordion-body">
-                  <%= render 'shared/letter_content', letter: letter %>
+                    <%= render 'shared/letter_content', letter: letter %>
                 </div>
             </div>
         </div>

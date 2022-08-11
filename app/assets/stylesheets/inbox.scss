@@ -1,0 +1,39 @@
+.inbox_header {
+  font-size: 2rem !important;
+	font-weight: bold;
+}
+
+#inbox_button-row {
+    margin : 10px 0px 0px 0px;
+
+    .trash {
+      padding : 6px 0px 10px 0px;
+      height : 30px;
+      border-radius:  1.0rem;
+      text-align: center;
+    }
+    .release {
+      margin : 0px 5px 0px 0px;
+      height : 30px;
+      padding : 6px 0px 10px 0px;
+  
+      border-radius:  1.0rem;
+      text-align: center;
+    }
+    .replay {
+      padding : 6px 0px 10px 0px;
+      height : 30px;
+      border-radius:  1.0rem;
+      text-align: center;
+    }
+  }
+
+.reply_icon {
+  font-size: 1rem;
+  background-color: pink;
+  grid-template-columns: 10px;
+}
+
+.time_stamp {
+  text-align: right;
+}

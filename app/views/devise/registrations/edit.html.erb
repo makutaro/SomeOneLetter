@@ -1,62 +1,64 @@
 <h1>プロフィール編集</h1>
+  <%= form_with model: @user, class: "custom-form", url: registration_path(resource_name), html: { method: :put } do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
 
-<div class="center jumbotron">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
+  <div class="form-field">
     <%= f.label :ニックネーム %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "パスワード(変更後)" %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="form-field">
+    <%= f.label "パスワード(変更後)" %><em><%= @minimum_password_length %>文字以上 </em><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% if @minimum_password_length %>
-    <br />
-    <em><%= @minimum_password_length %> characters minimum</em>
+    
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= f.label "新しいパスワード(確認)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= f.label :すきなもの %><br />
-    <%= f.text_field :like_thing %>
+    <%= f.text_field :like_thing ,class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= f.label :すんでいるところ %><br />
-    <%= f.text_field :location %>
+    <%= f.text_field :location ,class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= f.label "現在のパスワード ※必須" %><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password" ,class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "更新" %>
+  <div class="form-action text-center">
+    <%= f.submit "更新",class: "btn btn-primary"%>
   </div>
-  <% end %>
-  <%= link_to "Back", :back %>
-</div>
+  <div class="form-action text-center">
+    <%= link_to "Back", :back ,class: "btn btn-secondary" %>
+  </div>
+<% end %>
 
 
-<h3 class="center">会員情報削除</h3>
 <div class="jumbotron center">
-  <h4>※全ての情報が削除されます</h4>
-  <%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  <h3 class="center">会員情報削除</h3>
+  <div class="custom-form">
+    <h4>※全ての情報が削除されます</h4>
+    <div class="form-action">
+      <%= button_to "退会する", registration_path(resource_name),class: "btn btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
+    </div>
+  </div>
 </div>

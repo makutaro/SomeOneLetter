@@ -4,28 +4,58 @@
 <!--ログインしている場合-->
 <% if user_signed_in? %>
 
-<div class="container-fluid" >
-  <div class="jumbotron">
-    <h2>ようこそ。<%= current_user.name%>さん</h2>
+<div id="home_card" , class="card">
+  <h2>ようこそ。<%= current_user.name%>さん</h2>
+  <%= image_tag "bottle_ship.png",size:"70x70", class:"center-block rounded-circle",id:"image" %>
 
-    <div id="home_button-row" class="row"> 
-      <%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary col home-button-column" %>
-      <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary col  home-button-column" %>
+  <div id="home_button-row" class="row">
+    <%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary col home-button-column" %>
+    <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary col  home-button-column" %>
+  </div>
+
+</div>
+
+<div id="post_card" , class="card">
+  <div class="card-body">
+    <h3 class="card-title">
+      <%= image_tag "letter.png",size:"64x48", class:"d-inline-block align-top"%>
+      手紙を書いて海に流す
+    </h3>
+  <%= form_with(model: @letter, class:"custom-form", local: true) do |f| %>
+    <div class="form-column">
+      <%= f.text_field :title, autofocus: true, placeholder: "タイトル", class: "form-control center-block" %>
+    </div>
+    <div class="form-column">
+      <%= f.text_area :content, autofocus: true, placeholder: "本文", class:"form-control text  center-block" %>
     </div>
 
+    <div class="form-column row">
+      <%= f.select :layout_id, Letter.layout_ids.keys,{}, class:"col form-select  center-block" %>
+      <%= f.submit "プレビュー",class: "col btn btn-secondary" %>
+    </div>
+
+    <div class="form-action text-center">
+      <%= f.submit "ながす",class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
   </div>
+
 </div>
+
+
+
 
 <!--ログインしていない場合-->
 <% else %>
-<div class="container-fluid" >
+<div class="container-fluid">
   <div class="jumbotron">
-      <h2>拝啓 だれか</h2>
-      
-      <div id="home_button-row" class="row">
-        <%= link_to "Twitterで始める",?? ,class: "btn btn-lg btn-primary col home-button-column" %>
-        <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary col home-button-column" %>
-      </div>
+    <h2>拝啓 だれか</h2>
+
+    <div id="home_button-row" class="row">
+      <%= link_to "Twitterで始める",?? ,class: "btn btn-lg btn-primary col home-button-column" %>
+      <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary col home-button-column" %>
+    </div>
   </div>
 </div>
-<% end %> 
+<% end %>

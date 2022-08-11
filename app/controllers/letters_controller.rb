@@ -1,13 +1,10 @@
 class LettersController < ApplicationController
-  include LettersHelper
 
   # GET /letters/new
   def new
     # 投稿form用に空のletterを作成
     @letter = current_user.letters.build
-    logger.debug "@letter => #{@letter}"
-    # レイアウトの選択肢をhashで作成
-    @layout_hash = layout_map
+
   end
 
   # POST  /letters
@@ -18,9 +15,12 @@ class LettersController < ApplicationController
     # paramsを基に、letterインスタンスを生成(ストパラ)
     @letter = current_user.letters.build(letter_params)
 
-    # self_flagが秦の場合、宛先を自身に指定。falseの場合、宛先をランダムに取得
-    @letter.to_user_id = self_flag ? @letter.user_id : rand(10)+1;
+debugger
 
+    unless @letter.reply_flag 
+      # self_flagがtrueの場合、宛先を自身に指定。falseの場合、宛先をランダムに取得
+      @letter.to_user_id = self_flag ? @letter.user_id : rand(10)+1;
+    end
 
     logger.debug("#####################")
     logger.debug("## user_id    => #{@letter.user_id} ##")    
@@ -40,30 +40,42 @@ class LettersController < ApplicationController
     end
   end
 
+  # DELETE /letters/id
+  def destroy
+    Letter.find(params[:id]).destroy
+    flash[:success] = "手紙を削除しました"
+    
+    # request.referrer => ひとつ前のURLを返す(なければroot)
+    redirect_to request.referrer || root_url
+  end
+ 
+  # POST /lettter/[letter_id]/release
+  def release
+    @letter = Letter.find(params[:id])
+    # letterカラムの[to_user_id]を切り替える
+    # 出来れば流れたcountを計測したい
+
+    @letter.to_user_id = rand(10)+1;
+    @letter.save
+
+    flash[:success] = " userid => #{@letter.to_user_id} に手紙を流しました"
+
+    # request.referrer => ひとつ前のURLを返す(なければroot)
+    redirect_to request.referrer || root_url
+  end
+
+  # get  /letters/[to_letter_id]/reply
+  def reply
+    @letter = current_user.letters.build
+    # to_letter_id をもとに@letterを作成
+    @from_letter = Letter.find(params[:id])
+
+  end
+
 private
-  
+ 
   # Strong Parametes
   def letter_params
-    params.require(:letter).permit(:title, :content,:layout_id, :to_user_id)
+    params.require(:letter).permit(:title, :content, :reply_flag, :layout_id, :to_user_id)
   end
-  
-  # # 参考
-  # def create
-  #   # paramsを基に、micropostsインスタンスを生成
-  #   @micropost = current_user.microposts.build(micropost_params)
-  #   # paramsを基に、imageをmicropostにアタッチ
-  #   # attach => インスタンスにオブジェクトを紐づける
-  #   @micropost.image.attach(params[:micropost][:image])
-  #   # 正常にinsertが処理されたら成功
-  #   if @micropost.save
-  #     flash[:success] = "Micropost created!"
-  #     redirect_to root_url
-  #   # 失敗したら(するか？笑)homeに戻る
-  #   else
-  #     @feed_items = current_user.feed.paginate(page: params[:page])
-  #     render 'static_pages/home'
-  #     #redirect_to root_url
-  #   end
-  # end
-
 end
