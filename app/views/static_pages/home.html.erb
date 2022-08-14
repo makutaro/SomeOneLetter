@@ -1,21 +1,38 @@
 <!--":title" は applicant.html.erbにて使用-->
 <% provide(:title, "【サービス名】") %>
 
+
+
 <!--ログインしている場合-->
 <% if user_signed_in? %>
 
 <div id="home_card" , class="card">
   <h2>ようこそ。<%= current_user.name%>さん</h2>
-  <%= image_tag "bottle_ship.png",size:"70x70", class:"center-block rounded-circle",id:"image" %>
 
+  <%= if current_user.image.attached?
+           image_tag current_user.image, size: "100x100", class:"center-block rounded-circle",id:"image"
+      else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle",id:"image"
+      end
+  %>
   <div id="home_button-row" class="row">
     <%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary col home-button-column" %>
     <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary col  home-button-column" %>
   </div>
-
 </div>
 
-<div id="post_card" , class="card">
+<div id="tutorial_card" , class="card">
+  <div class="card-body">
+    <h3 class="card-title center">
+      <%= image_tag "wakaba.png",size:"24x36", class:"d-inline-block align-top"%>
+      説明
+    </h3>
+      <div class="card card-content">1.手紙を書いて、海に流してみましょう</div>
+      <div class="card card-content">2.流した手紙は"誰か"のもとに届きます</div>
+      <div class="card card-content">3.運が良ければ返信が届くかもしれません</div>
+  </div>
+</div>
+
+<div id="post_card" , class="card center">
   <div class="card-body">
     <h3 class="card-title">
       <%= image_tag "letter.png",size:"64x48", class:"d-inline-block align-top"%>
@@ -31,7 +48,9 @@
 
     <div class="form-column row">
       <%= f.select :layout_id, Letter.layout_ids.keys,{}, class:"col form-select  center-block" %>
-      <%= f.submit "プレビュー",class: "col btn btn-secondary" %>
+      <button type="button" class="col btn btn-secondary" data-bs-toggle="modal" data-bs-target="#previewModal">
+        プレビュー
+      </button>
     </div>
 
     <div class="form-action text-center">
@@ -40,11 +59,25 @@
 
   <% end %>
   </div>
-
 </div>
 
-
-
+<!-- Modal -->
+<div class="modal" id="previewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">プレビュー</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <%= render 'shared/letter_content', letter: letter %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--ログインしていない場合-->
 <% else %>

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # ユーザは複数のletterを持つ
   has_many :letters 
+  has_one_attached :image
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -21,6 +22,12 @@ class User < ApplicationRecord
   # valid_location
   validates :location, presence: true
 
+  validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
+                                      message: "画像のフォーマットが不適切です" },
+                             size:  { less_than: 5.megabytes,
+                                      message: "画像のサイズが5MBを超えています" }
+
+ # enumの選択肢を把握
  enum location: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -32,5 +39,9 @@ class User < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46, 
     沖縄県:47,その他:48
 }
+  # (現在未使用)プロフィールアイコン表示用のリサイズ済み画像を返す
+  def display_image
+       image.variant(resize_to_limit: [70, 70])
+     end
 
 end

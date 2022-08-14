@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # 一部ダミーで@user作成
     @user = User.new(step1_params)
+    @user.image.attch(params[:micropost][:image])
 
     if @user.valid?
       # valid
@@ -107,7 +108,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # strong_parameterを追加(emailとpasswordはもともと入ってる)
   def permitted_parameters_sign_up
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :like_thing, :location])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :like_thing, :location])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :like_thing, :location, :image])
   end
 
   # Strong Parametes

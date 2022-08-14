@@ -50,6 +50,11 @@
   <div class="form-action text-center">
     <%= link_to "Back", :back ,class: "btn btn-secondary" %>
   </div>
+
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+
 <% end %>
 
 
