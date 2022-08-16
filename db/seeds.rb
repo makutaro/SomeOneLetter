@@ -67,11 +67,9 @@
         :layout_id  => 2
         )
 
-
-
-# # created_atを昇順(デフォ)で並び替え、上から6人をusersに格納
-# users = User.order(:created_at).take(6)
-# 50.times do
-#   content = Faker::Lorem.sentence(word_count: 5)
-#   users.each { |user| user.microposts.create!(content: content) }
-# end
+##################
+## Information  ##
+##################
+    Information.create( :content  => 'リリース開始！',)
+    Information.create( :content  => '二人三脚には自身があります',)
+    Information.create( :content  => 'サンシャイン水族館に行きたい',)
