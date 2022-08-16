@@ -1,0 +1,18 @@
+<!--手紙を入力するform-->
+
+<%= form_with(model: @letter, class:"custom-form", local: false) do |f| %>
+  <div class="form-column">
+    <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>
+  </div>
+  <div class="form-column">
+    <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block" %>
+  </div>
+  <div class="form-column row">
+    <%= f.select :layout_id, Letter.layout_ids.keys,{}, class:"col form-select  center-block" %>
+    <input type="submit" value="プレビュー" class="col btn btn-secondary" formaction="/letters/1" formmethod="GET">
+  </div>
+
+  <div class="form-action text-center">
+    <%= f.submit "ながす",class: "btn btn-primary",style:"border-radius: 3.0rem;" %>
+  </div>
+<% end %>

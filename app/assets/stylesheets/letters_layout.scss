@@ -11,13 +11,16 @@
 	margin: 8px 23px 0px 23px;
 }
 
-.letter_text{
+.letter_content{
 	font-size: 15px;
 	font-weight: bold;
 	overflow-wrap: break-word;
 	text-align: left;
 	margin: 15px 30px 15px 30px;
 	line-height: 27px;
+	min-height: 100px;
+	display: grid;
+	align-items: center;
 }
 
 .letter_footer{
@@ -40,7 +43,7 @@
 // 01_ピンク
 //
 
-.LL_1 {
+.LL_ピンク {
 	margin: 0;
 	padding: 1em;
 	width: 100%; /* ボックス幅 */
@@ -54,7 +57,7 @@
 // 02_水色
 //
 
-.LL_2 {
+.LL_水色 {
 	margin: 0;
 	padding: 1em;
 	width: 100%; /* ボックス幅 */

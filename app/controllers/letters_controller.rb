@@ -4,7 +4,12 @@ class LettersController < ApplicationController
   def new
     # 投稿form用に空のletterを作成
     @letter = current_user.letters.build
+  end
 
+  # GET /letters/[id]
+  def show
+    @letter = current_user.letters.build(letter_params)
+    @letter.created_at = Time.now
   end
 
   # POST  /letters
@@ -14,8 +19,6 @@ class LettersController < ApplicationController
 
     # paramsを基に、letterインスタンスを生成(ストパラ)
     @letter = current_user.letters.build(letter_params)
-
-debugger
 
     unless @letter.reply_flag 
       # self_flagがtrueの場合、宛先を自身に指定。falseの場合、宛先をランダムに取得
@@ -69,7 +72,10 @@ debugger
     @letter = current_user.letters.build
     # to_letter_id をもとに@letterを作成
     @from_letter = Letter.find(params[:id])
+  end
 
+  def confirm
+    debugger
   end
 
 private

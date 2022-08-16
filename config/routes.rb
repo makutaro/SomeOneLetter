@@ -30,14 +30,14 @@ Rails.application.routes.draw do
   get  '/contact', to: 'static_pages#contact'
 
   # letterモデルを使用
-  resources :letters, only: [:new,:create,:destroy] do
+  resources :letters, only: [:new,:create,:destroy,:show] do
                     # GET   /letters/[user_id]    index
                     # GET   /letters/new          new
                     # POST  /letters              create
                     # DELETE /letters/[letter_id] destroy
     member do
       post :release # POST  /letters/[letter_id]/release
-      get  :reply   # get  /letters/[to_letter_id]/reply
+      get  :reply   # get   /letters/[to_letter_id]/reply
     end
   end
 end

@@ -19,7 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # 一部ダミーで@user作成
     @user = User.new(step1_params)
-    @user.image.attch(params[:micropost][:image])
 
     if @user.valid?
       # valid
@@ -41,6 +40,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user =User.new(sign_up_params)
+    @user.image.attch(params[:user][:image]) if params[:user][:image] 
+    
     @user.save
     yield @user if block_given?
     if @user.persisted?
