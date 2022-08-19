@@ -1,72 +1,23 @@
-#home_button-row {
-  margin : 40px 20px 0px 20px;
-    .home-button-column {
-      padding-top:    10px;
-      padding-bottom: 10px;
-  
-      margin-top : 0px;
-      margin-left : 20px;
-      margin-right : 20px; 
-  
-      border-radius:  2.3rem;
-      text-align: center;
-    }
+#preview-modal {
+  .modal-footer{
+    justify-content: center;
   }
+}
 
-custom-card {
-  margin: 20px 0px 20px 0px;
-  padding: 20px 70px 20px 70px;
-  height: auto;
-  border-radius: 3.0rem !important; 
-  .card-title{line-height: 56px;
-              text-align: center;
-            }
-
-  &#home {
-    #image {
-     margin-top: 20px;
-     background-color: black;
-    }
+#explanation-form {
+  text-align: center;
+  padding: 15px 0px 15px 0px;
+  .title{
+    font-size: large;
+    font-weight: bold;    
   }
-
-  &#send {
+  .content{
+    text-align: left;
+    font-weight: bold;
   }
-
-  &#post {
-    .card-content {
-      margin: 10px 0px 10px 0px;
-      padding-top: 10px;
-      padding-left: 15px;
-      height: 200px;
-      border-radius: 1.0rem;
-      font-size: 2.0rem;
-      background-color: #9be3e33b;
-      font-weight: bold;
-      line-height: 2;
-      .letter-count {
-        font-size: 4rem;
-      }
-      .button {
-        height: 40px;
-        width: 150px;
-        border-radius:  2.3rem;
-        font-size: 1.5rem;
-      }
-    }
-  }
-
-  &#tutorial {
-    .card-content{
-      margin: 10px 0px 10px 0px;
-      padding-left: 15px;
-      border-radius: 1.0rem;
-      font-size: 1.5rem;
-      font-weight: normal;
-      line-height: 2;
-    }
-    .blue {background-color: #9be3e33b;}
-    .pink {background-color: #e3a4c73b;}
-  }
-  &#notify {    
+  .alert-content{
+    font-size: small;
+    text-align: left;
+    font-weight: bold;
   }
 }

@@ -1,5 +1,4 @@
-<div class="center jumbotron">
-    <div class="accordion w-75 center-block" id="outbox_accordion">
+    <div class="accordion center-block" id="outbox_accordion">
         <% @send_letters.each do |letter| %>
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading<%=letter.id%>">
@@ -24,4 +23,3 @@
         </div>
         <% end %>
     </div>
-</div>

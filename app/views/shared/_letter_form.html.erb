@@ -1,18 +1,35 @@
 <!--手紙を入力するform-->
 
-<%= form_with(model: @letter, class:"custom-form", local: false) do |f| %>
+<%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
   <div class="form-column">
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>
   </div>
+
   <div class="form-column">
     <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block" %>
   </div>
-  <div class="form-column row">
-    <%= f.select :layout_id, Letter.layout_ids.keys,{}, class:"col form-select  center-block" %>
-    <input type="submit" value="プレビュー" class="col btn btn-secondary" formaction="/letters/1" formmethod="GET">
+
+  <div class="form-column">
+    <%= f.label "レイアウト" %>
+    <%= f.select :layout_id, Letter.layout_ids.keys,{}, class:"form-select center-block" %>
   </div>
 
   <div class="form-action text-center">
-    <%= f.submit "ながす",class: "btn btn-primary",style:"border-radius: 3.0rem;" %>
+    <%= f.submit "確認",class: "btn btn-primary custom-btn"%>
   </div>
+
+  <!-- Modal Post-->
+<div class="modal" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div id="letter-content" class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn custom-btn btn-secondary" data-bs-dismiss="modal">とじる</button>
+        <input type="submit" value="ながす" class="btn custom-btn btn-primary" formaction="/letters" formmethod="POST">
+      </div>
+    </div>
+  </div>
+</div>
+
 <% end %>
+

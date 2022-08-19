@@ -7,17 +7,16 @@
 <% if user_signed_in? %>
 
 <custom-card id="home", class="card">
+  <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
   <h2>ようこそ。<%= current_user.name%>さん</h2>
-
   <%= if current_user.image.attached?
-           image_tag current_user.image, size: "100x100", class:"center-block rounded-circle",id:"image"
-      else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle",id:"image"
+           image_tag current_user.image, size: "100x100", class:"center-block rounded-circle custom-image"
+      else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle custom-image"
       end
   %>
-  <div id="home_button-row" class="row ">
-    <%= link_to "手紙を送る",new_letter_url, class: "btn btn-lg btn-primary col home-button-column" %>
-    <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary col  home-button-column" %>
-  </div>
+    <%= link_to "手紙を送る",new_letter_url, class: "btn custom-btn btn-primary center-block " %>
+    <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn custom-btn  btn-primary center-block" %>
+
 </custom-card>
 
 <custom-card id="tutorial" , class="card">
@@ -41,7 +40,7 @@
      <div class="card-content blue center">
         流れ着いた手紙
        <div class="letter-count">４通</div>
-        <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn btn-lg btn-primary  button" %>
+        <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn custom-btn btn-primary  button" %>
      </div>
   </div>
 </custom-card>
@@ -62,8 +61,8 @@
   <div class="jumbotron">
     <h2>拝啓 だれか</h2>
     <div id="home_button-row" class="row">
-      <%= link_to "Twitterで始める",?? ,class: "btn btn-lg btn-primary col home-button-column" %>
-      <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn btn-lg btn-primary col home-button-column" %>
+      <%= link_to "Twitterで始める",?? ,class: "btn custom-btn btn-primary col " %>
+      <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn custom-btn btn-primary col " %>
     </div>
   </div>
 </div>
@@ -81,20 +80,5 @@
 </custom-card>
 
 
-<!-- Modal -->
-<div class="modal" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">プレビュー</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div id="letter-content" class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 

@@ -2,6 +2,15 @@
   <%= form_with model: @user, class: "custom-form", url: registration_path(resource_name), html: { method: :put } do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
 
+  <%= if current_user.image.attached?
+           image_tag current_user.image, size: "100x100", class:"center-block rounded-circle custom-image"
+      else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle custom-image"
+      end
+  %>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+
   <div class="form-field">
     <%= f.label :ニックネーム %><br />
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
@@ -13,7 +22,7 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="form-field">
@@ -45,25 +54,19 @@
   </div>
 
   <div class="form-action text-center">
-    <%= f.submit "更新",class: "btn btn-primary"%>
+    <%= f.submit "更新",class: "btn custom-btn btn-primary"%>
+    <%= link_to "Back", :back ,class: "btn custom-btn btn-secondary" %>
   </div>
-  <div class="form-action text-center">
-    <%= link_to "Back", :back ,class: "btn btn-secondary" %>
-  </div>
-
-  <span class="image">
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-  </span>
 
 <% end %>
 
 
-<div class="jumbotron center">
+<custom-card class="card center" style="padding: 40px 70px 40px 70px;">
   <h3 class="center">会員情報削除</h3>
   <div class="custom-form">
     <h4>※全ての情報が削除されます</h4>
     <div class="form-action">
-      <%= button_to "退会する", registration_path(resource_name),class: "btn btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
+      <%= button_to "退会する", registration_path(resource_name),class: "btn custom-btn btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
     </div>
   </div>
-</div>
+</custom-card>

@@ -1,82 +1,71 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-// 全viewに適用させるレイアウトを定義
-
-/* mixins, variables, etc. */
-
-$gray-medium-light: #eaeaea;
-$back-color: #e4e4e4;
-
-#flash {
-  width: 600px;      //横幅指定
-  margin: 0 auto;    //ブロック要素レベルで中央揃え
-}
-
-.body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: $back-color;
-}
-
-main {
-  // background-color: #0d6efd24;
-
-   width: 600px;      //横幅指定
-   margin: 0 auto;    //ブロック要素レベルで中央揃え
-
-   padding-top: 20px; //headerとの余白
-}
-  section {
-    //ブロック幅に収まらない場合の処理
-    overflow: auto;
-  }
+custom-card {
+    margin: 20px 0px 20px 0px;
+    padding: 20px 70px 20px 70px;
+    height: auto;
+    background-color: #ffffffc9 !important;
+    border-radius: 1.2rem !important; 
+    .card-title{line-height: 56px;
+                text-align: center;
+              }
   
-  textarea {
-    //要素の寸法の可変設定
-    resize: vertical;
-  }
-  
-  .center {
-    text-align: center;
-    h1 {
-      margin-bottom: 10px;
+    &#home {
+      padding: 10px 10px 20px 10px;
+      .btn{
+        margin-top: 8px;
+      }
     }
-  }
   
-  /* typography */
+    &#send {
+    }
   
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
-  }
+    &#post {
+      .card-content {
+        margin: 10px 0px 10px 0px;
+        padding-top: 10px;
+        padding-left: 15px;
+        height: 200px;
+        border-radius: 1.0rem;
+        font-size: 2.0rem;
+        background-color: #9be3e33b;
+        font-weight: bold;
+        line-height: 2;
+        .letter-count {
+          font-size: 4rem;
+        }
+      }
+    }
   
-  h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 1.2em;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: normal;
-  }
-  
-  p {
-    font-size: 1.1em;
-    line-height: 1.7em;
-  }
-  
+    &#tutorial {
+      .card-content{
+        margin: 10px 0px 10px 0px;
+        padding-left: 15px;
+        border-radius: 1.0rem;
+        font-size: 1.5rem;
+        font-weight: normal;
+        line-height: 2;
+      }
+      .blue {background-color: #9be3e33b;}
+      .pink {background-color: #e3a4c73b;}
+    }
+    &#notify {    
+    }
 
+    &#inbox {
+      margin: 20px 0px 20px 0px;
+      padding: 0px 0px 0px 0px;
+    }      
+    
+  }
 
-/* inbox */
-#inbox-tab {
-  
-}
-
-// 細かいパーツ
-
+  .custom-btn {
+    height: 40px ;
+    width: 150px;
+    border-radius:  1.3rem !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    line-height: 30px !important;
+  }
+  .custom-image {
+    margin-top: 20px;
+    background-color: black;
+   }
