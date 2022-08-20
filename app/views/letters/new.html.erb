@@ -13,10 +13,6 @@
     レイアウト
     <%= f.select :layout_id, Letter.layout_ids.keys,class:"form-select  w-25 center-block" %>
   </div>
-
-    <%= f.check_box(:self_flag, {}, :true, :false) %>
-    自分宛に手紙を送る
-
   <%= f.submit "投稿", class: "btn btn-primary" %>
   
   <% end %>

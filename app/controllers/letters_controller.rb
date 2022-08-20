@@ -14,25 +14,22 @@ class LettersController < ApplicationController
 
   # POST  /letters
   def create 
-    # self_flagを真偽値に変換し取得
-    self_flag = ActiveRecord::Type::Boolean.new.cast(params[:letter][:self_flag]).class
 
-    # paramsを基に、letterインスタンスを生成(ストパラ)
+    # 入力情報から@letterインスタンス生成
     @letter = current_user.letters.build(letter_params)
 
-    unless @letter.reply_flag 
-      # self_flagがtrueの場合、宛先を自身に指定。falseの場合、宛先をランダムに取得
-      @letter.to_user_id = self_flag ? @letter.user_id : rand(10)+1;
+    # 返信or新規を判定
+    if @letter.reply_flag
+      # 返信処理
+      # match_room_usersを検索し,match_room_idを取得
+      # @letterにmatch_room_id付与
+    else
+      # 新規処理
+      @letter.to_user_id = rand(10)+1;
+       # match_room作成
+       # @letterにmatch_room_id付与
+       # match_room_users作成x2 
     end
-
-    logger.debug("#####################")
-    logger.debug("## user_id    => #{@letter.user_id} ##")    
-    logger.debug("#####################")
-    logger.debug("## to_user_id => #{@letter.to_user_id} ##")
-    logger.debug("#####################")
-    logger.debug("## title => #{@letter.title} ##")
-    logger.debug("#####################")
-  
   
     if @letter.save # DBに保存
       flash[:success] = "投稿しました"

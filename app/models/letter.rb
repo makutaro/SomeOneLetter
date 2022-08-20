@@ -1,6 +1,6 @@
 class Letter < ApplicationRecord
-  # 単一のuserに紐づく
   belongs_to :user
+  belongs_to :match_room
 
    # デフォルトの並び順を定義(降順)
    default_scope -> { order(created_at: :desc) }

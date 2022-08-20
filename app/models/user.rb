@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # ユーザは複数のletterを持つ
+  has_many :match_room_users
   has_many :letters 
   has_one_attached :image
   
