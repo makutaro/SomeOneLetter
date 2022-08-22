@@ -4,7 +4,6 @@
 //全般的なcssを定義
 
 $gray-medium-light: #eaeaea;
-$back-color: #e4e4e4;
 
 #flash {
   width: 600px;      //横幅指定
@@ -12,19 +11,17 @@ $back-color: #e4e4e4;
 }
 
 .body {
-  margin: 0;
-  width: 100vw;
+  margin: 0 auto; 
+  width: 700px;
   height: 100vh;
-  background-color: $back-color;
+  background: url("top.jpg") center no-repeat;
+  background-attachment: fixed;
+  background-color: black;
+  background-size:cover ;
 }
 
 main {
-  // background-color: #0d6efd24;
-
-   width: 600px;      //横幅指定
    margin: 0 auto;    //ブロック要素レベルで中央揃え
-
-   padding-top: 20px; //headerとの余白
 }
   section {
     //ブロック幅に収まらない場合の処理
@@ -38,9 +35,6 @@ main {
   
   .center {
     text-align: center;
-    h1 {
-      margin-bottom: 10px;
-    }
   }
   
   /* typography */
@@ -50,10 +44,10 @@ main {
   }
   
   h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
+    font-size: 6em !important;
+    letter-spacing: -2px !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
   }
   
   h2 {

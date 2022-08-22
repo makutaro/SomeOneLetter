@@ -1,0 +1,21 @@
+
+.top-title {
+  position:relative;
+  top: 30vh;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.top-authentication {
+  position:relative;
+  text-align: center;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin: auto;
+  br{
+    margin-bottom: 2px;
+  }
+}

@@ -1,11 +1,6 @@
 <!--":title" は applicant.html.erbにて使用-->
 <% provide(:title, "【サービス名】") %>
 
-
-
-<!--ログインしている場合-->
-<% if user_signed_in? %>
-
 <custom-card id="home", class="card">
   <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
   <h2>ようこそ。<%= current_user.name%>さん</h2>
@@ -55,19 +50,6 @@
   </div>
 </custom-card>
 
-<!--ログインしていない場合-->
-<% else %>
-<div class="container-fluid">
-  <div class="jumbotron">
-    <h2>拝啓 だれか</h2>
-    <div id="home_button-row" class="row">
-      <%= link_to "Twitterで始める",?? ,class: "btn custom-btn btn-primary col " %>
-      <%= link_to "メールアドレスで始める",new_user_registration_url, class: "btn custom-btn btn-primary col " %>
-    </div>
-  </div>
-</div>
-<% end %>
-
 <!--共通-->
 <custom-card id="notify" , class="card">
   <div class="card-body">
@@ -78,7 +60,3 @@
     <%= render 'shared/information_form', information: @information %>
   </div>
 </custom-card>
-
-
-
-

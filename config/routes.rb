@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   end
 
   # 静的ページ(home,about,contact)
-  root 'static_pages#home'
+  root 'static_pages#top'
+  get  '/home',   to: 'static_pages#home'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
 

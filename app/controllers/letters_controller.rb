@@ -22,21 +22,22 @@ class LettersController < ApplicationController
     if @letter.reply_flag
       # 返信処理
       # match_room_usersを検索し,match_room_idを取得
+      find.mat
       # @letterにmatch_room_id付与
     else
       # 新規処理
-      @letter.to_user_id = rand(10)+1;
-       # match_room作成
-       # @letterにmatch_room_id付与
-       # match_room_users作成x2 
+      @letter.to_user_id = find_randam_user_id
+       # match_room,match_room_users(x2)を作成
+        @match_room = @letter.build_match_room
+        @match_room_users = @match_room.match_room_users.build([{ user_id: current_user.id}, { user_id: @letter.to_user_id}])
     end
   
     if @letter.save # DBに保存
       flash[:success] = "投稿しました"
       redirect_to root_url
     else # DBエラー
-      flash[:danger] = "不明なエラーです"
-      redirect_to new_letter_path
+      flash[:danger] = "DBエラーです"
+      redirect_to request.referrer || root_url
     end
   end
 
@@ -82,3 +83,9 @@ private
     params.require(:letter).permit(:title, :content, :reply_flag, :layout_id, :to_user_id)
   end
 end
+
+ def find_randam_user_id
+  #自分以外のランダムなuser_idを取得
+  #今回は仮に"2"を返信
+  return 2
+ end

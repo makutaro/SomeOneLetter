@@ -1,0 +1,17 @@
+<!--":title" は applicant.html.erbにて使用-->
+<% provide(:title, "【サービス名】") %>
+
+<div style="height: 200vh;">
+
+  <div class="top-title">
+    <h1 class="text-white text-center">
+      SomeOneLetter
+    </h1>
+  </div>
+
+  <div class="top-authentication">
+      <%= link_to "アカウントを作成する", new_user_registration_url, class: "btn custom btn-clear m-3" %><br>
+      <%= link_to "ログイン",new_user_session_path, class: "btn custom btn-clear m-3" %>
+  </div>
+  
+</div>

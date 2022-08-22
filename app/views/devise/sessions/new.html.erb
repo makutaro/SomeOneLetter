@@ -1,28 +1,25 @@
-<h1>ログイン</h1>
-
-<div class="center jumbotron">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
+  <custom-card class="card" style="top:30vh">
+    <%= form_for(resource, class:"custom-form", as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-column">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>,
     </div>
 
-    <div class="field">
+    <div class="form-column">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.password_field :password, autocomplete: "current-password",class: "form-control" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
+    <div class="form-column">
+      <%= f.check_box :remember_me %>
+      <%= f.label :パスワードを記録する %>
+    </div>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
+    <div class="form-action text-center">
+      <%= f.submit "Log in",class: "btn btn-primary" %>
     </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-</div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+</custom-card>

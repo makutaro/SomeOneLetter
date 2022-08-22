@@ -18,7 +18,7 @@
 
    <body class="body">
    <!--header-->
-     <%= render 'layouts/header' %> 
+     <%#= render 'layouts/header' %> 
    <!--flash-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= bootstrap_alert(message_type) %> " id="flash" ><%= message %></div>
@@ -26,6 +26,6 @@
    <!--main-->
      <main><%= yield %></main>
    <!--footer-->
-     <%= render 'layouts/footer' %>
+     <%#= render 'layouts/footer' %>
   </body>
 </html>

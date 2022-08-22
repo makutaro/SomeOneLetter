@@ -1,3 +1,4 @@
+  <custom-card class="card" style="top:30vh">
   <%= form_with(model: @user, class:"custom-form",url: user_registration_path ) do |f| %>
     <%= render "devise/shared/error_messages", resource: @user %>
 
@@ -22,5 +23,7 @@
 
     <div class="form-action text-center">
       <%= f.submit "登録",class: "btn btn-primary" %>
+      <%= link_to "キャンセル",root_url, class: "btn custom-btn btn-primary" %>
     </div>
   <% end %>
+  </custom-card>

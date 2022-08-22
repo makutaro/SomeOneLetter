@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
    
-  # 認証が必要でないページを制御(現状homeだけ)
+  # 認証が必要でないページを制御(現状topだけ)
   before_action :authenticate_user!
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:top]
 
 end
