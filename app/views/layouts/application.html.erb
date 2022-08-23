@@ -18,7 +18,10 @@
 
    <body class="body">
    <!--header-->
-     <%#= render 'layouts/header' %> 
+      <% unless request.path == '/' %>
+        <%= render 'layouts/header' %>
+      <% end %>
+     
    <!--flash-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= bootstrap_alert(message_type) %> " id="flash" ><%= message %></div>

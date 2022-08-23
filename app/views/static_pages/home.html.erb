@@ -1,62 +1,35 @@
 <!--":title" は applicant.html.erbにて使用-->
 <% provide(:title, "【サービス名】") %>
 
-<custom-card id="home", class="card">
-  <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
-  <h2>ようこそ。<%= current_user.name%>さん</h2>
-  <%= if current_user.image.attached?
-           image_tag current_user.image, size: "100x100", class:"center-block rounded-circle custom-image"
-      else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle custom-image"
-      end
-  %>
-    <%= link_to "手紙を送る",new_letter_url, class: "btn custom-btn btn-primary center-block " %>
-    <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn custom-btn  btn-primary center-block" %>
+<div id="home" , class="card home-card container">
 
-</custom-card>
+  <div class="home-upper-side row">
+    <div class="col">
+      <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
+      <%= if current_user.image.attached?
+            image_tag current_user.image, size: "120x120", class:"center-block rounded-circle custom-image"
+        else image_tag "bottle_ship.png",size:"120x120", class:"center-block rounded-circle custom-image"
+      end %>
+      <div class="name"><%= current_user.name%></div>
+    </div>
+    <div class="col card " style="height:25vh;">
+      アクティブ率とログアウトボタン
+    </div>
+  </div>
 
-<custom-card id="tutorial" , class="card">
-  <div class="card-body">
-    <h3 class="card-title">
-      <%= image_tag "wakaba.png",size:"24x36", class:"d-inline-block align-top"%>
-      説明
-    </h3>
-      <div class="card-content pink">
-        <%= render 'shared/explanation'%>
+
+  <div class="home-under-side">
+    <div class="contaner">
+      <div class="row">
+        <%= render 'shared/home/home_col', image:"letter", url:home_url, text:"手紙をながす"%>
+        <%= render 'shared/home/home_col', image:"post",   url:home_url, text:"届いた手紙"%>
+        <%= render 'shared/home/home_col', image:"gear",   url:home_url, text:"プロフィール"%>
       </div>
+      <div class="row">
+        <%= render 'shared/home/home_col', image:"gear",   url:home_url, text:"設定"%>
+        <%= render 'shared/home/home_col', image:"wakaba", url:home_url, text:"注意とマナー"%>
+        <%= render 'shared/home/home_col', image:"bell",   url:home_url, text:"お知らせ"%>
+      </div>
+    </div>
   </div>
-</custom-card>
-
-<custom-card id="post" , class="card">
-  <div class="card-body">
-    <h3 class="card-title">
-      <%= image_tag "post.png",size:"86x64", class:"d-inline-block align-top"%>
-      届いた手紙を見る
-    </h3>
-     <div class="card-content blue center">
-        流れ着いた手紙
-       <div class="letter-count">４通</div>
-        <%= link_to "ポストを見る",inbox_user_url(id:current_user.id), class: "btn custom-btn btn-primary  button" %>
-     </div>
-  </div>
-</custom-card>
-
-<custom-card id="send" , class="card">
-  <div class="card-body">
-    <h3 class="card-title">
-      <%= image_tag "letter.png",size:"64x48", class:"d-inline-block align-top"%>
-      手紙を書く
-    </h3>
-    <%= render 'shared/letter_form' %>
-  </div>
-</custom-card>
-
-<!--共通-->
-<custom-card id="notify" , class="card">
-  <div class="card-body">
-    <h3 class="card-title">
-      <%= image_tag "bell.png",size:"64x48", class:"d-inline-block align-top"%>
-      おしらせ
-    </h3>
-    <%= render 'shared/information_form', information: @information %>
-  </div>
-</custom-card>
+</div

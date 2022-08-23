@@ -1,15 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 custom-card {
-    display: block;
     position: absolute;
     height: auto;
-    width: 70%;
+    width: 80%;
     padding: 5% 5% 5% 5%;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    height: auto;
     background-color: #ffffffc9 !important;
     border-radius: 1.2rem !important; 
     .card-title{line-height: 56px;
@@ -17,6 +15,7 @@ custom-card {
               }
   
     &#home {
+
       padding: 10px 10px 20px 10px;
       .btn{
         margin-top: 8px;
