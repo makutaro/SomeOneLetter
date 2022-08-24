@@ -37,3 +37,18 @@
 .time_stamp {
   text-align: right;
 }
+
+.inbox-card {
+  height: 100vh;
+  margin: 10px 0px 10px 0px;
+  padding: 5% 15% 5% 15%;
+  background-color: #ffffffc9 !important;
+  border-radius: 1.2rem !important; 
+  .card-title{line-height: 56px;
+    text-align: center;
+  }
+}
+
+.inbox-col {
+  height: 60px;
+}

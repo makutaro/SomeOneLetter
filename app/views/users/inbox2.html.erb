@@ -1,0 +1,27 @@
+<!--送受信した手紙を確認するページ-->
+<div class="card home-card">
+
+  <ul class="nav nav-tabs nav-justified" id="boxTab">
+    <li class="nav-item" style="padding-right :0px">
+      <button class="nav-link p-4 active" id="inbox-tab" data-bs-toggle="tab" data-bs-target="#inbox" type="button"
+        aria-controls="inbox" aria-selected="true">
+        <h3>届いた手紙</h3>
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link p-4" id="outbox-tab" data-bs-toggle="tab" data-bs-target="#outbox" type="button"
+        aria-controls="outbox" aria-selected="false">
+        <h3>送った手紙</h3>
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="boxTabContent">
+    <div class="tab-pane active" id="inbox" aria-labelledby="inbox-tab">
+      <%= render 'shared/inbox_content' %>
+    </div>
+    <div class="tab-pane" id="outbox" aria-labelledby="outbox-tab">
+      <%= render 'shared/outbox_content' %>
+    </div>
+  </div>
+</div>

@@ -5,14 +5,19 @@ class UsersController < ApplicationController
 
     # GET  /users/:id/inbox 
     def inbox
-        # @user = User.find(params[:id])
-        @receive_letters = Letter.where(to_user_id: params[:id])
-        @send_letters    = Letter.where(user_id: params[:id])
+        # to_user_idが自身のletterを全て取得
+        # user_idごとにまとめる
+        # 最終やり取りごとに並び変える 
+
+        # @receive_letters = Letter.where(to_user_id: params[:id])
+        # @send_letters    = Letter.where(user_id: params[:id])
+
+        @users = Letter.where(to_user_id: params[:id]).map(&:user).uniq
+
+        @users.push current_user # 試験的に。。。
 
         logger.debug("#####################")
-        logger.debug("## @receive_letters    => #{@receive_letters.first} ##")    
-        logger.debug("#####################")
-        logger.debug("## @send_letters    => #{@send_letters.first} ##")
+        logger.debug("## @users    => #{@users} ##")    
         logger.debug("#####################")
 
     end

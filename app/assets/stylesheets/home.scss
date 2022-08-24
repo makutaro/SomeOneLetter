@@ -44,8 +44,9 @@
 .home-under-side {
   height: 60%;
 }
-.home-container{
-  height:100%;
+#home-container{
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .home-col-card {
@@ -61,6 +62,7 @@
 }
 
 .home-col-image {
+  margin:auto;
   text-align: center;
 }
 .home-col-text {
