@@ -22,19 +22,9 @@
   }
 }
 
-.home-card{
-  margin: 10px 0px 10px 0px;
-  padding: 5% 15% 5% 15%;
-  background-color: #ffffffc9 !important;
-  border-radius: 1.2rem !important; 
-  .card-title{line-height: 56px;
-    text-align: center;
-  }
-}
-
 .home-upper-side {
   margin-bottom: 40px;
-  height: 40%; 
+  height: 20vh; 
   .name {
     font-size: 35px;
     text-align: center;
@@ -42,7 +32,7 @@
   }
 }
 .home-under-side {
-  height: 60%;
+  height: 30vh;
 }
 #home-container{
   flex-wrap: wrap;

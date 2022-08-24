@@ -23,6 +23,15 @@ $gray-medium-light: #eaeaea;
 main {
    margin: 0 auto;    //ブロック要素レベルで中央揃え
 }
+
+.main-card {
+  margin: 10px 0px 10px 0px;
+  padding: 5% 15% 5% 15%;
+  background-color: #ffffffc9 !important;
+  border-radius: 1.2rem !important; 
+ 
+
+}
   section {
     //ブロック幅に収まらない場合の処理
     overflow: auto;

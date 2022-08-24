@@ -1,14 +1,16 @@
 <%# inboxページのユーザーをリスト表示するためのパーシャル %>
 
-<button class="card inbox-col row" onclick="location.href='<%=inbox_user_url(id:current_user.id)%>'">
-  <div class="col"> 
-      <%= if user.image.attached?
-           image_tag user.image, size: "40x40", class:"center-block rounded-circle"
-      else image_tag "bottle_ship.png",size:"40x40", class:"center-block rounded-circle"
-      end %> 
+<button class="card inbox-col " onclick="location.href='<%=inbox_user_url(id:current_user.id)%>'">
+  <div class="row">
+    <div class="col image"> 
+        <%= if user.image.attached?
+            image_tag user.image, size: "60x60", class:"center-block rounded-circle"
+        else image_tag "bottle_ship.png",size:"60x60", class:"center-block rounded-circle"
+        end %> 
+    </div>
+    
+    <div class="col name">
+      <%= user.name %>
+    </div>
   </div>
-  <div class="col">
-    <%= user.name %>
-  </div>
-
 </button>

@@ -50,5 +50,12 @@
 }
 
 .inbox-col {
-  height: 60px;
+  .image {
+    margin:auto;
+    background-color: black;
+  }
+  .name {
+    margin: auto;
+    font-size: 1.5rem;
+  }
 }

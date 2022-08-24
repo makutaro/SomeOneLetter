@@ -1,5 +1,25 @@
 <!--# GET  /users/:id/inbox  -->
 <!--送受信した手紙を確認するページ-->
-<div class="inbox-card card">
-  <%= render @users %>
+<div class="card main-card">
+
+  <div class="home-upper-side row">
+    <div class="col">
+      <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
+      <%= if current_user.image.attached?
+            image_tag current_user.image, size: "120x120", class:"center-block rounded-circle custom-image"
+        else image_tag "bottle_ship.png",size:"120x120", class:"center-block rounded-circle custom-image"
+      end %>
+      <div class="name"><%= current_user.name%></div>
+    </div>
+    <div class="col card">
+      アクティブ率とログアウトボタン
+    </div>
+  </div>
+
+    <%= render @users %>
+    <% if @users.nil?  %>
+    届いた手紙はありません
+    <% end %>
+    
+  </div>
 </div>
