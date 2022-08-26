@@ -16,19 +16,22 @@
 
   </head>
 
-   <body class="body">
+   <body class="<%= background_style %>">
    <!--header-->
-      <% unless request.path == '/' %>
-        <%#= render 'layouts/header' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/header' %>
       <% end %>
      
    <!--flash-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= bootstrap_alert(message_type) %> " id="flash" ><%= message %></div>
       <% end %>
+      
    <!--main-->
-     <main><%= yield %></main>
+     <%= yield %>
+     
    <!--footer-->
      <%#= render 'layouts/footer' %>
   </body>
 </html>
+ 

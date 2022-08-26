@@ -23,25 +23,23 @@
 }
 
 .home-upper-side {
+  margin-top: 10%;
   margin-bottom: 40px;
-  height: 20vh; 
   .name {
     font-size: 35px;
     text-align: center;
     font-weight: bold;
   }
 }
-.home-under-side {
-  height: 30vh;
-}
 #home-container{
+  margin: 0px 5px 0px 5px ;
   flex-wrap: wrap;
   align-content: flex-start;
 }
 
 .home-col-card {
-  border-radius: 5rem !important;
-  margin:  15px;
+  border-radius: 1rem !important;
+  margin:  6px;
   padding-top: 30px;
   padding-bottom: 25px;  
   height: fit-content;
@@ -58,6 +56,6 @@
 .home-col-text {
   margin: 5px;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: bold;
 }

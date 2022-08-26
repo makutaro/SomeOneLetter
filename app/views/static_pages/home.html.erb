@@ -1,8 +1,7 @@
 <% provide(:title, "【サービス名】") %>
 
-<div class="card main-card">
 
-  <div class="home-upper-side row">
+  <div class="home-upper-side">
     <div class="col">
       <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
       <%= if current_user.image.attached?
@@ -11,12 +10,8 @@
       end %>
       <div class="name"><%= current_user.name%></div>
     </div>
-    <div class="col card">
-      アクティブ率とログアウトボタン
-    </div>
   </div>
 
-  <div class="home-under-side">
     <div class="contaner" id="home-container">
       <div class="row">
         <%= render 'shared/home/home_col', { image:"letter", id:"#new-letter-modal", text:"手紙をながす"} %>
@@ -29,12 +24,10 @@
         <%= render 'shared/home/home_col', { image:"bell",   url:home_url, text:"お知らせ"} %>
       </div>
     </div>
-  </div>
 
-</div>
 
 <!-- Modal_sample -->
-<div class="modal" id="new-letter-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal hide" id="new-letter-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

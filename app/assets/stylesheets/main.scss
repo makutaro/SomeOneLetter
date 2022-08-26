@@ -6,32 +6,23 @@
 $gray-medium-light: #eaeaea;
 
 #flash {
-  width: 600px;      //横幅指定
   margin: 0 auto;    //ブロック要素レベルで中央揃え
 }
 
 .body {
-  margin: 0 auto; 
-  width: 700px;
-  height: 100vh;
   background: url("top.jpg") center no-repeat;
   background-attachment: fixed;
-  background-color: black;
+  background-color:#e1e1e1;
+  background-size:cover ;
+}
+.body_signed_in {
+  margin: auto;
+  max-width: 700px;
+  background: #e1e1e1 center no-repeat;
+  background-attachment: fixed;
   background-size:cover ;
 }
 
-main {
-   margin: 0 auto;    //ブロック要素レベルで中央揃え
-}
-
-.main-card {
-  margin: 10px 0px 10px 0px;
-  padding: 5% 15% 5% 15%;
-  background-color: #ffffffc9 !important;
-  border-radius: 1.2rem !important; 
- 
-
-}
   section {
     //ブロック幅に収まらない場合の処理
     overflow: auto;

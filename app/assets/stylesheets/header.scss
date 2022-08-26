@@ -1,22 +1,19 @@
-#header {
-  margin: 0 auto;    //ブロック要素レベルで中央揃え
-  background-color: #ffffffc9 !important ;
+.navbar {
+  &.custom {
+   background-color: rgb(255, 255, 255) !important;
+   justify-content:left;    
+   margin: auto; 
+  }
 }
 
-.header_column {
-  margin: auto;
-  width:600px;
-  font-size: 1.3rem;
-  background-color: rgb(255, 255, 255);
-  }
-
-#logo {
+#header-logo {
+  justify-content:center;
   padding: 0;
   height: auto;
   line-height: 33px;
   float: left;
-  margin-right: 10px;
-  font-size: 1.5em;
+  margin:auto;
+  font-size: 2.0rem;
   color: rgb(0, 0, 0);
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -27,7 +24,11 @@
   }
 }
 
-.nav-item{
+.navbar-nav{
+  margin: auto;
+  left: 50%;
+  text-align: center !important;
   padding-right: 1.5rem;
   font-size: 1.6rem;
 }
+
