@@ -12,6 +12,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'header'%>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   </head>
@@ -28,7 +29,9 @@
       <% end %>
       
    <!--main-->
-     <%= yield %>
+     <div id="main">
+       <%= yield %>
+     </div>
      
    <!--footer-->
      <%#= render 'layouts/footer' %>

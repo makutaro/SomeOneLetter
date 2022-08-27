@@ -1,1 +1,58 @@
 コンセプト 名前も顔も知らない人と、気軽にメッセージを遅れるチャットサービス
+
+arted GET "/home" for 172.25.0.1 at 2022-08-27 05:26:21 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#home as HTML
+  User Load (0.6ms)  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  ActiveStorage::Attachment Load (0.9ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4  [["record_id", 2], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/static_pages/home.html.erb:7
+  Rendered shared/home/_home_col.html.erb (Duration: 15.9ms | Allocations: 486)
+  Rendered shared/home/_home_col.html.erb (Duration: 14.7ms | Allocations: 486)
+  Rendered shared/home/_home_col.html.erb (Duration: 0.2ms | Allocations: 307)
+  Rendered shared/home/_home_col.html.erb (Duration: 0.2ms | Allocations: 307)
+  Rendered shared/home/_home_col.html.erb (Duration: 16.1ms | Allocations: 486)
+  Rendered shared/home/_home_col.html.erb (Duration: 14.9ms | Allocations: 486)
+  Rendered shared/_letter_form.html.erb (Duration: 0.8ms | Allocations: 673)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 106.4ms | Allocations: 5928)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 309.4ms | Allocations: 16392)
+Completed 200 OK in 314ms (Views: 309.4ms | ActiveRecord: 1.5ms | Allocations: 18360)
+
+
+
+Started GET "/" for 172.25.0.1 at 2022-08-27 05:26:46 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#top as HTML
+  User Load (0.6ms)  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/static_pages_controller.rb:3:in `top'
+Redirected to http://localhost:3000/home
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms | Allocations: 1202)
+
+
+Started GET "/home" for 172.25.0.1 at 2022-08-27 05:26:46 +0000
+Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StaticPagesController#home as HTML
+  User Load (0.7ms)  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  ActiveStorage::Attachment Load (0.9ms)  SELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4  [["record_id", 2], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/static_pages/home.html.erb:7
+  Rendered shared/home/_home_col.html.erb (Duration: 13.9ms | Allocations: 488)
+  Rendered shared/home/_home_col.html.erb (Duration: 14.7ms | Allocations: 488)
+  Rendered shared/home/_home_col.html.erb (Duration: 0.4ms | Allocations: 307)
+  Rendered shared/home/_home_col.html.erb (Duration: 0.2ms | Allocations: 307)
+  Rendered shared/home/_home_col.html.erb (Duration: 15.7ms | Allocations: 491)
+  Rendered shared/home/_home_col.html.erb (Duration: 13.7ms | Allocations: 488)
+  Rendered shared/_letter_form.html.erb (Duration: 1.0ms | Allocations: 673)
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 105.7ms | Allocations: 5939)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 521)
+  Rendered layout layouts/application.html.erb (Duration: 290.6ms | Allocations: 16403)
+Completed 200 OK in 296ms (Views: 290.5ms | ActiveRecord: 1.6ms | Allocations: 18381)
+
+
