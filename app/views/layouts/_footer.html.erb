@@ -1,30 +1,15 @@
 <footer id="footer">
-  <nav>
-    <ul>
-      <li><%= link_to "About",   about_path %></li>
-      <li><%= link_to "問い合わせ", contact_path %></li>
-    </ul>
+  <nav id="footer-nav" class="navbar navbar-light">
+    <%= link_to "#", class: "nav-item nav-link", data: { turbolinks: :false } do %>
+    <i class="fas fa-fire fa-lg inherit"></i>
+    <% end %>
+    <%= link_to "#", class: "nav-item nav-link" do %>
+    <i class="fas fa-comments fa-lg inherit"></i>
+    <% end %>
+    <%= link_to "#", class: "nav-item nav-link" do %>
+    <span class="">
+      <i class="fas fa-user fa-lg inherit"></i>
+    </span>
+    <% end %>
   </nav>
-
-<p>
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-bs-target
-  </button>
-</p>
-
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-  </div>
-</div>
-
- <button class="" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-    ボタン
-  </button>
-    <div class="collapse" id="navbarScroll">
-    あああ
-    </div>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-
 </footer>
-
