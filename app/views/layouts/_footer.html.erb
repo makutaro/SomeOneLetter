@@ -1,15 +1,16 @@
 <footer id="footer">
-  <nav id="footer-nav" class="navbar navbar-light">
-    <%= link_to "#", class: "nav-item nav-link", data: { turbolinks: :false } do %>
-    <i class="fas fa-fire fa-lg inherit"></i>
+  <nav id="footer-nav" class="navbar navbar-light fixed-bottom">
+    <%= link_to root_url, class: "nav-item" do %>
+      <i class="icon fa fa-home fa-3x"></i>
     <% end %>
-    <%= link_to "#", class: "nav-item nav-link" do %>
-    <i class="fas fa-comments fa-lg inherit"></i>
+    <%= link_to root_url, class: "nav-item" do %>
+      <i class="icon fa fa-comments fa-3x"></i>
     <% end %>
-    <%= link_to "#", class: "nav-item nav-link" do %>
-    <span class="">
-      <i class="fas fa-user fa-lg inherit"></i>
-    </span>
+    <%= link_to root_url, class: "nav-item" do %>
+      <i class="icon fa fa-user fa-3x"></i>
+    <% end %>
+    <%= link_to root_url, class: "nav-item" do %>
+      <i class="icon fa fa-inbox  fa-3x"></i>
     <% end %>
   </nav>
 </footer>

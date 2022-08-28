@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
         @users = Letter.where(to_user_id: params[:id]).map(&:user).uniq
 
-        @users.push current_user # 試験的に。。。
+        #@users.push current_user # 試験的に。。。
 
         logger.debug("#####################")
         logger.debug("## @users    => #{@users} ##")    

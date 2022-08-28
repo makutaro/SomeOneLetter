@@ -54,8 +54,11 @@
     margin:auto;
     background-color: black;
   }
-  .name {
-    margin: auto;
-    font-size: 1.5rem;
+  .body {
+    position:relative;
+    .name{
+      padding: auto;
+      font-size: 1.5rem;
+    }
   }
 }

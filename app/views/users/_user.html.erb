@@ -1,4 +1,4 @@
-p<%# inboxページのユーザーをリスト表示するためのパーシャル %>
+<%# inboxページのユーザーをリスト表示するためのパーシャル %>
 
 <button class="card inbox-col " onclick="location.href='<%=inbox_user_url(id:current_user.id)%>'">
   <div class="row">
@@ -9,8 +9,8 @@ p<%# inboxページのユーザーをリスト表示するためのパーシャ�
         end %> 
     </div>
     
-    <div class="col name">
-      <%= user.name %>
+    <div class="col body">
+      <div class="name"><%= user.name %></div>
     </div>
   </div>
 </button>

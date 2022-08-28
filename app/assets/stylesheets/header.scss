@@ -2,12 +2,10 @@
   padding-bottom: 0px; //nav-barに合わせて動的に取得
 }
 
-.navbar {
-  &.custom {
-   background-color: rgb(255, 255, 255) !important;
-   justify-content:left;    
-   margin: auto; 
-  }
+#header-nav {
+  background-color: rgb(255, 255, 255) !important;
+  justify-content:left;    
+  margin: auto; 
 }
 
 #header-logo {

@@ -44,4 +44,33 @@ class User < ApplicationRecord
        image.variant(resize_to_limit: [70, 70])
      end
 
+
+  # dammy生成用のクラスメソッド
+  def self.create_dammy(num, to_user_id)
+    num.times do |f|
+      a= User.create(
+        :name     => "user#{ f.to_s }",
+        :email    => "user#{ f.to_s }@example.com", 
+        :password => 'makutaro',
+        :location => '東京都',
+        :like_thing=> 'うさぎさん')
+      a.create_letter(to_user_id)
+    end
+  end
+
+    # letter生成用のメソッド
+    def create_letter(to_user_id)
+      @letter= Letter.create(
+          :user_id    => self.id,
+          :title      => "#{ self.id }のUserの1通目",
+          :content    => "テストです",
+          :to_user_id => to_user_id,
+          :layout_id  => 1
+      )
+      @match_room = @letter.build_match_room
+      @match_room_users = @match_room.match_room_users.build([{ user_id: self.id}, { user_id: to_user_id}])
+      
+      @letter.save!
+    end
 end
+
