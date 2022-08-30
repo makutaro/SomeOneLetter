@@ -1,0 +1,20 @@
+<% @letters.each do |letter| %>
+  <% if letter.user.id == current_user.id %>
+   <div class = "match-room-letter right">
+  <% else %>
+   <div class = "match-room-letter left">
+  <% end %>
+  <%= render letter %>
+  </div>
+  <div class="mach-room-button center">
+  <button type="button" class="btn custom btn-primary" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
+   返信
+  </button><br>
+  <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
+   非表示
+  </button>
+  </div>
+
+  </div>
+<% end %>
+<%= render "modal/new_letter_modal", {type:"reply"}%>

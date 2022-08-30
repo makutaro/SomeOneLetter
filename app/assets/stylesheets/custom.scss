@@ -86,4 +86,20 @@ custom-card {
     }
    }
 
-   
+  .custom-form {
+  margin: auto; //上右下左
+
+  .form-column {
+      margin: 10px 0px 0px 0px;
+              
+      .form-control {
+          width: 100%;
+          &.text { height: 80px; }
+      }
+  }
+
+  .form-action {
+      margin: 20px 0px 20px 0px;
+  }
+
+}

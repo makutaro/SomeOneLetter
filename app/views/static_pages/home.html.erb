@@ -1,9 +1,7 @@
 <% provide(:title, "【サービス名】") %>
 
-
   <div class="home-upper-side">
     <div class="col">
-      <%= link_to image_tag( "gear.png",size: "20x20"), edit_user_registration_url,style:"text-align:right;" %>
       <%= if current_user.image.attached?
             image_tag current_user.image, size: "120x120", class:"center-block rounded-circle custom-image"
         else image_tag "bottle_ship.png",size:"120x120", class:"center-block rounded-circle custom-image"
@@ -16,7 +14,7 @@
       <div class="row">
         <%= render 'shared/home/home_col', { image:"letter", id:"#new-letter-modal", text:"手紙をながす"} %>
         <%= render 'shared/home/home_col', { image:"post",   url:inbox_user_url(id:current_user.id), text:"届いた手紙"} %>
-        <%= render 'shared/home/home_col', { image:"gear",   url:home_url, text:"プロフィール"} %>
+        <%= render 'shared/home/home_col', { image:"gear",   url:edit_user_registration_url, text:"プロフィール"} %>
       </div>
       <div class="row">
         <%= render 'shared/home/home_col', { image:"gear",   url:home_url, text:"設定"} %>
@@ -24,23 +22,4 @@
         <%= render 'shared/home/home_col', { image:"bell",   url:home_url, text:"お知らせ"} %>
       </div>
     </div>
-
-
-<!-- Modal -->
-<div class="modal hide" id="new-letter-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">手紙を書いて海に流す</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= render "shared/letter_form" %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "modal/new_letter_modal", {type:"new"}%>

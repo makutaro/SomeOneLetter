@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   end
 
   #userモデル(edit,inbox)
-  resources :users, only: [:edit] do
+  resources :users do
     member do
-      get :inbox  # GET  /users/[user_id]/inbox
+      get :inbox      # GET  /users/[user_id]/inbox
+      get :match_room # GET  /users/[user_id]/match_room/[match_room_id]
     end
   end
 
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
                     # DELETE /letters/[letter_id] destroy
     member do
       post :release # POST  /letters/[letter_id]/release
-      get  :reply   # get   /letters/[to_letter_id]/reply
+      post :reply   # POST   /letters/[to_user_id]/reply
     end
   end
 end

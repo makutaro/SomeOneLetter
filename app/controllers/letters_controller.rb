@@ -14,7 +14,6 @@ class LettersController < ApplicationController
 
   # POST  /letters
   def create 
-
     # 入力情報から@letterインスタンス生成
     @letter = current_user.letters.build(letter_params)
 
@@ -27,7 +26,7 @@ class LettersController < ApplicationController
     else
       # 新規処理
       @letter.to_user_id = find_randam_user_id
-       # match_room,match_room_users(x2)を作成
+       # match_room,match_room_users(x2)を新規作成
         @match_room = @letter.build_match_room
         @match_room_users = @match_room.match_room_users.build([{ user_id: current_user.id}, { user_id: @letter.to_user_id}])
     end
@@ -65,22 +64,18 @@ class LettersController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  # get  /letters/[to_letter_id]/reply
+  # POST  /letters/[to_letter_id]/reply
   def reply
-    @letter = current_user.letters.build
-    # to_letter_id をもとに@letterを作成
-    @from_letter = Letter.find(params[:id])
   end
 
   def confirm
-    debugger
   end
 
 private
  
   # Strong Parametes
   def letter_params
-    params.require(:letter).permit(:title, :content, :reply_flag, :layout_id, :to_user_id)
+    params.require(:letter).permit(:title, :content, :layout_id, :to_user_id)
   end
 end
 

@@ -1,5 +1,18 @@
-<!--手紙を入力するform-->
+<%#
+手紙を入力するform
+  type: new    => letters/:id 
+  type: reply  => letters/:id/reply 
+ %>
 
+<%#変数定義(new or reply) %>
+<%case type when "new"%>
+   <% url = "/letters"%>
+
+<%when "reply"%>
+   <% url = "/letters/1/reply"%>
+<%end%>
+
+<%#入力用form ※ajax %>
 <%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
   <div class="form-column">
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>
@@ -16,16 +29,18 @@
 
   <div class="form-action text-center">
     <%= f.submit "確認",class: "btn btn-primary custom-btn"%>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
   </div>
 
-  <!-- Modal Post-->
+
+<%# 確認用modal(new or reply) %>
 <div class="modal" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div id="letter-content" class="modal-body"></div>
+      <div id="letter-content" class="modal-body"><%#ajaxにより、lettter_contentが動的描画 %></div>
       <div class="modal-footer">
         <button type="button" class="btn custom-btn btn-secondary" data-bs-dismiss="modal">とじる</button>
-        <input type="submit" value="ながす" class="btn custom-btn btn-primary" formaction="/letters" formmethod="POST">
+        <input type="submit" value="ながす" class="btn custom-btn btn-primary" formaction=<%= url %> formmethod="POST">
       </div>
     </div>
   </div>

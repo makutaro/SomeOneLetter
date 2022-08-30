@@ -24,13 +24,10 @@ $gray-medium-light: #eaeaea;
 
 #main {
   margin:auto;
-  max-width: 700px;
-}
-
-  section {
-    //ブロック幅に収まらない場合の処理
-    overflow: auto;
+  &.signed-in{
+    max-width: 700px;
   }
+}
   
   textarea {
     //要素の寸法の可変設定
@@ -44,25 +41,26 @@ $gray-medium-light: #eaeaea;
   /* typography */
   
   h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
+    //line-height: 1;
   }
   
   h1 {
-    font-size: 6em !important;
-    letter-spacing: -2px !important;
+    font-size: 4em !important;
+    letter-spacing: -2px !important ;
     margin-bottom: 30px !important;
     text-align: center !important;
   }
-  
+
   h2 {
-    font-size: 1.2em;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: normal;
+    font-size: 3em !important;
+    letter-spacing: -2px !important ;
+    margin-bottom: 30px !important;
+    text-align: center !important;
   }
-  
-  p {
-    font-size: 1.1em;
-    line-height: 1.7em;
+
+  h3 {
+    font-size: 2.5em !important;
+    letter-spacing: -2px !important ;
+    margin-bottom: 30px !important;
+    text-align: center !important;
   }

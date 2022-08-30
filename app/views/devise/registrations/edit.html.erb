@@ -1,5 +1,5 @@
-<h1>プロフィール編集</h1>
-  <%= form_with model: @user, class: "custom-form", url: registration_path(resource_name), html: { method: :put } do |f| %>
+
+  <%= form_with model: @user, class: "edit-form", url: registration_path(resource_name), html: { method: :put } do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
 
   <%= if current_user.image.attached?
@@ -57,16 +57,15 @@
     <%= f.submit "更新",class: "btn custom-btn btn-primary"%>
     <%= link_to "Back", :back ,class: "btn custom-btn btn-secondary" %>
   </div>
-
 <% end %>
 
-
-<custom-card class="card center" style="padding: 40px 70px 40px 70px;">
-  <h3 class="center">会員情報削除</h3>
-  <div class="custom-form">
-    <h4>※全ての情報が削除されます</h4>
-    <div class="form-action">
-      <%= button_to "退会する", registration_path(resource_name),class: "btn custom-btn btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
+  <div class="card edit-card center">
+    <h3 class="center">会員情報削除</h3>
+    <div class="custom-form">
+      <h4>※全ての情報が削除されます</h4>
+      <div class="form-action">
+        <%= button_to "退会する", registration_path(resource_name),class: "btn custom-btn btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
+      </div>
     </div>
   </div>
-</custom-card>
+

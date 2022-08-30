@@ -1,17 +1,34 @@
 <!--":title" は applicant.html.erbにて使用-->
 <% provide(:title, "【サービス名】") %>
 
-<div style="height: 200vh;">
+<div class="top-screen ">
 
-  <div class="top-title">
-    <h1 class="text-white text-center">
-      SomeOneLetter
-    </h1>
-  </div>
+  <section class="area">
+    <div class=" top-title">
+      <h1 class="text-white">SomeOneLetter</h1>
+    </div>
 
-  <div class="top-authentication">
+    <div class="top-authentication">
       <%= link_to "アカウントを作成する", new_user_registration_url, class: "btn custom btn-clear m-3" %><br>
       <%= link_to "ログイン",new_user_session_path, class: "btn custom btn-clear m-3" %>
-  </div>
-  
+    </div>
+  </section>
+
+  <section id="page-1" class="area" ;>
+    <div class=" top-title">
+      <h2 class="text-white">拝啓 波の向こうにあなたへ</h2>
+      <h3 class="text-white">someoneletter」 はメッセージサービスです。<br>
+          あなたが書いた手紙が、別の利用者の誰かに届きます。<br>
+          もしかしたら返事が届くかもしれません。
+      </h3>
+
+    </div>
+  </section>
+
+  <section id="page-2" class="area" ;>
+    <div class="card">
+    </div>
+  </section>
+
+
 </div>

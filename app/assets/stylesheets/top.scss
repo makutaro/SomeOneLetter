@@ -1,3 +1,16 @@
+.top-screen {
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  .area {
+    scroll-snap-align: start;
+    height: 100vh;
+  }
+  .card{
+    height: 100vh;
+  }
+
+}
 
 .top-title {
   position:relative;

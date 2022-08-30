@@ -29,10 +29,12 @@
       <% end %>
       
    <!--main-->
-     <div id="main">
-       <%= yield %>
-     </div>
-     
+      <% if user_signed_in? %>
+       <div id="main" class="signed-in"><%= yield %></div>
+      <% else %>
+       <div id="main"><%= yield %></div>
+      <% end %>
+          
    <!--footer-->
     <% if user_signed_in? %>
       <%= render 'layouts/footer' %>
