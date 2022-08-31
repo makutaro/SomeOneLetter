@@ -10,10 +10,16 @@
 
 <%when "reply"%>
    <% url = "/letters/1/reply"%>
+   <% match_room_id = @letters.first.match_room_id%>
 <%end%>
 
 <%#入力用form ※ajax %>
 <%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
+
+  <% if defined? match_room_id %>
+    <%= f.hidden_field :match_room_id, :value => match_room_id %>
+  <% end %>
+
   <div class="form-column">
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>
   </div>
@@ -28,12 +34,12 @@
   </div>
 
   <div class="form-action text-center">
-    <%= f.submit "確認",class: "btn btn-primary custom-btn"%>
+  <%# jsにて、form取り込み => #preview-modal起動  %>
+    <%= f.submit "確認",class: "btn btn-primary custom-btn"%> 
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
   </div>
 
-
-<%# 確認用modal(new or reply) %>
+<%# 確認用modal(jsより呼び出される) %>
 <div class="modal" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -47,4 +53,5 @@
 </div>
 
 <% end %>
+
 

@@ -16,20 +16,10 @@ class LettersController < ApplicationController
   def create 
     # 入力情報から@letterインスタンス生成
     @letter = current_user.letters.build(letter_params)
-
-    # 返信or新規を判定
-    if @letter.reply_flag
-      # 返信処理
-      # match_room_usersを検索し,match_room_idを取得
-      find.mat
-      # @letterにmatch_room_id付与
-    else
-      # 新規処理
-      @letter.to_user_id = find_randam_user_id
-       # match_room,match_room_users(x2)を新規作成
-        @match_room = @letter.build_match_room
-        @match_room_users = @match_room.match_room_users.build([{ user_id: current_user.id}, { user_id: @letter.to_user_id}])
-    end
+    @letter.to_user_id = find_randam_user_id
+      # match_room,match_room_users(x2)を新規作成
+      @match_room = @letter.build_match_room
+      @match_room_users = @match_room.match_room_users.build([{ user_id: current_user.id}, { user_id: @letter.to_user_id}])
   
     if @letter.save # DBに保存
       flash[:success] = "投稿しました"
@@ -66,9 +56,12 @@ class LettersController < ApplicationController
 
   # POST  /letters/[to_letter_id]/reply
   def reply
-  end
-
-  def confirm
+    # 入力情報から@letterインスタンス生成
+    @letter = current_user.letters.build(letter_params_reply)
+    # 
+    @letter.match_room_id
+    @letter.save!
+    debugger
   end
 
 private
@@ -76,6 +69,10 @@ private
   # Strong Parametes
   def letter_params
     params.require(:letter).permit(:title, :content, :layout_id, :to_user_id)
+  end
+
+  def letter_params_reply
+    params.require(:letter).permit(:title, :content, :layout_id, :to_user_id,:match_room_id)
   end
 end
 
