@@ -4,7 +4,7 @@ letterの新規送信用のmodal
   type: reply  => 返信modal      
 %>
 
-<%#変数定義(new or reply) %>
+<%# 変数定義(new or reply) %>
 <%case type when "new"%>
    <% target_id = "new-letter-modal"%>
    <% title = "手紙を書いて海に流す" %>
@@ -14,7 +14,7 @@ letterの新規送信用のmodal
    <% title = "返信" %>
 <%end%>
 
-<%#入力用modal %>
+<%# 入力用modal %>
 <div class="modal hide" id="<%= target_id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

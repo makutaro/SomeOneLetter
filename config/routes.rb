@@ -14,7 +14,7 @@
 
 Rails.application.routes.draw do
 
-#devise関連
+  #devise関連
   devise_for :users, controllers: {
     confirmations:       'users/confirmations',     # 
     passwords:           'users/passwords',         # passを忘れた場合
@@ -26,22 +26,21 @@ Rails.application.routes.draw do
     post 'new_user_step1', to: 'users/registrations#step1'
   end
 
-# 静的ページ(home,about,contact)
-  root 'static_pages#top'
-  get  '/home',   to: 'static_pages#home'
-  get  '/about',   to: 'static_pages#about'
-  get  '/contact', to: 'static_pages#contact'
+  # 静的ページ(home,about,contact)
+    root 'static_pages#top'
+    get  '/home',   to: 'static_pages#home'
+    get  '/about',   to: 'static_pages#about'
+    get  '/contact', to: 'static_pages#contact'
 
 
-#userモデル(edit,inbox)
+  #userモデル(edit,inbox)
   resources :users do
     member do
       get :match_room # GET  /users/[user_id]/match_room/[match_room_id]
     end
   end
 
-
-# letterモデル
+  # letterモデル
   resources :letters, only: [:new,:create,:destroy,:show] do
                     # GET   /letters/[user_id]    index
                     # GET   /letters/new          new
@@ -53,8 +52,11 @@ Rails.application.routes.draw do
     end
   end
 
-# inbox_recordsモデル
+  # inbox_recordsモデル
   resources :inbox_records, only:[:show] do
+    collection do
+      get :room
+    end
   end
 
 end

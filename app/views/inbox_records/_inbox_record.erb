@@ -1,6 +1,6 @@
-<%# inboxページのユーザーをリスト表示するためのパーシャル %>
+<%# inboxページのユーザーレコード%>
 
-<button class="card inbox-col " onclick="location.href='<%#= %>'">
+<button class="card inbox-col " onclick="location.href='<%= room_inbox_records_url(id:inbox_record.match_room_id) %>'">
   <div class="row">
     <div class="col image"> 
         <%= if inbox_record.to_user.image.attached?

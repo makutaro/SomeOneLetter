@@ -2,10 +2,8 @@ class Letter < ApplicationRecord
   belongs_to :user
   belongs_to :match_room
 
-   # デフォルトの並び順を定義(降順)
-   default_scope -> { order(created_at: :desc) }
-
-   # getter,setter定義
+   # スコープ
+   scope :find_all_by_id, -> (id) { where(match_room_id: id).order(created_at: :asc) }
 
    # バリデーション
    validates :title, presence: true, length: { maximum: 20 }
@@ -24,11 +22,10 @@ class Letter < ApplicationRecord
    }
 
    def save_safe
-    if @letter.save # DBに保存
-      flash[:success] = "投稿しました"
-      redirect_to root_url
+    if self.save # DBに保存
+      # flash[:success] = "投稿しました"
     else # DBエラー
-      flash[:danger] = "DBエラーです"
+     #  flash[:danger] = "DBエラーです"
       redirect_to request.referrer || root_url
     end
    end

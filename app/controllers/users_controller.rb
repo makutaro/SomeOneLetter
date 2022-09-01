@@ -3,15 +3,7 @@ class UsersController < ApplicationController
   # 正しいユーザであることを確認 
   before_action :correct_user,   only: [:inbox]
 
-    # GET  /users/[match_room_id]/match_room
-    def match_room
-      @letters = Letter.where(match_room_id: params[:id])
-      
-       # 投稿form用に空のletterを作成
-      @letter = current_user.letters.build
-    end
-
-
+  
    ###################   
    # beforeアクション#
    ###################

@@ -15,6 +15,10 @@
 <%#入力用form ※ajax %>
 <%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
 
+  <% if type == "reply" %>
+    <%= f.hidden_field :match_room_id, :value => @letters.first.match_room_id %>
+  <% end %>
+
   <div class="form-column">
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>
   </div>

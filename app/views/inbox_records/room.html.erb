@@ -1,0 +1,18 @@
+<%# 受信した手紙を時系列ごとに並べた画面 %>
+
+<% @letters.each do |letter| %>
+ <div class="room-letter">
+   <%= render letter %>
+ </div>
+<% end %>
+
+  <div class="room-button center">
+    <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
+    返信
+    </button><br>
+    <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
+    非表示
+    </button>
+  </div>
+
+<%= render "modal/send_letter_modal", {type:"reply"}%>
