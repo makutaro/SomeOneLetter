@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_19_043313) do
+ActiveRecord::Schema.define(version: 2022_08_31_040422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 2022_08_19_043313) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "inbox_records", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "match_room_id"
+    t.bigint "to_user_id"
+    t.boolean "hidden_flag", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["match_room_id"], name: "index_inbox_records_on_match_room_id"
+    t.index ["to_user_id"], name: "index_inbox_records_on_to_user_id"
+    t.index ["user_id"], name: "index_inbox_records_on_user_id"
+  end
+
   create_table "information", force: :cascade do |t|
     t.string "content", default: "", null: false
     t.boolean "hidden_flag", default: false, null: false
@@ -53,8 +65,6 @@ ActiveRecord::Schema.define(version: 2022_08_19_043313) do
   create_table "letters", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.text "content", default: "", null: false
-    t.integer "to_user_id", null: false
-    t.boolean "reply_flag", default: false, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,18 +75,7 @@ ActiveRecord::Schema.define(version: 2022_08_19_043313) do
     t.index ["user_id"], name: "index_letters_on_user_id"
   end
 
-  create_table "match_room_users", force: :cascade do |t|
-    t.bigint "match_room_id"
-    t.bigint "user_id"
-    t.boolean "hidden_flag", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["match_room_id"], name: "index_match_room_users_on_match_room_id"
-    t.index ["user_id"], name: "index_match_room_users_on_user_id"
-  end
-
   create_table "match_rooms", force: :cascade do |t|
-    t.boolean "matched_flag", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -99,8 +98,9 @@ ActiveRecord::Schema.define(version: 2022_08_19_043313) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "inbox_records", "match_rooms"
+  add_foreign_key "inbox_records", "users"
+  add_foreign_key "inbox_records", "users", name: "to_user_id"
   add_foreign_key "letters", "match_rooms"
-  add_foreign_key "letters", "users"
-  add_foreign_key "match_room_users", "match_rooms"
-  add_foreign_key "match_room_users", "users"
+  add_foreign_key "letters", "users"             
 end

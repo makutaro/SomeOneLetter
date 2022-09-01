@@ -14,7 +14,7 @@
         :location => '千葉県',
         :like_thing=> 'くまさん')
 
-    User.create_dammy(10,admin.id)
+   # User.create_dammy(10,admin.id)
 
 
 #############

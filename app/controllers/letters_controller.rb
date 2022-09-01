@@ -16,11 +16,15 @@ class LettersController < ApplicationController
   def create 
     # 入力情報から@letterインスタンス生成
     @letter = current_user.letters.build(letter_params)
-    @letter.to_user_id = find_randam_user_id
-      # match_room,match_room_users(x2)を新規作成
-      @match_room = @letter.build_match_room
-      @match_room_users = @match_room.match_room_users.build([{ user_id: current_user.id}, { user_id: @letter.to_user_id}])
+    # ランダムに対象user_idを選択
+    @to_user_id = find_randam_user_id
+
+    # match_room,inbox_recordを新規作成
+    @match_room = @letter.build_match_room
+    @inbox_record = @match_room.inbox_records.build( user_id: @to_user_id, to_user_id: current.user.id)
   
+#    @inbox_record = @match_room.inbox_records.build( user_id: @to_user_id, to_user_id: current.user.id)
+
     if @letter.save # DBに保存
       flash[:success] = "投稿しました"
       redirect_to root_url
@@ -68,7 +72,7 @@ private
  
   # Strong Parametes
   def letter_params
-    params.require(:letter).permit(:title, :content, :layout_id, :to_user_id)
+    params.require(:letter).permit(:title, :content, :layout_id)
   end
 
   def letter_params_reply

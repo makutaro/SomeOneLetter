@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MatchRoomUserTest < ActiveSupport::TestCase
+class InboxRecordTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
