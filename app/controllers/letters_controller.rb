@@ -14,24 +14,33 @@ class LettersController < ApplicationController
 
   # POST  /letters
   def create 
-    # 入力情報から@letterインスタンス生成
-    @letter = current_user.letters.build(letter_params)
-    # ランダムに対象user_idを選択
-    @to_user_id = find_randam_user_id
-
-    # match_room,inbox_recordを新規作成
+    # 入力情報から@letter、match_roomインスタンスを新規作成
+    @letter     = current_user.letters.build(letter_params)
     @match_room = @letter.build_match_room
-    @inbox_record = @match_room.inbox_records.build( user_id: @to_user_id, to_user_id: current.user.id)
-  
-#    @inbox_record = @match_room.inbox_records.build( user_id: @to_user_id, to_user_id: current.user.id)
 
-    if @letter.save # DBに保存
-      flash[:success] = "投稿しました"
-      redirect_to root_url
-    else # DBエラー
-      flash[:danger] = "DBエラーです"
-      redirect_to request.referrer || root_url
-    end
+    # 対象ユーザーを選定(アクティブかつ,ランダム)
+    @to_user_id = current_user.calc_to_user_id
+
+    # @inbox_record作成
+    @inbox_record = @match_room.inbox_records.build( user_id: @to_user_id, to_user_id: current_user.id)
+
+    # DB保存(@letter,@match_room,@inbox_record)
+    @letter.save_safe
+    
+    # リダイレクト  
+    redirect_to request.referrer || root_url
+  end
+
+  # POST  /letters/[to_letter_id]/reply
+  def reply
+    # 入力情報から@letterインスタンス生成
+    @letter = current_user.letters.build(letter_params_reply)
+
+    # DB保存
+    @letter.save_safe
+
+    # リダイレクト  
+    redirect_to request.referrer || root_url
   end
 
   # DELETE /letters/id
@@ -58,15 +67,7 @@ class LettersController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  # POST  /letters/[to_letter_id]/reply
-  def reply
-    # 入力情報から@letterインスタンス生成
-    @letter = current_user.letters.build(letter_params_reply)
-    # 
-    @letter.match_room_id
-    @letter.save!
-    debugger
-  end
+
 
 private
  
@@ -76,12 +77,6 @@ private
   end
 
   def letter_params_reply
-    params.require(:letter).permit(:title, :content, :layout_id, :to_user_id,:match_room_id)
+    params.require(:letter).permit(:title, :content, :layout_id, :match_room_id)
   end
 end
-
- def find_randam_user_id
-  #自分以外のランダムなuser_idを取得
-  #今回は仮に"2"を返信
-  return 2
- end

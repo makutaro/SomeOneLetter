@@ -102,5 +102,5 @@ ActiveRecord::Schema.define(version: 2022_08_31_040422) do
   add_foreign_key "inbox_records", "users"
   add_foreign_key "inbox_records", "users", name: "to_user_id"
   add_foreign_key "letters", "match_rooms"
-  add_foreign_key "letters", "users"             
+  add_foreign_key "letters", "users"
 end

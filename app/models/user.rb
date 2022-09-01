@@ -45,7 +45,7 @@ class User < ApplicationRecord
      end
 
 
-  # dammy生成用のクラスメソッド
+  # dammy生成用のクラスメソッド(作成数,)
   def self.create_dammy(num, to_user_id)
     num.times do |f|
       a= User.create(
@@ -64,13 +64,18 @@ class User < ApplicationRecord
           :user_id    => self.id,
           :title      => "#{ self.id }のUserの1通目",
           :content    => "テストです",
-          :to_user_id => to_user_id,
           :layout_id  => 1
       )
       @match_room = @letter.build_match_room
-      @match_room_users = @match_room.match_room_users.build([{ user_id: self.id}, { user_id: to_user_id}])
-      
+      @inbox_record = @match_room.inbox_records.build( user_id: to_user_id, to_user_id: self.id )
       @letter.save!
     end
+
+  # 条件に合致するuser_idを産出
+  def calc_to_user_id
+    #今回は仮に"2"を返信
+    return 2
+  end
+
 end
 

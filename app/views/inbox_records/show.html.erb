@@ -1,0 +1,11 @@
+<!--# GET  /inbox_records/:id  -->
+<!--送受信した手紙を確認するページ-->
+<div class="card main-card">
+
+    <%= render @inbox_records %>
+    <% if @inbox_records.empty?  %>
+      届いた手紙はありません
+    <% end %>
+    
+  </div>
+</div>

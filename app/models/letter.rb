@@ -23,4 +23,13 @@ class Letter < ApplicationRecord
     水色:2
    }
 
+   def save_safe
+    if @letter.save # DBに保存
+      flash[:success] = "投稿しました"
+      redirect_to root_url
+    else # DBエラー
+      flash[:danger] = "DBエラーです"
+      redirect_to request.referrer || root_url
+    end
+   end
 end

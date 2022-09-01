@@ -1,16 +1,16 @@
 <%# inboxページのユーザーをリスト表示するためのパーシャル %>
 
-<button class="card inbox-col " onclick="location.href='<%=match_room_user_url(id:user.letters.first.match_room_id)%>'">
+<button class="card inbox-col " onclick="location.href='<%#= %>'">
   <div class="row">
     <div class="col image"> 
-        <%= if user.image.attached?
-            image_tag user.image, size: "60x60", class:"center-block rounded-circle"
+        <%= if inbox_record.to_user.image.attached?
+            image_tag inbox_record.to_user.image, size: "60x60", class:"center-block rounded-circle"
         else image_tag "bottle_ship.png",size:"60x60", class:"center-block rounded-circle"
         end %> 
     </div>
     
     <div class="col body">
-      <div class="name"><%= user.name %></div>
+      <div class="name"><%= inbox_record.to_user.name %></div>
     </div>
   </div>
 </button>

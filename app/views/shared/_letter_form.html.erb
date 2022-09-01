@@ -10,15 +10,10 @@
 
 <%when "reply"%>
    <% url = "/letters/1/reply"%>
-   <% match_room_id = @letters.first.match_room_id%>
 <%end%>
 
 <%#入力用form ※ajax %>
 <%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
-
-  <% if defined? match_room_id %>
-    <%= f.hidden_field :match_room_id, :value => match_room_id %>
-  <% end %>
 
   <div class="form-column">
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>

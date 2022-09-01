@@ -3,25 +3,6 @@ class UsersController < ApplicationController
   # 正しいユーザであることを確認 
   before_action :correct_user,   only: [:inbox]
 
-    # GET  /users/:id/inbox 
-    def inbox
-        # to_user_idが自身のletterを全て取得
-        # user_idごとにまとめる
-        # 最終やり取りごとに並び変える 
-
-        # @receive_letters = Letter.where(to_user_id: params[:id])
-        # @send_letters    = Letter.where(user_id: params[:id])
-
-        @users = Letter.where(to_user_id: params[:id]).map(&:user).uniq
-
-        #@users.push current_user # 試験的に。。。
-
-        logger.debug("#####################")
-        logger.debug("## @users    => #{@users} ##")    
-        logger.debug("#####################")
-
-    end
-
     # GET  /users/[match_room_id]/match_room
     def match_room
       @letters = Letter.where(match_room_id: params[:id])

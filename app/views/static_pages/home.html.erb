@@ -13,7 +13,7 @@
     <div class="contaner" id="home-container">
       <div class="row">
         <%= render 'shared/home/home_col', { image:"letter", id:"#new-letter-modal", text:"手紙をながす"} %>
-        <%= render 'shared/home/home_col', { image:"post",   url:inbox_user_url(id:current_user.id), text:"届いた手紙"} %>
+        <%= render 'shared/home/home_col', { image:"post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
         <%= render 'shared/home/home_col', { image:"gear",   url:edit_user_registration_url, text:"プロフィール"} %>
       </div>
       <div class="row">
