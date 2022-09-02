@@ -10,9 +10,22 @@
     <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
     返信
     </button><br>
+    
+  <%# 初めての返信の場合  %>
+  <% if @letters.count == 1 %>
+    <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
+     海に流す
+    </button><br>
+    <button type="button" class="btn custom btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
+     破棄する
+    </button>
+
+  <%# 初めての返信でない場合 %>
+  <% else %>
     <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
     非表示
     </button>
   </div>
+  <% end %>
 
 <%= render "modal/send_letter_modal", {type:"reply"}%>

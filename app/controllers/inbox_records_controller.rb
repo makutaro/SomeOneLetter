@@ -10,8 +10,11 @@ class InboxRecordsController < ApplicationController
 
     # GET  /inbox_records/room/[id]
     def room
+        # 対象ユーザ情報を取得
+        @target_user = InboxRecord.find_by_id(params[:inbox_id])
+        
         # 対象roomのletterを取得
-        @letters = Letter.find_all_by_id(params[:id])
+        @letters = Letter.find_all_by_id(params[:room_id])
         
         # 投稿form用に空のletterを作成
         @letter = current_user.letters.build

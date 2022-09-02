@@ -1,10 +1,10 @@
 <%# letterのレイアウトを記述するパーシャル %>
 
-<div class="LL_<%= letter.layout_id %> letter">
+<div class="letter LL_<%= letter.layout_id %>">
   <div class="letter-header"><%= letter.title %></div>
   <div class="letter-content"> <%= letter.content %></div>
   <div class="letter-footer row"> 
-    <div class="col letter-date"><%= letter.created_at.strftime('%Y年 %m月 %d日') %></div>
-    <div class="col" style="text-align: right"><%= letter.user.name %></div>
+    <div class="col date-col"><%= letter.created_at.strftime('%Y/%m/%d %k:%M') %></div>
+    <div class="col name-col"><%= letter.user.name %></div>
   </div>
 </div>

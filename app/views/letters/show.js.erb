@@ -1,2 +1,2 @@
-$("#letter-content").html("<%= escape_javascript(render 'shared/letter_content', letter: @letter) %>")
+$("#letter-content").html("<%= escape_javascript(render 'letters/letter', letter: @letter) %>")
 $("#preview-modal").modal("show")

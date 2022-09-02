@@ -7,9 +7,11 @@
 <%#変数定義(new or reply) %>
 <%case type when "new"%>
    <% url = "/letters"%>
+   <% title = "タイトル(必須)"%>
 
 <%when "reply"%>
    <% url = "/letters/1/reply"%>
+   <% title = "宛先"%>
 <%end%>
 
 <%#入力用form ※ajax %>
@@ -20,7 +22,7 @@
   <% end %>
 
   <div class="form-column">
-    <%= f.text_field :title, placeholder: "タイトル", class: "form-control center-block" %>
+    <%= f.text_field :title, placeholder: title, class: "form-control center-block" %>
   </div>
 
   <div class="form-column">
@@ -42,7 +44,7 @@
 <div class="modal" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div id="letter-content" class="modal-body"><%#ajaxにより、lettter_contentが動的描画 %></div>
+      <div id="letter-content" class="modal-body"><%#ajaxにより、lettterが動的描画 %></div>
       <div class="modal-footer">
         <button type="button" class="btn custom-btn btn-secondary" data-bs-dismiss="modal">とじる</button>
         <input type="submit" value="ながす" class="btn custom-btn btn-primary" formaction=<%= url %> formmethod="POST">
