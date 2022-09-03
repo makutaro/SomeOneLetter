@@ -10,6 +10,18 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ * 【和訳】
+ * これは application.css にコンパイルされるマニフェストファイルで、以下のすべてのファイルが含まれます。
+ * 以下に示すすべてのファイルを含みます。
+ *
+ * このディレクトリ、lib/assets/stylesheets、またはプラグインに含まれるすべての CSS および SCSS ファイルを参照できます。
+ * lib/assets/stylesheets ディレクトリ、プラグインの vendor/assets/stylesheets ディレクトリ内の CSS および SCSS ファイルは、相対パスで参照することができます。
+ *
+ * このファイルには、アプリケーション全体のスタイルを自由に追加することができ、それらはコンパイルされたファイルの一番下に表示されます。
+ * このディレクトリにある他の CSS/SCSS ファイルで定義されたスタイルよりも、ここで追加したスタイルが優先されます。
+ * ファイルよりも優先されます。このファイルのスタイルは、最後の require_* 文の後に追加する必要があります。
+ * 一般的には、スタイルスコープごとに新しいファイルを作成した方がよいでしょう。
+ *
  *= require_tree .
  *= require_self
  *= require font-awesome

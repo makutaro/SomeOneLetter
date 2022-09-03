@@ -1,6 +1,6 @@
-<!--特に指定をしない限り、全てのコントローラから呼び出されるviewはすべて、このlayoutをベースとする-->
-<!--対象のviewは"yield"で呼び出す-->
-<!--このレイアウトを適応したくない場合 => コントローラに "render layout: false" --> 
+<%# 特に指定をしない限り、全てのコントローラから呼び出されるviewはすべて、このlayoutをベースとする %>
+<%# 対象のviewは"yield"で呼び出す %>
+<%# このレイアウトを適応したくない場合 => コントローラに "render layout: false"  %> 
 
 <!DOCTYPE html>
 <html>
@@ -9,33 +9,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'header'%>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
    <body class="<%= background_style %>">
-   <!--header-->
+   <%# header %>
       <% if user_signed_in? %>
         <%= render 'layouts/header' %>
       <% end %>
      
-   <!--flash-->
+   <%# flash %>
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= bootstrap_alert(message_type) %> " id="flash" ><%= message %></div>
       <% end %>
       
-   <!--main-->
+   <%# main %>
       <% if user_signed_in? %>
        <div id="main" class="signed-in"><%= yield %></div>
       <% else %>
        <div id="main"><%= yield %></div>
       <% end %>
           
-   <!--footer-->
+   <%# footer %>
     <% if user_signed_in? %>
       <div style="padding-bottom: 48px;">
       <%= render 'layouts/footer' %>

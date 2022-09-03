@@ -8,18 +8,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <%# header:roomページ  %>
+    <%# roomページの場合  %>
     <% if current_page?(room_inbox_records_url) %>
-      <a id="header-logo" , class=" align-items-center navbar-brand" href="<%= root_url %>">
+      <div id="header-logo" , class=" align-items-center navbar-brand">
        <% if current_user.image.attached? %>
         <%= image_tag @target_user.image,size:"35x35", class:"d-inline-block align-top " %>
        <% else %>
         <%= image_tag "bottle_ship.png",size:"35x35", class:"d-inline-block align-top " %>
        <% end %>
         <%= @target_user.to_user.name %>
-      </a>
+      </div>
 
-    <%# header:その他ログイン済み  %>
+    <%# その他ログイン済みの場合  %>
     <% else %>
       <a id="header-logo" , class="align-items-center navbar-brand" href="<%= root_url %>">
         <%= image_tag "bottle_ship.png",size:"35x35", class:"d-inline-block align-top " %>

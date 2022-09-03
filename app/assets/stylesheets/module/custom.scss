@@ -1,0 +1,40 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+  .custom-image {
+    margin-top: 20px;
+    background-color: black;
+   }
+
+   .btn{
+    &.custom {
+      height: 60px ;
+      width: 190px;
+      border-radius:  1.3rem !important;
+      font-size: 1.7rem !important;
+      font-weight: bold !important;
+      line-height: 50px !important;
+    }
+    &.btn-clear {
+      color:white !important;
+      background-color:transparent !important;
+      border-color: white !important;
+    }
+   }
+
+  .custom-form {
+  margin: auto; //上右下左
+
+  .form-column {
+      margin: 10px 0px 0px 0px;
+              
+      .form-control {
+          width: 100%;
+          &.text { height: 80px; }
+      }
+  }
+
+  .form-action {
+      margin: 20px 0px 20px 0px;
+  }
+
+}

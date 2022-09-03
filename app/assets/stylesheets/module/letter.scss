@@ -4,7 +4,16 @@
 .letter{
 	width:  400px;
 	margin: auto;
-	padding: 0px;
+	padding: 1rem;
+	color: #666; /* 文章色 */
+	box-shadow: 0 0 5px 1px #c0c0c0;
+	border-radius: 0px;
+	&.letter-mine{
+		background-color: #99dddd;  /* 手紙の色 */  
+	}
+	&.letter-yours{
+		background-color: #F6D4D8;  /* 手紙の色 */
+	}
 }
 
 .letter-header{
@@ -53,27 +62,3 @@
 	font-weight: bold;
 	text-align: left;
 }
-
-// 
-// 01_ピンク
-//
-
-.LL_ピンク {
-	padding: 1em;
-	background-color: #F6D4D8; /* ボックス背景色 */
-	color: #666; /* 文章色 */
-	box-shadow: 0 0 5px 1px #c0c0c0; /* 影 */
-	border-radius: 0px; /* 角の丸み */
-   }
-   
-// 
-// 02_水色
-//
-
-.LL_水色 {
-	padding: 1em;
-	background-color: #99dddd; /* ボックス背景色 */
-	color: #666; /* 文章色 */
-	box-shadow: 0 0 5px 1px #c0c0c0; /* 影 */
-	border-radius: 0px; /* 角の丸み */
-   }

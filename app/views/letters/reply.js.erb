@@ -1,0 +1,4 @@
+<%# 各種modalを非表示にした後、roomページにmodalを一つ追加 %>
+$('#new-letter-modal').modal('hide')
+$("#preview-modal").modal("hide")
+$("#add-modal").html("<%= escape_javascript(render 'letters/letter', letter: @letter) %>")

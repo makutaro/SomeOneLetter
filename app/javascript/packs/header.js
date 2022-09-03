@@ -9,6 +9,10 @@ function fixHeaderPadding(){
 $(window).on('turbolinks:load', function() {
   fixHeaderPadding() //nav-barの高さに合わせてheaderのpaddingを自動調整
   console.log(Date.now() + " #header padding-bottom =>" + $('#header').css('padding-bottom'));
+
+  // scroll-innerタグ
+  const i = document.getElementById('scroll-inner');
+  i.scrollTo(0, i.scrollHeight);
 });
 
 $(window).scroll(function () {

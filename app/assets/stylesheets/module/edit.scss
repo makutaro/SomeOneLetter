@@ -4,8 +4,7 @@
   margin-left: 15%;
   margin-right: 15%;
 
-  .form-field {
-              
+  .form-field {         
       .form-control {
           &.text { height: 80px; }
       }
@@ -15,9 +14,6 @@
       margin: 20px 0px 20px 0px;
   }
 
-  .form-action {
-
-  }
 }
   .edit-card {
     margin: auto      !important; //上右下左

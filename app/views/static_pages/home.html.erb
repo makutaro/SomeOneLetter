@@ -12,14 +12,14 @@
 
     <div class="contaner" id="home-container">
       <div class="row">
-        <%= render 'shared/home/home_col', { image:"letter", id:"#new-letter-modal", text:"手紙をながす"} %>
-        <%= render 'shared/home/home_col', { image:"post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
-        <%= render 'shared/home/home_col', { image:"gear",   url:edit_user_registration_url, text:"プロフィール"} %>
+        <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
+        <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
+        <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール"} %>
       </div>
       <div class="row">
-        <%= render 'shared/home/home_col', { image:"gear",   url:home_url, text:"設定"} %>
-        <%= render 'shared/home/home_col', { image:"wakaba", url:home_url, text:"注意とマナー"} %>
-        <%= render 'shared/home/home_col', { image:"bell",   url:home_url, text:"お知らせ"} %>
+        <%= render 'shared/home/home_col', { image:"icons/gear",   url:home_url, text:"設定"} %>
+        <%= render 'shared/home/home_col', { image:"icons/wakaba", url:home_url, text:"注意とマナー"} %>
+        <%= render 'shared/home/home_col', { image:"icons/bell",   url:home_url, text:"お知らせ"} %>
       </div>
     </div>
 <%= render "modal/send_letter_modal", {type:"new"}%>

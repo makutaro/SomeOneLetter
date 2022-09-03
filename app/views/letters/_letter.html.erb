@@ -1,6 +1,18 @@
-<%# letterのレイアウトを記述するパーシャル %>
+<%#
+   letterを構成するパーシャル
+   自身の手紙は"水色"
+   相手の手紙は"ピンク色"で表示
+%>
 
-<div class="letter LL_<%= letter.layout_id %>">
+<%# 変数定義 %>
+<% if letter.user_id == current_user.id %>
+  <% owner = "letter-mine" %>
+<% else %>
+  <% owner = "letter-yours" %>
+<% end %>
+
+
+<div class="letter <%= owner %>">
   <div class="letter-header"><%= letter.title %></div>
   <div class="letter-content"> <%= letter.content %></div>
   <div class="letter-footer row"> 

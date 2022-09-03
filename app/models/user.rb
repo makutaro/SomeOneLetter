@@ -8,26 +8,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # valid_name
+  # valid定義
   validates :name,  presence: true, length: { in: 4..20  }
-
-  # valid_email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  #valid_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-
-  # valid_location
   validates :location, presence: true
-
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: "画像のフォーマットが不適切です" },
                              size:  { less_than: 5.megabytes,
                                       message: "画像のサイズが5MBを超えています" }
 
- # enumの選択肢を把握
+ # enum定義
  enum location: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -63,8 +57,7 @@ class User < ApplicationRecord
       @letter= Letter.create(
           :user_id    => self.id,
           :title      => "#{ self.id }のUserの1通目",
-          :content    => "テストです",
-          :layout_id  => 1
+          :content    => "テストです"
       )
       @match_room = @letter.build_match_room
       @inbox_record = @match_room.inbox_records.build( user_id: to_user_id, to_user_id: self.id )

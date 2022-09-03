@@ -1,37 +1,36 @@
 <%#
-手紙を入力するform
-  type: new    => letters/:id 
-  type: reply  => letters/:id/reply 
- %>
+  手紙を入力するform。
+  新規作成、返信の2ケースにて呼び出される
+    type: new    => letters/:id 
+    type: reply  => letters/:id/reply 
+%>
 
 <%#変数定義(new or reply) %>
 <%case type when "new"%>
    <% url = "/letters"%>
    <% title = "タイトル(必須)"%>
+   <% title_default = "この手紙を呼んでいるあなたへ"%>
 
 <%when "reply"%>
    <% url = "/letters/1/reply"%>
    <% title = "宛先"%>
+   <% title_default = "#{@target_user.to_user.name}さんへ"%>
 <%end%>
 
 <%#入力用form ※ajax %>
 <%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
-
+  <%# 手紙が返信の場合 ここから %>
   <% if type == "reply" %>
     <%= f.hidden_field :match_room_id, :value => @letters.first.match_room_id %>
   <% end %>
+  <%# ここまで %>
 
   <div class="form-column">
-    <%= f.text_field :title, placeholder: title, class: "form-control center-block" %>
+    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block" %>
   </div>
 
   <div class="form-column">
     <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block" %>
-  </div>
-
-  <div class="form-column">
-    <%= f.label "レイアウト" %>
-    <%= f.select :layout_id, Letter.layout_ids.keys,{}, class:"form-select center-block" %>
   </div>
 
   <div class="form-action text-center">
@@ -41,13 +40,13 @@
   </div>
 
 <%# 確認用modal(jsより呼び出される) %>
-<div class="modal" id="preview-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="preview-modal" class="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div id="letter-content" class="modal-body"><%#ajaxにより、lettterが動的描画 %></div>
       <div class="modal-footer">
         <button type="button" class="btn custom-btn btn-secondary" data-bs-dismiss="modal">とじる</button>
-        <input type="submit" value="ながす" class="btn custom-btn btn-primary" formaction=<%= url %> formmethod="POST">
+        <input type="submit" value="ながす" class="btn custom-btn btn-primary" data-bs-dismiss="modal" formaction=<%= url %> formmethod="POST">
       </div>
     </div>
   </div>
