@@ -2,26 +2,40 @@
 　　受信した手紙を時系列ごとに並べた画面 
 %>
 
+<%# 変数定義　%>
+
+
 <%# jsの自動スクロール用タグ %>
 <div id="scroll-inner">
 
-  <%# 手紙を表示(時系列順) %>
+<%# 
+    ///////////////////////////////
+    //      手紙(時系列順)        // 
+    /////////////////////////////// 
+%>
+
   <% @letters.each do |letter| %>
   <div class="room-letter">
     <%= render letter %>
   </div>
   <% end %>
 
-  <%# Ajax:letter追加 %>
+  <%# letter追加用タグ %>
   <div id="add-modal" >
-    <%# render 'letters/letter', letter: @letter %>
+    <%# (※Ajax) render 'letters/letter', letter: @letter %>
   </div>
 
-  <%# ボタン(返信、破棄、非表示等) %>
+<%#
+    ///////////////////////////////
+    //       ボタン              // 
+    ///////////////////////////////
+%>
+
   <div class="room-button center">
-    <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
-    返信
-    </button><br>
+    
+    <button id="reply-button" type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
+      返信
+    </button><br> 
     
   <%# 初めての返信の場合  %>
   <% if @letters.count == 1 %>

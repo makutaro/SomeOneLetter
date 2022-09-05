@@ -1,4 +1,14 @@
-<%# 各種modalを非表示にした後、roomページにmodalを一つ追加 %>
+<%# 各種modalを非表示にし後、roomページにmodalを一つ追加 %>
+
+<%# 返信ボタンを非活性化 %>
+$('#reply-button').prop('disabled', true)
+                  .removeClass('btn-primary')
+                  .addClass('btn-secondary')
+                  .text('返信待ち');
+
+<%# modal閉じる %>
 $('#new-letter-modal').modal('hide')
 $("#preview-modal").modal("hide")
+
+<%# letterを追加 %>
 $("#add-modal").html("<%= escape_javascript(render 'letters/letter', letter: @letter) %>")

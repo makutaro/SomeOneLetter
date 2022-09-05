@@ -19,7 +19,7 @@ class LettersController < ApplicationController
       @match_room = @letter.build_match_room
     # 対象ユーザーを選定(アクティブかつ,ランダム)
       @to_user_id = current_user.calc_to_user_id
-    # @inbox_record作成
+    # 相手の@inbox_record作成
       @inbox_record = @match_room.inbox_records.build( user_id: @to_user_id, to_user_id: current_user.id)
     # DB保存(@letter,@match_room,@inbox_record)
       @letter.save_safe  
@@ -31,8 +31,15 @@ class LettersController < ApplicationController
   def reply
     # 入力情報から@letterインスタンス生成
       @letter = current_user.letters.build(letter_params_reply)
+
+      # if(InboxRecord.exists?(match_room_id: @letter.match_room_id, to_user_id: @letter.user_id)) do
+      #   # 相手側のinbox_recordを作る
+      #   @letter.match_room.inbox_records.build(user_id: @letter.match_room.inbox_records.find(user_id: @letter.user_id).to_user_id,
+      #                                          to_user_id: @letter.user_id)
+      # end
+
     # DB保存
-      @letter.save_safe
+    @letter.save_safe
   end
 
   # DELETE /letters/id

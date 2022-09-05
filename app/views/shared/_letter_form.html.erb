@@ -14,7 +14,7 @@
 <%when "reply"%>
    <% url = "/letters/1/reply"%>
    <% title = "宛先"%>
-   <% title_default = "#{@target_user.to_user.name}さんへ"%>
+   <% title_default = "#{@inbox_record.to_user.name}さんへ"%>
 <%end%>
 
 <%#入力用form ※ajax %>
