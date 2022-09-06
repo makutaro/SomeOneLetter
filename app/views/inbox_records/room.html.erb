@@ -1,23 +1,28 @@
 <%# 
-　　受信した手紙を時系列ごとに並べた画面 
+    //////////////////////////////////////
+　  //受信した手紙を時系列ごとに並べた画面// 
+    /////////////////////////////////////
 %>
-
-<%# 変数定義　%>
-
 
 <%# jsの自動スクロール用タグ %>
 <div id="scroll-inner">
 
 <%# 
     ///////////////////////////////
-    //      手紙(時系列順)        // 
+    //     ↓手紙(時系列順)        // 
     /////////////////////////////// 
 %>
 
   <% @letters.each do |letter| %>
-  <div class="room-letter">
-    <%= render letter %>
-  </div>
+    <%# 返信が来ていないrecordを非表示%>
+    <% if letter.match_room.letters.count == 1 &&
+          letter.match_room.letters.first.user_id == current_user.id %>
+      <% next  %>
+    <%end  %>
+
+    <div class="room-letter">
+      <%= render letter %>
+    </div>
   <% end %>
 
   <%# letter追加用タグ %>
@@ -27,26 +32,32 @@
 
 <%#
     ///////////////////////////////
-    //       ボタン              // 
+    //       ↓ボタン              // 
     ///////////////////////////////
 %>
 
   <div class="room-button center">
-    
-    <button id="reply-button" type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
-      返信
+
+  <%# if 最後の手紙が自分 %>
+  <% if  @letters.last.user_id == current_user.id  %>
+    <button id="no-reply-button" type="button" class="btn custom btn-secondary m-3" data-bs-toggle="modal" data-bs-target="#no-reply-modal">
+      返信待ち
+    </button><br>
+
+  <%# if 最後の手紙が相手 %>
+  <% else %>
+      <button id="reply-button" type="button" class="btn custom btn-primary m-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
+      返信  <%# => 返信待ち(.js) %>
     </button><br> 
+  <% end  %>
     
-  <%# 初めての返信の場合  %>
+  <%# if 初めての返信  %>
   <% if @letters.count == 1 %>
     <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
-     海に流す
+     流す
     </button><br>
-    <button type="button" class="btn custom btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
-     破棄する
-    </button>
 
-  <%# 初めての返信でない場合 %>
+  <%# if 初めての返信でない %>
   <% else %>
     <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
     非表示
@@ -54,6 +65,9 @@
   </div>
   <% end %>
 </div>
+
+<%# 返信不可modal %>
+<%= render "modal/no_reply_modal" %>
 
 <%# 返信用modal %>
 <%= render "modal/send_letter_modal", {type:"reply"}%>

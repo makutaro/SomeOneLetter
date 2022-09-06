@@ -1,10 +1,11 @@
 <%# 各種modalを非表示にし後、roomページにmodalを一つ追加 %>
 
 <%# 返信ボタンを非活性化 %>
-$('#reply-button').prop('disabled', true)
-                  .removeClass('btn-primary')
+$('#reply-button').removeClass('btn-primary')
                   .addClass('btn-secondary')
-                  .text('返信待ち');
+                  .text('返信待ち')
+                  .attr('id', 'no-reply-button')
+                  .attr('data-bs-target', '#no-reply-modal')
 
 <%# modal閉じる %>
 $('#new-letter-modal').modal('hide')
