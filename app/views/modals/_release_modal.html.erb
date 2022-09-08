@@ -1,17 +1,16 @@
 <%# "ながす"ボタンの確認モーダル %>
-
 <%
-    content_for(:id,     "release-letter-modal")
-    content_for(:title,  "手紙を海に流す")
-    content_for(:content,"本当によろしいですか?")
+    content_for(:id,     "release-letter-modal")   # modal-id
+    content_for(:header,  "手紙を海に流しますか？") # 見出し
 %>
 
-<%# モーダルの見出し部分 %>
-<% content_for :header do %>
-  <h2>手紙を海に流しますか？</h2>
+<%# body %>
+<% content_for :body do %>
+  <div><%= image_tag "irasutoya/ojigi_kuma", size: "143x200", class:"center"  %></div>
+  <div><h3>一度流した手紙は二度と戻ってきません</h3></div>
 <% end  %>
 
-<%# モーダルのボタン部分 %>
+<%# footer(ボタン部分) %>
 <% content_for :footer do %>
     <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
     <%= link_to "ながす","",class: "btn custom btn-primary m-1"%>

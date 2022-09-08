@@ -1,0 +1,16 @@
+<%# inboxページのユーザーレコード%>
+
+<button class="card inbox-col " onclick="location.href='<%= room_inbox_records_url(inbox_id:inbox_record.id,room_id:inbox_record.match_room_id) %>'">
+  <div class="row">
+    <div class="col image"> 
+        <%= if inbox_record.to_user.image.attached?
+            image_tag inbox_record.to_user.image, size: "60x60", class:"center-block rounded-circle"
+        else image_tag "bottle_ship.png",size:"60x60", class:"center-block rounded-circle"
+        end %> 
+    </div>
+    
+    <div class="col body">
+      <div class="name"><%= inbox_record.to_user.name %></div>
+    </div>
+  </div>
+</button>
