@@ -1,0 +1,20 @@
+<%# "ながす"ボタンの確認モーダル %>
+
+<%
+    content_for(:id,     "release-letter-modal")
+    content_for(:title,  "手紙を海に流す")
+    content_for(:content,"本当によろしいですか?")
+%>
+
+<%# モーダルの見出し部分 %>
+<% content_for :header do %>
+  <h2>手紙を海に流しますか？</h2>
+<% end  %>
+
+<%# モーダルのボタン部分 %>
+<% content_for :footer do %>
+    <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
+    <%= link_to "ながす","",class: "btn custom btn-primary m-1"%>
+<% end %>
+
+<%= render"modals/base" %>

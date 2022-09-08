@@ -35,7 +35,7 @@ class LettersController < ApplicationController
       @letter = current_user.letters.build(letter_params_reply)
 
     # DB保存
-    @letter.save_safe
+      @letter.save_safe
   end
 
   # DELETE /letters/id
@@ -57,8 +57,6 @@ class LettersController < ApplicationController
     # request.referrer => ひとつ前のURLを返す(なければroot)
     redirect_to request.referrer || root_url
   end
-
-
 
 private
  

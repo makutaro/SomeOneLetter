@@ -1,0 +1,30 @@
+.modal-base{
+  .modal-content{
+
+    height: 70vh;
+    border-radius: 4em;
+
+
+    .header{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:20%;
+      text-align: center;
+    }
+
+     .body{
+      height:50%;
+
+    }
+
+    .footer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:30%;
+      text-align: center;
+
+    }
+  }
+}

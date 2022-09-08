@@ -14,12 +14,6 @@
 %>
 
   <% @letters.each do |letter| %>
-    <%# 返信が来ていないrecordを非表示%>
-    <% if letter.match_room.letters.count == 1 &&
-          letter.match_room.letters.first.user_id == current_user.id %>
-      <% next  %>
-    <%end  %>
-
     <div class="room-letter">
       <%= render letter %>
     </div>
@@ -53,7 +47,7 @@
     
   <%# if 初めての返信  %>
   <% if @letters.count == 1 %>
-    <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
+    <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#release-letter-modal">
      流す
     </button><br>
 
@@ -66,8 +60,7 @@
   <% end %>
 </div>
 
-<%# 返信不可modal %>
-<%= render "modal/no_reply_modal" %>
-
-<%# 返信用modal %>
-<%= render "modal/send_letter_modal", {type:"reply"}%>
+<%# modal %>
+<%= render "modals/no_reply_modal" %>
+<%= render "modals/release_modal" %>
+<%= render "modals/send_letter_modal", {type:"reply"}%>
