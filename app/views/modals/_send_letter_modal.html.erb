@@ -14,14 +14,13 @@ letterの新規送信用のmodal
 <%end%>
 
 <%# 入力用modal %>
-<div id="new-letter-modal" class="modal hide" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div id="new-letter-modal" class="modal modal-base hide" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= title %></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="m-header">
+        <h2><%= title %></h2>
       </div>
-      <div class="modal-body">
+      <div class="m-body">
         <%#letter_form呼び出し %>
         <%= render "shared/letter_form" , type: type%>
       </div>

@@ -35,18 +35,18 @@
 
   <div class="form-action text-center">
   <%# jsにて、form取り込み => #preview-modal起動  %>
-    <%= f.submit "確認",class: "btn btn-primary custom-btn"%> 
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+    <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">閉じる</button>
+    <%= f.submit "確認",class: "btn custom btn-primary m-1"%> 
   </div>
 
 <%# 確認用modal(jsより呼び出される) %>
-<div id="preview-modal" class="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="preview-modal" class="modal modal-base" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div id="letter-content" class="modal-body"><%#ajaxにより、lettterが動的描画 %></div>
-      <div class="modal-footer">
-        <button type="button" class="btn custom-btn btn-secondary" data-bs-dismiss="modal">とじる</button>
-        <input type="submit" value="ながす" class="btn custom-btn btn-primary" data-bs-dismiss="modal" formaction=<%= url %> formmethod="POST">
+      <div class="m-footer">
+        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">とじる</button>
+        <input type="submit" value="ながす" class="btn custom btn-primary m-1" data-bs-dismiss="modal" formaction=<%= url %> formmethod="POST">
       </div>
     </div>
   </div>

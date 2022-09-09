@@ -6,10 +6,11 @@ class LettersController < ApplicationController
     @letter = current_user.letters.build
   end
 
-  # GET /letters/[id]
+  # GET /letters/[id] ※Ajax
   def show
     @letter = current_user.letters.build(letter_params)
     @letter.created_at = Time.now
+
   end
 
   # POST  /letters
