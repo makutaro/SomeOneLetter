@@ -13,8 +13,8 @@
 
 
 <div class="letter <%= owner %>">
-  <div class="letter-header"><%= letter.title %></div>
-  <div class="letter-content"> <%= letter.content %></div>
+  <div class="letter-header" ><%= letter.title %></div>
+  <div class="letter-content"><%= letter.content %></div>
   <div class="letter-footer row"> 
     <div class="col date-col"><%= letter.created_at.strftime('%Y/%m/%d %k:%M') %></div>
     <div class="col name-col"><%= letter.user.name %></div>

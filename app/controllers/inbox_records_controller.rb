@@ -6,7 +6,6 @@ class InboxRecordsController < ApplicationController
     def show
         # user_idが自身のinbox_recordを全て取得
         @inbox_records = InboxRecord.find_all_by_id(current_user.id)
-
     end
 
     # GET  /inbox_records/room/[id]

@@ -13,7 +13,13 @@ $(window).on('turbolinks:load', function() {
   // scroll-innerタグ
   const i = document.getElementById('scroll-inner');
   i.scrollTo(0, i.scrollHeight);
-});
+})
 
-$(window).scroll(function () {
-});
+// letterの確認モーダル呼び出し
+window.OnButtonClick = function(){ 
+  var title = document.getElementById('form-title').value;
+  var content = document.getElementById('form-content').value; 
+  $("#preview-title").html(title);
+  $("#preview-content").html(content);
+  $("#preview-modal").modal("show");
+}

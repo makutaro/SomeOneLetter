@@ -34,7 +34,6 @@ class LettersController < ApplicationController
   def reply
     # 入力情報から@letterインスタンス生成
       @letter = current_user.letters.build(letter_params_reply)
-
     # DB保存
       @letter.save_safe
   end
