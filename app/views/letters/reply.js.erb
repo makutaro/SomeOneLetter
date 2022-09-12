@@ -1,5 +1,11 @@
 <%# 各種modalを非表示にし後、roomページにmodalを一つ追加 %>
 
+<%# flash表示 %>
+<% flash.each do |type, message| %>
+  toastr['<%= toast_alert(type) %>']('<%= message %>');
+<% end %>
+<% flash.clear  %>
+
 <%# 返信ボタンを非活性化 %>
 $('#reply-button').removeClass('btn-primary')
                   .addClass('btn-secondary')

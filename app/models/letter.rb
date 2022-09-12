@@ -14,13 +14,4 @@ class Letter < ApplicationRecord
     # 暫定で 1~10の値を返却  本来はアクティブ率を基に参照する必要あり
     self.to_user_id = rand(10)+1
    end
-
-   def save_safe
-    if self.save # DBに保存
-      # flash[:success] = "投稿しました"
-    else # DBエラー
-     #  flash[:danger] = "DBエラーです"
-      redirect_to request.referrer || root_url
-    end
-   end
 end

@@ -21,9 +21,11 @@
         <%= render 'layouts/header' %>
       <% end %>
      
-   <%# flash %>
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= bootstrap_alert(message_type) %> " id="flash" ><%= message %></div>
+   <%# flash  success/info/warning/error %>
+      <% flash.each do |type, message| %>
+        <script id="flash" class="toast-top-full-width" type="text/javascript">
+          toastr['<%= toast_alert(type) %>']('<%= message %>');
+        </script>
       <% end %>
       
    <%# main %>

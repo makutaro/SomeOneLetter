@@ -1,0 +1,26 @@
+<%# 変数定義  %>
+<%  
+    id    = "destroy-letter-modal"
+    title =  "手紙を破棄しますか"
+    image = "irasutoya/ojigi_kuma"
+    text  =  "※#{@inbox_record.to_user.name}さんとのやり取りは全て破棄されます"
+%>
+
+<%# モーダル部分 %>
+<div id="<%= id %>" class="modal modal-base hide" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="m-header">
+        <h2><%= title %></h2>
+      </div>
+      <%= image_tag "#{image}", size: "143x200", class:"m-image center" %>
+      <div class="m-body">
+        <h3><%= text %></h3>
+      </div>
+      <div class="m-footer">
+        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
+        <%= link_to "破棄する","/inbox_records/#{@inbox_record.id}",method:"delete",class: "btn custom btn-danger m-1"%>
+      </div>
+    </div>
+  </div>
+</div>

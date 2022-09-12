@@ -1,0 +1,9 @@
+<%# flash表示 %>
+<% flash.each do |type, message| %>
+  toastr['<%= toast_alert(type) %>']('<%= message %>');
+<% end %>
+<% flash.clear  %>
+
+<%# modal閉じる %>
+$('#new-letter-modal').modal('hide')
+$("#preview-modal").modal("hide")

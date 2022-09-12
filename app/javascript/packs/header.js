@@ -11,8 +11,8 @@ $(window).on('turbolinks:load', function() {
   console.log(Date.now() + " #header padding-bottom =>" + $('#header').css('padding-bottom'));
 
   // scroll-innerタグ
-  const i = document.getElementById('scroll-inner');
-  i.scrollTo(0, i.scrollHeight);
+  // const i = document.getElementById('scroll-inner');
+  // i.scrollTo(0, i.scrollHeight);
 })
 
 // letterの確認モーダル呼び出し

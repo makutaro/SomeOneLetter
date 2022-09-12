@@ -53,8 +53,8 @@
 
   <%# if 初めての返信でない %>
   <% else %>
-    <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
-    非表示
+    <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#destroy-letter-modal">
+    破棄
     </button>
   </div>
   <% end %>
@@ -64,3 +64,4 @@
 <%= render "modals/no_reply_modal" %>
 <%= render "modals/release_modal" %>
 <%= render "modals/send_letter_modal", {type:"reply"}%>
+<%= render "modals/destroy_modal" %>

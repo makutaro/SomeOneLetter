@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   end
 
   # inbox_recordsモデル
-  resources :inbox_records, only:[:show] do
+  resources :inbox_records, only:[:show,:destroy] do
     collection do
       get :room
     end

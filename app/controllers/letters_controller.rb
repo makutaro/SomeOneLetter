@@ -25,9 +25,7 @@ class LettersController < ApplicationController
     # 相手の@inbox_record作成
       @match_room.inbox_records.build(user_id: @to_user_id, to_user_id: current_user.id)
     # DB保存(@letter,@match_room,@inbox_record)
-      @letter.save_safe  
-    # リダイレクト  
-      redirect_to request.referrer || root_url
+      save_safe(@letter,"投稿しました","不明なエラーです")
   end
 
   # POST  /letters/[to_letter_id]/reply
@@ -35,14 +33,13 @@ class LettersController < ApplicationController
     # 入力情報から@letterインスタンス生成
       @letter = current_user.letters.build(letter_params_reply)
     # DB保存
-      @letter.save_safe
+      save_safe(@letter,"投稿しました","不明なエラーです")
   end
 
   # DELETE /letters/id
   def destroy
       Letter.find(params[:id]).destroy
-      flash[:success] = "手紙を削除しました"
-    # request.referrer => ひとつ前のURLを返す(なければroot)
+      flash[:success] = "手紙を破棄しました"
       redirect_to request.referrer || root_url
   end
  
@@ -68,4 +65,6 @@ private
   def letter_params_reply
     params.require(:letter).permit(:title, :content, :match_room_id)
   end
+
+
 end

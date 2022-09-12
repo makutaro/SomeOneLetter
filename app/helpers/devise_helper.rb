@@ -18,4 +18,22 @@ module DeviseHelper
         "danger"
       end
     end
+
+    def toast_alert(key)
+      case key
+      when "warning"
+        "warning"
+      when "success"
+        "success"
+      when "danger"
+        "error"
+
+      when "alert"
+        "warning"
+      when "notice"
+        "success"
+      when "error"
+        "error"
+      end
+    end
   end

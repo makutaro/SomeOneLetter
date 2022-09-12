@@ -19,4 +19,13 @@ class InboxRecordsController < ApplicationController
         # 投稿form用に空のletterを作成
         @letter = current_user.letters.build
     end
+
+    # DELETE /inbox_records/[id]
+    def destroy
+        @inbox_record = InboxRecord.find(params[:id])
+        @inbox_record.hidden_flag = true
+
+        save_safe(@inbox_record,"手紙を破棄しました","不明なエラーです")
+        redirect_to inbox_record_url
+    end
 end

@@ -5,6 +5,7 @@ FROM ruby:2.7.6
 RUN apt-get update && apt-get install -y \
   build-essential \
   postgresql-client \
+  toastr \
   net-tools
 
 # nodejsをインストール

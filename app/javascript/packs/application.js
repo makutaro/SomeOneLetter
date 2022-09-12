@@ -16,3 +16,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 require("jquery")
+
+global.toastr = require("toastr")
+import "../stylesheets/application"
