@@ -7,11 +7,17 @@
 <% flash.clear  %>
 
 <%# 返信ボタンを非活性化 %>
-$('#reply-button').removeClass('btn-primary')
+<%# $('#reply-btn').removeClass('btn-primary')
                   .addClass('btn-secondary')
                   .text('返信待ち')
                   .attr('id', 'no-reply-button')
-                  .attr('data-bs-target', '#no-reply-modal')
+                  .attr('data-bs-target', '#no-reply-modal') %>
+
+$('#no-reply-btn').removeClass('hidden')
+$('#reply-btn'   ).addClass('hidden')
+
+$('#release-btn' ).addClass('hidden')
+$('#destroy-btn' ).removeClass('hidden')
 
 <%# modal閉じる %>
 $('#new-letter-modal').modal('hide')

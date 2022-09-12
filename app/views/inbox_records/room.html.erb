@@ -4,12 +4,27 @@
     /////////////////////////////////////
 %>
 
-<%# jsの自動スクロール用タグ %>
-<div id="scroll-inner">
+<%  #変数定義 
+    if @letters.last.user_id == current_user.id #最後の手紙が自分
+      no_reply_btn = ""
+      reply_btn    = "hidden"
+    else
+      no_reply_btn = "hidden"
+      reply_btn    = ""
+    end
+
+    if @letters.count == 1 #手紙の数が1
+      destroy_btn  = "hidden"
+      release_btn  = "" 
+    else 
+      destroy_btn  = ""
+      release_btn  = "hidden"       
+    end
+%>
 
 <%# 
     ///////////////////////////////
-    //     ↓手紙(時系列順)        // 
+    //     ↓letter(時系列順)        // 
     /////////////////////////////// 
 %>
 
@@ -29,35 +44,19 @@
     //       ↓ボタン              // 
     ///////////////////////////////
 %>
-
-  <div class="room-button center">
-
-  <%# if 最後の手紙が自分 %>
-  <% if  @letters.last.user_id == current_user.id  %>
-    <button id="no-reply-button" type="button" class="btn custom btn-secondary m-3" data-bs-toggle="modal" data-bs-target="#no-reply-modal">
+<div class="room-button center">
+    <button id="no-reply-btn" type="button" class="btn custom btn-secondary mb-3 <%= no_reply_btn %>" data-bs-toggle="modal" data-bs-target="#no-reply-modal">
       返信待ち
-    </button><br>
-
-  <%# if 最後の手紙が相手 %>
-  <% else %>
-    <button id="reply-button" type="button" class="btn custom btn-primary m-3" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
-      返信  <%# => 返信待ち(.js) %>
-    </button><br> 
-  <% end  %>
-    
-  <%# if 初めての返信  %>
-  <% if @letters.count == 1 %>
-    <button type="button" class="btn custom btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#release-letter-modal">
-     流す
-    </button><br>
-
-  <%# if 初めての返信でない %>
-  <% else %>
-    <button type="button" class="btn custom btn-danger" data-bs-toggle="modal" data-bs-target="#destroy-letter-modal">
-    破棄
     </button>
-  </div>
-  <% end %>
+    <button id="reply-btn" type="button" class="btn custom btn-primary mb-3 <%= reply_btn %>" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
+      返信
+    </button>  
+    <button id="release-btn" type="button" class="btn custom btn-primary mb-3 <%= release_btn %>" data-bs-toggle="modal" data-bs-target="#release-letter-modal">
+      流す
+    </button>
+    <button id="destroy-btn" type="button" class="btn custom btn-danger mb-3  <%= destroy_btn %>" data-bs-toggle="modal" data-bs-target="#destroy-letter-modal">
+      破棄
+    </button>
 </div>
 
 <%# modal %>

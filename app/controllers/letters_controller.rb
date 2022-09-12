@@ -10,7 +10,6 @@ class LettersController < ApplicationController
   def show
     @letter = current_user.letters.build(letter_params)
     @letter.created_at = Time.now
-
   end
 
   # POST  /letters
@@ -41,18 +40,6 @@ class LettersController < ApplicationController
       Letter.find(params[:id]).destroy
       flash[:success] = "手紙を破棄しました"
       redirect_to request.referrer || root_url
-  end
- 
-  # POST /lettter/[letter_id]/release
-  def release
-    @letter = Letter.find(params[:id])
-    # letterカラムの[to_user_id]を切り替える
-    # 出来れば流れたcountを計測したい
-    @letter.to_user_id = rand(10)+1;
-    @letter.save
-    flash[:success] = " userid => #{@letter.to_user_id} に手紙を流しました"
-    # request.referrer => ひとつ前のURLを返す(なければroot)
-    redirect_to request.referrer || root_url
   end
 
 private
