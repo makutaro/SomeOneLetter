@@ -47,7 +47,6 @@ Rails.application.routes.draw do
                     # POST  /letters              create
                     # DELETE /letters/[letter_id] destroy
     member do
-      post :release # POST  /letters/[letter_id]/release
       post :reply   # POST   /letters/[to_user_id]/reply
     end
   end
@@ -55,7 +54,8 @@ Rails.application.routes.draw do
   # inbox_recordsモデル
   resources :inbox_records, only:[:show,:destroy] do
     collection do
-      get :room
+      get  :room
+      post :release
     end
   end
 

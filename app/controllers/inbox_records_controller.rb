@@ -29,23 +29,21 @@ class InboxRecordsController < ApplicationController
         redirect_to inbox_record_url
     end
 
-      # POST /inbox_records/[id]
+    # POST /inbox_records/release/[id]
     def release
         debugger
 
-        @match_room   = find
+        # @match_room   = find
         
-        #自身のinbox_recordを削除
-        @inbox_record = @match_room.find
-        @inbox_record.destory
+        # #自身のinbox_recordを削除
+        # @inbox_record = @match_room.find
+        # @inbox_record.destory
 
-        #新たにinbox_recordを追加
-        @to_user_id = "".calc_to_user_id
-        @match_room.inbox_records.build(user_id: ??, to_user_id: @to_user_id)
+        # #新たにinbox_recordを追加
+        # @to_user_id = "".calc_to_user_id
+        # @match_room.inbox_records.build(user_id: ??, to_user_id: @to_user_id)
 
-        save_safe(@match_room,"成功","失敗")
-        redirect_to inbox_record_url
+        # save_safe(@match_room,"成功","失敗")
+        # redirect_to inbox_record_url
     end
-
-
 end
