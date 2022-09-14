@@ -19,7 +19,7 @@
       </div>
       <div class="m-footer">
         <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
-        <%= link_to "ながす",release_inbox_records_url(room_id:, ),method:"post", class: "btn custom btn-primary m-1"%>
+        <%= render "shared/release_form" %>
       </div>
     </div>
   </div>

@@ -4,46 +4,33 @@ class InboxRecordsController < ApplicationController
 
     # GET  /inbox_records/[:id]
     def show
-        # user_idが自身のinbox_recordを全て取得
-        @inbox_records = InboxRecord.find_all_by_id(current_user.id)
+        @inbox_records = InboxRecord.find_all_by_id(current_user.id)                   # 対象レコードを全て取得
+        @inbox_records = @inbox_records.map {|f| f.ignore_wait_reply_records!}.compact # 返信待ちのレコードを除外
     end
 
     # GET  /inbox_records/room/[id]
     def room
-        # 自身のinbox_recordを取得
-        @inbox_record = InboxRecord.find_by_id(params[:inbox_id])
-        
-        # 対象roomのlettersを取得
-        @letters = Letter.find_all_by_id(params[:room_id])
-        
-        # 投稿form用に空のletterを作成
-        @letter = current_user.letters.build
+        @inbox_record = InboxRecord.find_by_id(params[:inbox_id])  # 自身のinbox_recordを取得
+        @letters = Letter.find_all_by_id(params[:room_id])         # 対象roomのlettersを取得
+        @letter = current_user.letters.build                       # 投稿form用に空のletterを作成
     end
 
     # DELETE /inbox_records/[id]
     def destroy
-        @inbox_record = InboxRecord.find(params[:id])
-        @inbox_record.hidden_flag = true
-
-        save_safe(@inbox_record,"手紙を破棄しました","不明なエラーです")
+        InboxRecord.find(params[:id]).destroy
+        flash[:success] = "手紙を破棄しました"
         redirect_to inbox_record_url
     end
 
-    # POST /inbox_records/release/[id]
+    # POST /inbox_records/release
     def release
-        debugger
-
-        # @match_room   = find
-        
-        # #自身のinbox_recordを削除
-        # @inbox_record = @match_room.find
-        # @inbox_record.destory
-
-        # #新たにinbox_recordを追加
-        # @to_user_id = "".calc_to_user_id
-        # @match_room.inbox_records.build(user_id: ??, to_user_id: @to_user_id)
-
-        # save_safe(@match_room,"成功","失敗")
-        # redirect_to inbox_record_url
+       InboxRecord.find(params[:my_inbox_id]).destroy               # 自身のinbox_recordを削除
+       to_user_id = User.find_to_user_id(params[:target_user_id])   # 対象ユーザーを選定(アクティブかつ,ランダム)
+       @inbox_record = InboxRecord.new(                             # @inbox_record作成
+            match_room_id: params[:match_room_id],  
+            user_id:       params[:target_user_id], 
+            to_user_id:    to_user_id) 
+        save_safe(@inbox_record,"手紙を海に流しました","失敗")        # DB保存 
+        redirect_to inbox_record_url(current_user.id)
     end
 end

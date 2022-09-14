@@ -14,25 +14,18 @@ class LettersController < ApplicationController
 
   # POST  /letters
   def create 
-    # 入力情報から@letter、match_roomインスタンスを新規作成
-      @letter     = current_user.letters.build(letter_params)
-      @match_room = @letter.build_match_room
-    # 対象ユーザーを選定(アクティブかつ,ランダム)
-      @to_user_id = current_user.calc_to_user_id
-    # 自分の@inbox_record作成
-      @match_room.inbox_records.build(user_id: current_user.id, to_user_id: @to_user_id)
-    # 相手の@inbox_record作成
-      @match_room.inbox_records.build(user_id: @to_user_id, to_user_id: current_user.id)
-    # DB保存(@letter,@match_room,@inbox_record)
-      save_safe(@letter,"投稿しました","不明なエラーです")
+      to_user_id = User.find_to_user_id(current_user.id)                                    # 対象ユーザーを選定(アクティブかつ,ランダム)
+      @letter = current_user.letters.build(letter_params)                                   # @letter作成
+        @match_room = @letter.build_match_room                                              # @match_room作成
+          @match_room.inbox_records.build(user_id: current_user.id, to_user_id: to_user_id) # @inbox_record作成(自身と相手)
+          @match_room.inbox_records.build(user_id: to_user_id, to_user_id: current_user.id)
+       save_safe(@letter,"投稿しました","不明なエラーです")                                    # DB保存(@letter,@match_room,@inbox_record)
   end
 
   # POST  /letters/[to_letter_id]/reply
   def reply
-    # 入力情報から@letterインスタンス生成
-      @letter = current_user.letters.build(letter_params_reply)
-    # DB保存
-      save_safe(@letter,"投稿しました","不明なエラーです")
+      @letter = current_user.letters.build(letter_params_reply) # 入力情報から@letterインスタンス生成
+      save_safe(@letter,"投稿しました","不明なエラーです")        # DB保存
   end
 
   # DELETE /letters/id

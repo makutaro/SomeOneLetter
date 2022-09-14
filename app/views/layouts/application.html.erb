@@ -11,7 +11,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'header'%>
+    <%= javascript_pack_tag 'main'%>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -22,10 +22,14 @@
       <% end %>
      
    <%# flash  success/info/warning/error %>
-      <% flash.each do |type, message| %>
+      <% flash.each do |type, msg| %>
+      <%#  scriptタグは廃止！ %>
         <script id="flash" class="toast-top-full-width" type="text/javascript">
-          toastr['<%= toast_alert(type) %>']('<%= message %>');
+          toastr['<%= toast_alert(type) %>']('<%= msg %>');
         </script>
+        <!-- 
+           <div class="flash toast-top-full-width" data-type="<%= type %>" data-msg="<%= msg %>"></div>  
+        -->
       <% end %>
       
    <%# main %>

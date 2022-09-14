@@ -14,26 +14,14 @@
 
 Rails.application.routes.draw do
 
-  #devise関連
-  devise_for :users, controllers: {
-    confirmations:       'users/confirmations',     # 
-    passwords:           'users/passwords',         # passを忘れた場合
-    registrations:       'users/registrations',     # ユーザの新規登録
-    sessions:            'users/sessions',          # ユーザのログイン
-    unlocks:             'users/unlocks'
-  }
-  devise_scope :user do
-    post 'new_user_step1', to: 'users/registrations#step1'
-  end
-
   # 静的ページ(home,about,contact)
     root 'static_pages#top'
-    get  '/home',   to: 'static_pages#home'
+    get  '/home',    to: 'static_pages#home'
     get  '/about',   to: 'static_pages#about'
     get  '/contact', to: 'static_pages#contact'
 
 
-  #userモデル(edit,inbox)
+  # userモデル(edit,inbox)
   resources :users do
     member do
       get :match_room # GET  /users/[user_id]/match_room/[match_room_id]
@@ -42,10 +30,6 @@ Rails.application.routes.draw do
 
   # letterモデル
   resources :letters, only: [:new,:create,:destroy,:show] do
-                    # GET   /letters/[user_id]    index
-                    # GET   /letters/new          new
-                    # POST  /letters              create
-                    # DELETE /letters/[letter_id] destroy
     member do
       post :reply   # POST   /letters/[to_user_id]/reply
     end
@@ -59,5 +43,16 @@ Rails.application.routes.draw do
     end
   end
 
+  #devise関連
+  devise_for :users, controllers: {
+    confirmations:       'users/confirmations',     # 
+    passwords:           'users/passwords',         # passを忘れた場合
+    registrations:       'users/registrations',     # ユーザの新規登録
+    sessions:            'users/sessions',          # ユーザのログイン
+    unlocks:             'users/unlocks'
+  }
+  devise_scope :user do
+    post 'new_user_step1', to: 'users/registrations#step1'
+  end
 end
 

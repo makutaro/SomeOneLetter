@@ -10,6 +10,8 @@ $(window).on('turbolinks:load', function() {
   fixHeaderPadding() //nav-barの高さに合わせてheaderのpaddingを自動調整
   console.log(Date.now() + " #header padding-bottom =>" + $('#header').css('padding-bottom'));
 
+
+
   // scroll-innerタグ
   // const i = document.getElementById('scroll-inner');
   // i.scrollTo(0, i.scrollHeight);
@@ -23,3 +25,9 @@ window.OnButtonClick = function(){
   $("#preview-content").html(content);
   $("#preview-modal").modal("show");
 }
+
+// $(".flash").on('turbolinks:load',function(){
+//   let type = $(this).data('type');
+//   let msg  = $(this).data('msg'); 
+//   toastr[type](msg);
+// });

@@ -1,0 +1,8 @@
+<%#  releaseボタンを送信する際のform %>
+
+<%= form_with(url:release_inbox_records_url) do |f| %>
+  <%= f.hidden_field :my_inbox_id,    :value => @inbox_record.id            %>
+  <%= f.hidden_field :target_user_id, :value => @inbox_record.to_user_id    %>
+  <%= f.hidden_field :match_room_id,  :value => @inbox_record.match_room_id %>
+  <%= f.submit "ながす",class: "btn custom btn-primary m-1"%>
+<% end %>

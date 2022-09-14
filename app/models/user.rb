@@ -65,7 +65,7 @@ class User < ApplicationRecord
     end
 
   # 条件に合致するuser_idを産出
-  def calc_to_user_id
+  def self.find_to_user_id(user_id)
     #今回は仮に"2"を返信
     return 2
   end
