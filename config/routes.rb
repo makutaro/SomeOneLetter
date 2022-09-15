@@ -14,6 +14,15 @@
 
 Rails.application.routes.draw do
 
+    #devise関連
+    devise_for :users, controllers: {
+      confirmations:       'users/confirmations',     # 
+      passwords:           'users/passwords',         # passを忘れた場合
+      registrations:       'users/registrations',     # ユーザの新規登録
+      sessions:            'users/sessions',          # ユーザのログイン
+      unlocks:             'users/unlocks'
+    }
+
   # 静的ページ(home,about,contact)
     root 'static_pages#top'
     get  '/home',    to: 'static_pages#home'
@@ -43,14 +52,6 @@ Rails.application.routes.draw do
     end
   end
 
-  #devise関連
-  devise_for :users, controllers: {
-    confirmations:       'users/confirmations',     # 
-    passwords:           'users/passwords',         # passを忘れた場合
-    registrations:       'users/registrations',     # ユーザの新規登録
-    sessions:            'users/sessions',          # ユーザのログイン
-    unlocks:             'users/unlocks'
-  }
   devise_scope :user do
     post 'new_user_step1', to: 'users/registrations#step1'
   end

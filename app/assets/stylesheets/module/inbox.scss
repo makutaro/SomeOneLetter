@@ -39,26 +39,40 @@
 }
 
 .inbox-card {
-  height: 100vh;
-  margin: 10px 0px 10px 0px;
-  padding: 5% 15% 5% 15%;
-  background-color: #ffffffc9 !important;
-  border-radius: 1.2rem !important; 
-  .card-title{line-height: 56px;
-    text-align: center;
-  }
+  text-decoration: none;
+  color: #000000;
+  //border: 1px solid rgba(255, 255, 255, 0);
+  &:hover{
+    text-decoration: none;
+    background-color: #f3f3f3;
+    color: #000000;
+    // border: 1px solid rgb(0, 0, 0);
+    }
 }
 
-.inbox-col {
-  .image {
-    margin:auto;
+.inbox-record {
+  display: flex;
+  height:80px;
+  .inbox-image {
+    margin-right: 4px;
+    flex-basis: 80px;
     background-color: rgb(21, 0, 253);
   }
-  .name{
-    padding: auto;
-    font-size: 1.5rem;
+  .inbox-body{
+    flex-grow:2;
+    .inbox-name{
+      font-weight: bold;
+      font-size: 2.1rem;
+    }
+    .inbox-content{
+      font-weight: lighter;
+      font-size: 1.5rem;
+    }
   }
-  .time {
-    width: auto;
+  .inbox-time {
+    line-height: 80px;
+    font-size: 1.5em;
+    flex-basis: 128px; 
+   text-align: right;
   }
 }

@@ -1,16 +1,20 @@
 <footer id="footer">
   <nav id="footer-nav" class="navbar navbar-light fixed-bottom">
-    <%= link_to request.referrer, class: "nav-item" do %>
-      <i class="icon fa fa-backward fa-3x"></i>
-    <% end %>
     <%= link_to root_url, class: "nav-item" do %>
-      <i class="icon fa fa-home fa-3x"></i>
+      <i class="icon fa fa-home fa-4x"></i>
     <% end %>
-    <%= link_to root_url, class: "nav-item" do %>
-      <i class="icon fa fa-user fa-3x"></i>
-    <% end %>
+    <div class="nav-item"></div>
     <%= link_to inbox_record_url(id:current_user.id), class: "nav-item" do %>
-      <i class="icon fa fa-inbox  fa-3x"></i>
+      <i class="icon fa fa-inbox  fa-4x"></i>
     <% end %>
+
+        <div class="nav-item footer-button fixed-bottom center">
+      <%= link_to inbox_record_url(id:current_user.id), class:"center-block rounded-circle custom-image bg-white" do %>
+        <% image_tag "icons/letter", size: "100x100" %>
+      <% end %>
+    </div> 
   </nav>
+
+
+
 </footer>

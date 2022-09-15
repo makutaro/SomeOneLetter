@@ -24,8 +24,9 @@ class LettersController < ApplicationController
 
   # POST  /letters/[to_letter_id]/reply
   def reply
-      @letter = current_user.letters.build(letter_params_reply) # 入力情報から@letterインスタンス生成
-      save_safe(@letter,"投稿しました","不明なエラーです")        # DB保存
+      @letter = current_user.letters.build(letter_params_reply)    # 入力情報から@letterインスタンス生成
+      @letter.match_room.inbox_records.map{|f| f.touch}            # inbox_recordをtouch
+      save_safe(@letter,"投稿しました","不明なエラーです")           # DB保存
   end
 
   # DELETE /letters/id

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   # 正しいユーザであることを確認 
   before_action :correct_user,   only: [:inbox]
 
-  
    ###################   
    # beforeアクション#
    ###################
