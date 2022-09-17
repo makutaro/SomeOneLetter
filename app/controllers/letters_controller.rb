@@ -2,8 +2,6 @@ class LettersController < ApplicationController
 
   # GET /letters/new
   def new
-    # 投稿form用に空のletterを作成
-    @letter = current_user.letters.build
   end
 
   # GET /letters/[id] ※Ajax
@@ -14,19 +12,22 @@ class LettersController < ApplicationController
 
   # POST  /letters
   def create 
-      to_user_id = User.find_to_user_id(current_user.id)                                    # 対象ユーザーを選定(アクティブかつ,ランダム)
-      @letter = current_user.letters.build(letter_params)                                   # @letter作成
-        @match_room = @letter.build_match_room                                              # @match_room作成
-          @match_room.inbox_records.build(user_id: current_user.id, to_user_id: to_user_id) # @inbox_record作成(自身と相手)
+    @letter = current_user.letters.build(letter_params)                                     # @letter作成　※ストパラ
+    if !@letter.match_room_id                                                               # match_room_idが空 => 新規処理
+      to_user_id = User.find_to_user_id(current_user.id)                                      # 対象ユーザーを選定(アクティブかつ,ランダム)
+        @match_room = @letter.build_match_room                                                # @match_room作成
+          @match_room.inbox_records.build(user_id: current_user.id, to_user_id: to_user_id)   # @inbox_record作成(自身と相手)
           @match_room.inbox_records.build(user_id: to_user_id, to_user_id: current_user.id)
-       save_safe(@letter,"投稿しました","不明なエラーです")                                    # DB保存(@letter,@match_room,@inbox_record)
+    else                                                                                    # match_room_idあり => 返信処理
+      @letter.match_room.inbox_records.map{|f| f.touch}                                       # inbox_recordのtimestamp更新
+    end
+      save_safe(@letter,"投稿しました","不明なエラーです")                                    # DB保存(@letter,@match_room,@inbox_record)
   end
 
   # POST  /letters/[to_letter_id]/reply
   def reply
-      @letter = current_user.letters.build(letter_params_reply)    # 入力情報から@letterインスタンス生成
-      @letter.match_room.inbox_records.map{|f| f.touch}            # inbox_recordをtouch
-      save_safe(@letter,"投稿しました","不明なエラーです")           # DB保存
+      @letter = current_user.letters.build(letter_params)    # 入力情報から@letterインスタンス生成
+
   end
 
   # DELETE /letters/id
@@ -40,12 +41,7 @@ private
  
   # Strong Parametes
   def letter_params
-    params.require(:letter).permit(:title, :content)
-  end
-
-  def letter_params_reply
     params.require(:letter).permit(:title, :content, :match_room_id)
   end
-
 
 end

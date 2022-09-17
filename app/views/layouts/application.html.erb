@@ -43,6 +43,8 @@
     <% if user_signed_in? %>
       <div style="padding-bottom: 90px;"> <%# footer部padding敷き詰め%>
       <%= render 'layouts/footer' %>
+      <%= render "modals/send_letter_modal", {type:"new"}%>
+      <%= render "modals/preview_modal"%>
     <% end %>
   </body>
 </html>

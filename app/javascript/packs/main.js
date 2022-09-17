@@ -9,21 +9,33 @@ function fixHeaderPadding(){
 $(window).on('turbolinks:load', function() {
   fixHeaderPadding() //nav-barの高さに合わせてheaderのpaddingを自動調整
   console.log(Date.now() + " #header padding-bottom =>" + $('#header').css('padding-bottom'));
-
-
-
+  
   // scroll-innerタグ
   // const i = document.getElementById('scroll-inner');
   // i.scrollTo(0, i.scrollHeight);
 })
 
 // letterの確認モーダル呼び出し
-window.OnButtonClick = function(){ 
-  var title = document.getElementById('form-title').value;
-  var content = document.getElementById('form-content').value; 
-  $("#preview-title").html(title);
+window.ShowPreviewModal = function(e){
+
+  // formのvalueを取得
+  var form = $(e).parent().parent();
+  var title   = form.find('[name = form-title]').val();
+  var content = form.find('[name=form-content]').val();
+  var room_id = form.find('[name=form-room-id]').val();
+
+  // previewの値を操作
+  $("#preview-title"  ).html(title);
   $("#preview-content").html(content);
-  $("#preview-modal").modal("show");
+  $("#preview-room-id").html(room_id);
+
+  // formのfieldをセット
+  $("#preview-field-title"        ).val(title);
+  $("#preview-field-content"      ).val(content);
+  $("#preview-field-match_room_id").val(room_id);
+
+  //モーダル起動
+  $("#preview-modal"  ).modal("show");
 }
 
 // $(".flash").on('turbolinks:load',function(){

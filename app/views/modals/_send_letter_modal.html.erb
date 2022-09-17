@@ -1,24 +1,24 @@
 <%#
-letterの新規送信用のmodal 
-  type: new    => 新規作成modal
-  type: reply  => 返信modal      
+  letterの新規送信用のmodal 
+    type: new    => 新規作成modal
+    type: reply  => 返信modal      
 %>
 
 <%# 変数定義(new or reply) %>
 <%case type when "new"%>
-   <% target_id = "new-letter-modal"%>
+   <% id =    "new-letter-modal"%>
    <% title = "手紙を書いて海に流す" %>
 <%when "reply"%>
-   <% target_id = "reply-letter-modal" %>
+   <% id =    "reply-letter-modal" %>
    <% title = "返信" %>
 <%end%>
 
 <%# 入力用modal %>
-<div id="new-letter-modal" class="modal modal-base hide" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div id=<%=id%> class="modal modal-base hide" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="m-header">
-        <h2><%= title %></h2>
+        <h2><%=title%></h2>
       </div>
       <div class="m-body">
         <%#letter_form呼び出し %>

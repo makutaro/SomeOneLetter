@@ -12,7 +12,7 @@ class InboxRecordsController < ApplicationController
     def room
         @inbox_record = InboxRecord.find_by_id(params[:inbox_id])  # 自身のinbox_recordを取得
         @letters = Letter.find_all_by_id(params[:room_id])         # 対象roomのlettersを取得
-        @letter = current_user.letters.build                       # 投稿form用に空のletterを作成
+        @letter_reply = current_user.letters.build                 # 投稿form用に空のletterを作成
     end
 
     # DELETE /inbox_records/[id]

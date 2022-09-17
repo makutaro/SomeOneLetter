@@ -46,7 +46,7 @@
     <button id="no-reply-btn" type="button" class="btn custom btn-secondary mb-3 <%= no_reply_btn %>" data-bs-toggle="modal" data-bs-target="#no-reply-modal">
       返信待ち
     </button>
-    <button id="reply-btn" type="button" class="btn custom btn-primary mb-3 <%= reply_btn %>" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
+    <button id="reply-btn" type="button" class="btn custom btn-primary mb-3 <%= reply_btn %>" data-bs-toggle="modal" data-bs-target="#reply-letter-modal">
       返信
     </button><br>
     <button id="release-btn" type="button" class="btn custom btn-primary mb-3 <%= release_btn %>" data-bs-toggle="modal" data-bs-target="#release-letter-modal">
@@ -55,7 +55,6 @@
     <button id="destroy-btn" type="button" class="btn custom btn-danger mb-3  <%= destroy_btn %>" data-bs-toggle="modal" data-bs-target="#destroy-letter-modal">
       破棄
     </button>
-</div>
 
 <%# modal %>
 <%= render "modals/no_reply_modal" %>

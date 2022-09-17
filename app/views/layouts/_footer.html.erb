@@ -3,18 +3,15 @@
     <%= link_to root_url, class: "nav-item" do %>
       <i class="icon fa fa-home fa-4x"></i>
     <% end %>
-    <div class="nav-item"></div>
+    <%# 隙間 => %><div class="nav-item"></div>
     <%= link_to inbox_record_url(id:current_user.id), class: "nav-item" do %>
       <i class="icon fa fa-inbox  fa-4x"></i>
     <% end %>
 
-        <div class="nav-item footer-button fixed-bottom center">
-      <%= link_to inbox_record_url(id:current_user.id), class:"center-block rounded-circle custom-image bg-white" do %>
-        <% image_tag "icons/letter", size: "100x100" %>
-      <% end %>
+    <div class="nav-item footer-button fixed-bottom center">
+      <a type="button" class="center-block rounded-circle custom-image bg-white" data-bs-toggle="modal" data-bs-target="#new-letter-modal">
+        <%= image_tag "icons/letter", size: "100x100" %>
+      </a>
     </div> 
   </nav>
-
-
-
 </footer>

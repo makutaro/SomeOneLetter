@@ -5,62 +5,36 @@
     type: reply  => letters/:id/reply 
 %>
 
-<%#変数定義(new or reply) %>
-<%case type when "new"%>
-   <% url = "/letters"%>
-   <% title = "タイトル(必須)"%>
-   <% title_default = "この手紙を呼んでいるあなたへ"%>
+<%# 変数定義(new or reply) %>
+<% case type when "new"%>
+<% url = "/letters"%>
+<% title = "タイトル(必須)"%>
+<% title_default = "この手紙を呼んでいるあなたへ"%>
+<% match_room_id = "" %>
 
-<%when "reply"%>
-   <% url = "/letters/1/reply"%>
-   <% title = "宛先"%>
-   <% title_default = "#{@inbox_record.to_user.name}さんへ"%>
-<%end%>
+<% when "reply"%>
+<% url = "/letters/1/reply"%>
+<% title = "宛先"%>
+<% title_default = "#{@inbox_record.to_user.name}さんへ"%>
+<% match_room_id = @letters.first.match_room_id %>
+<% end %>
 
-<%#入力用form ※ajax %>
-<%= form_with(model: @letter, url:"/letters/1",  class:"custom-form", method:"GET", local: false) do |f| %>
-  <%# 手紙が返信の場合 %>
-  <% if type == "reply" %>
-    <%= f.hidden_field :match_room_id, :value => @letters.first.match_room_id %>
-  <% end %>
-
+<%# 入力用form %>
+<%= form_with(model: Letter.new, class:"custom-form", method:"GET", local: false) do |f| %>
+  <%= f.hidden_field :match_room_id, :value => match_room_id, name:"form-room-id" %>
+  
   <div class="form-column">
-    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block",id:"form-title" %>
+    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block", name:"form-title" %>
   </div>
 
   <div class="form-column">
-    <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block",id:"form-content" %>
+    <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block", name:"form-content" %>
   </div>
 
   <div class="form-action text-center">
-  <%# jsにて、form取り込み => #preview-modal起動  %>
+    <%# jsにて、form取り込み => #preview-modal起動  %>
     <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">閉じる</button>
-    <button type="button" class="btn custom btn-primary m-1" onclick="OnButtonClick();">確認</button>
-    <%#= f.submit "確認",class: "btn custom btn-primary m-1"%> 
+    <button type="button" class="btn custom btn-primary m-1" onclick="ShowPreviewModal(this);">確認</button>
   </div>
-
-<%# 確認用modal(jsより呼び出される) %>
-<div id="preview-modal" class="modal modal-base" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="letter letter-mine">
-          <div id="preview-title" class="letter-header" ></div>
-          <div id="preview-content" class="letter-content"></div>
-        <div class="letter-footer row"> 
-          <div class="col date-col">yyyy/mm/dd hh:mm</div>
-          <div class="col name-col"><%= @letter.user.name %></div>
-        </div>
-      </div>
-      </div>
-      <div class="m-footer">
-        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">とじる</button>
-        <input type="submit" value="ながす" class="btn custom btn-primary m-1" data-bs-dismiss="modal" formaction=<%= url %> formmethod="POST">
-      </div>
-    </div>
-  </div>
-</div>
 
 <% end %>
-
-
