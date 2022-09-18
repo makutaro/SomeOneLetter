@@ -6,4 +6,16 @@
 
 <%# modal閉じる %>
 $('#new-letter-modal').modal('hide')
+$('#reply-letter-modal').modal('hide')
 $("#preview-modal").modal("hide")
+
+<% if @type #返信処理の場合 %> 
+  <%# ボタンの切り替え %>
+  $('#no-reply-btn').removeClass('hidden')
+  $('#reply-btn'   ).addClass('hidden')
+  $('#release-btn' ).addClass('hidden')
+  $('#destroy-btn' ).removeClass('hidden')
+
+  <%# letterを追加 %>
+  $("#add-modal").html("<%= escape_javascript(render 'letters/letter', letter: @letter) %>")
+<% end  %>

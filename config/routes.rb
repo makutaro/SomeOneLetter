@@ -38,12 +38,8 @@ Rails.application.routes.draw do
   end
 
   # letterモデル
-  resources :letters, only: [:new,:create,:destroy,:show] do
-    member do
-      post :reply   # POST   /letters/[to_user_id]/reply
-    end
-  end
-
+  resources :letters, only: [:new,:create,:destroy]
+  
   # inbox_recordsモデル
   resources :inbox_records, only:[:show,:destroy] do
     collection do

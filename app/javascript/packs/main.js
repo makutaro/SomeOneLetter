@@ -17,7 +17,6 @@ $(window).on('turbolinks:load', function() {
 
 // letterの確認モーダル呼び出し
 window.ShowPreviewModal = function(e){
-
   // formのvalueを取得
   var form = $(e).parent().parent();
   var title   = form.find('[name = form-title]').val();
@@ -38,8 +37,22 @@ window.ShowPreviewModal = function(e){
   $("#preview-modal"  ).modal("show");
 }
 
-// $(".flash").on('turbolinks:load',function(){
-//   let type = $(this).data('type');
-//   let msg  = $(this).data('msg'); 
-//   toastr[type](msg);
-// });
+// // Example starter JavaScript for disabling form submissions if there are invalid fields
+// (function () {
+//   'use strict'
+
+//   // Fetch all the forms we want to apply custom Bootstrap validation styles to
+//   var forms = document.querySelectorAll('.needs-validation')
+
+//   // bootstrap_validation
+//   Array.prototype.slice.call(forms)
+//     .forEach(function (form) {
+//       form.addEventListener('submit', function (event) {
+//         if (!form.checkValidity()) {
+//           event.preventDefault()
+//           event.stopPropagation()
+//         }
+//         form.classList.add('was-validated')
+//       }, false)
+//     })
+// })

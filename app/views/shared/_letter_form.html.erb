@@ -20,15 +20,16 @@
 <% end %>
 
 <%# 入力用form %>
-<%= form_with(model: Letter.new, class:"custom-form", method:"GET", local: false) do |f| %>
+<%= form_with(model: Letter.new, id:"cleate-letter-form", class:"custom-form", method:"GET", local: false) do |f| %>
   <%= f.hidden_field :match_room_id, :value => match_room_id, name:"form-room-id" %>
   
   <div class="form-column">
-    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block", name:"form-title" %>
+    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block", name:"form-title",
+    required: true %>
   </div>
 
   <div class="form-column">
-    <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block", name:"form-content" %>
+    <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block", name:"form-content",required: true %>
   </div>
 
   <div class="form-action text-center">
