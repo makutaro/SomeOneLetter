@@ -9,6 +9,19 @@ function fixHeaderPadding(){
 $(window).on('turbolinks:load', function() {
   fixHeaderPadding() //nav-barの高さに合わせてheaderのpaddingを自動調整
   console.log(Date.now() + " #header padding-bottom =>" + $('#header').css('padding-bottom'));
+
+  // form_validataion 
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('change', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()  // フォーム送信をキャンセル
+          event.stopPropagation() // イベント伝搬をストップ
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
   
   // scroll-innerタグ
   // const i = document.getElementById('scroll-inner');
@@ -37,22 +50,12 @@ window.ShowPreviewModal = function(e){
   $("#preview-modal"  ).modal("show");
 }
 
-// // Example starter JavaScript for disabling form submissions if there are invalid fields
-// (function () {
-//   'use strict'
+// $(".needs-validation").on(function(e) {
+//   var title     = e.find('[name = form-title]'  ).val();
+//   var content   = e.find('[name = form-content]').val();
+//   var button    = e.find('[name = submit]'      ).val();
 
-//   // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//   var forms = document.querySelectorAll('.needs-validation')
-
-//   // bootstrap_validation
-//   Array.prototype.slice.call(forms)
-//     .forEach(function (form) {
-//       form.addEventListener('submit', function (event) {
-//         if (!form.checkValidity()) {
-//           event.preventDefault()
-//           event.stopPropagation()
-//         }
-//         form.classList.add('was-validated')
-//       }, false)
-//     })
-// })
+//   if(content=="" || title==""){
+//     button.classList.add('disable')
+//   }
+// });

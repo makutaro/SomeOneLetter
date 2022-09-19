@@ -14,4 +14,5 @@ class Letter < ApplicationRecord
     # 暫定で 1~10の値を返却  本来はアクティブ率を基に参照する必要あり
     self.to_user_id = rand(10)+1
    end
+
 end

@@ -7,4 +7,5 @@ module ApplicationHelper
   def background_style
      user_signed_in? ? "body_signed_in" : "body_not_signed"
   end
+  
 end

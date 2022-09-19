@@ -64,11 +64,10 @@ class User < ApplicationRecord
       @letter.save!
     end
 
-  # 条件に合致するuser_idを産出
-  def self.find_to_user_id(user_id)
-    #今回は仮に"2"を返信
-    return 2
+  # 条件に合致するuser_idを検索 => activeかつランダム
+  def self.find_to_user_id(self_id)
+    # a = InboxRecord.find_all_by_id(self_id).plunk(:to_user_id)
+    User.where(active_flag:true).where.not(id:self_id).pluck(:id).shuffle!.first
   end
-
 end
 

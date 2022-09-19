@@ -25,6 +25,8 @@ module DeviseHelper
         "warning"
       when "success"
         "success"
+      when "info"
+        "info"
       when "danger"
         "error"
 

@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
 
   # インスタンスのsaveメソッド
   def save_safe(object,success_msg,error_msg)
-    if object.save # 成功
+     if object.save # 成功
        flash[:success] = success_msg
-    else           # 失敗
-       flash[:error] = error_msg
+     else           # 失敗
+      flash[:error] = error_msg
       redirect_to request.referrer || root_url
-    end
-   end
+     end
+  end
 
    # 新規送信用の@letter作成
    def build_letter

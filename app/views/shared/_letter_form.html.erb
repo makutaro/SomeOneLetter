@@ -20,12 +20,11 @@
 <% end %>
 
 <%# 入力用form %>
-<%= form_with(model: Letter.new, id:"cleate-letter-form", class:"custom-form", method:"GET", local: false) do |f| %>
+<%= form_with(model: Letter.new, id:"cleate-letter-form", class:"custom-form", local: false) do |f| %>
   <%= f.hidden_field :match_room_id, :value => match_room_id, name:"form-room-id" %>
   
   <div class="form-column">
-    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block", name:"form-title",
-    required: true %>
+    <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block", name:"form-title",required: true %>
   </div>
 
   <div class="form-column">
@@ -35,7 +34,7 @@
   <div class="form-action text-center">
     <%# jsにて、form取り込み => #preview-modal起動  %>
     <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">閉じる</button>
-    <button type="button" class="btn custom btn-primary m-1" onclick="ShowPreviewModal(this);">確認</button>
+    <button name="submit" type="button" class="btn custom btn-primary m-1" onclick="ShowPreviewModal(this);">確認</button>
   </div>
 
 <% end %>

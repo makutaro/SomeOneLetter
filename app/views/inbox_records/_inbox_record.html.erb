@@ -1,5 +1,12 @@
 <%# inboxページのレコード%>
 
+<% #変数定義 
+  #mine_tag = if inbox_record.match_room.letters.last.user_id == current_user.id ? "返信待ち" : ""
+  mine_tag = inbox_record.match_room.letters.last.user_id == current_user.id ? "返信待ち" : "返信可能"
+  new_tag  = inbox_record.match_room.letters.count == 1                      ? "new" : ""      
+%>
+
+<%# レコード部分  %>
 <%= link_to room_inbox_records_url(inbox_id:inbox_record.id,room_id:inbox_record.match_room_id), class: "inbox-card" do%>
 
   <div class="inbox-record">
@@ -13,6 +20,8 @@
       <div class="inbox-name"><%= inbox_record.to_user.name %></div>
       <div class="inbox-content"><%= inbox_record.match_room.letters.last.title %> <%= inbox_record.match_room.letters.last.content[0,30] %></div>
     </div>
+    <div class="inbox-tag"><%= new_tag %> <%= mine_tag %></div>
     <div class="inbox-time"><%= inbox_record.match_room.letters.last.created_at.strftime('%Y/%m/%d %k:%M') %></div>
   </div>
-<% end  %>
+  
+<% end %>

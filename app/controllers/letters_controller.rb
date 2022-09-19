@@ -19,6 +19,8 @@ class LettersController < ApplicationController
         @match_room = @letter.build_match_room                                                # @match_room作成
           @match_room.inbox_records.build(user_id: current_user.id, to_user_id: to_user_id)   # @inbox_record作成(自身と相手)
           @match_room.inbox_records.build(user_id: to_user_id, to_user_id: current_user.id)
+
+          flash[:info] = "「#{User.find(to_user_id).like_thing}」が好きな人のもとに届いた気がする"
     else                                                                                    # match_room_idあり => 返信処理
       @type = "reply"
       @letter.match_room.inbox_records.map{|f| f.touch}                                       # inbox_recordのtimestamp更新

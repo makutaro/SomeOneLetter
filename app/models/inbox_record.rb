@@ -4,7 +4,7 @@ class InboxRecord < ApplicationRecord
     belongs_to :to_user, class_name: 'User', :foreign_key => 'to_user_id'
     belongs_to :match_room
 
-    # scope
+    # scope 
     scope :find_all_by_id,    -> (user_id) { where(user_id: user_id,hidden_flag: false).order(updated_at: :desc) }
  
     # 検索条件
@@ -13,22 +13,12 @@ class InboxRecord < ApplicationRecord
                                               .or("? = ?", self.first.match_room.letters.first.user_id,self.first.user_id)
                                       }
 
-#    def self.filter_wait_reply_records!
-#     self.map do |f|
-#         unless (f.match_room.letters.count == 1 &&
-#             f.match_room.letters.first.user_id == current_user.id)
-#             return f
-#         end
-#     end
-#     self.compact #nilを排除
-#    end
-
     # 返信のないレコードを除外するメソッド
     def ignore_wait_reply_records!
-        unless (self.match_room.letters.count == 1 && self.match_room.letters.first.user_id == 1)
-        return self
+        if (self.match_room.letters.count == 1 && self.match_room.letters.first.user_id == 1)
+          return nil  # 除外
         end
-        return nil
+          return self # 除外しない
     end
 
 end
