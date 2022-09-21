@@ -7,8 +7,16 @@ function fixHeaderPadding(){
 
 // ページが読み込まれるたびに呼び出し
 $(window).on('turbolinks:load', function() {
-  fixHeaderPadding() //nav-barの高さに合わせてheaderのpaddingを自動調整
+
+  // nav-barの高さに合わせてheaderのpaddingを自動調整
+  fixHeaderPadding() 
   console.log(Date.now() + " #header padding-bottom =>" + $('#header').css('padding-bottom'));
+
+  // hello-modalがあれば呼び出し
+  if($('#hello-modal').length){
+      $('#hello-modal').modal("show")
+    }
+    
 
   // form_validataion 
   var forms = document.querySelectorAll('.needs-validation')

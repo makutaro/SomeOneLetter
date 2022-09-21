@@ -15,7 +15,7 @@ class InboxRecord < ApplicationRecord
 
     # 返信のないレコードを除外するメソッド
     def ignore_wait_reply_records!
-        if (self.match_room.letters.count == 1 && self.match_room.letters.first.user_id == 1)
+        if (self.match_room.letters.count == 1 && self.match_room.letters.first.user_id == self.user.id)
           return nil  # 除外
         end
           return self # 除外しない

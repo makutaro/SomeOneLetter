@@ -1,9 +1,16 @@
 <%# inboxページのレコード%>
 
-<% #変数定義 
+<% # 変数定義 
   #mine_tag = if inbox_record.match_room.letters.last.user_id == current_user.id ? "返信待ち" : ""
-  mine_tag = inbox_record.match_room.letters.last.user_id == current_user.id ? "返信待ち" : "返信可能"
-  new_tag  = inbox_record.match_room.letters.count == 1                      ? "new" : ""      
+  if inbox_record.match_room.letters.last.user_id == current_user.id
+      mine_tag      = "返信済み"
+      replyable_tag = ""
+  else
+      mine_tag      = ""
+      replyable_tag = "返信可能"
+  end
+  new_tag  = inbox_record.match_room.letters.count == 1  ? Time.at(Time.now - inbox_record.created_at).strftime("%d日%H時間経過") : ""  
+       
 %>
 
 <%# レコード部分  %>
@@ -20,7 +27,11 @@
       <div class="inbox-name"><%= inbox_record.to_user.name %></div>
       <div class="inbox-content"><%= inbox_record.match_room.letters.last.title %> <%= inbox_record.match_room.letters.last.content[0,30] %></div>
     </div>
-    <div class="inbox-tag"><%= new_tag %> <%= mine_tag %></div>
+    <div class="inbox-tag">
+      <span class="new-tag"      ><%= new_tag  %>      </span>
+      <span class="mine-tag"     ><%= mine_tag %>      </span>
+      <span class="replyable_tag"><%= replyable_tag %> </span>
+    </div>
     <div class="inbox-time"><%= inbox_record.match_room.letters.last.created_at.strftime('%Y/%m/%d %k:%M') %></div>
   </div>
   

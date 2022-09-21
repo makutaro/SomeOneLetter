@@ -23,13 +23,11 @@
      
    <%# flash  success/info/warning/error %>
       <% flash.each do |type, msg| %>
+        <% next if type == "flag"  %>
       <%#  scriptタグは廃止！ %>
         <script id="flash" class="toast-top-full-width" type="text/javascript">
           toastr['<%= toast_alert(type) %>']('<%= msg %>');
         </script>
-        <!-- 
-           <div class="flash toast-top-full-width" data-type="<%= type %>" data-msg="<%= msg %>"></div>  
-        -->
       <% end %>
       
    <%# main %>
@@ -45,6 +43,7 @@
       <%= render 'layouts/footer' %>
       <%= render "modals/send_letter_modal", {type:"new"}%>
       <%= render "modals/preview_modal"%>
+      <%= render "modals/hello_modal" if flash.to_h.value? "hello_modal_open" %>
     <% end %>
   </body>
 </html>
