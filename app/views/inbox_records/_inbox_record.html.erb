@@ -9,7 +9,7 @@
       mine_tag      = ""
       replyable_tag = "返信可能"
   end
-  new_tag  = inbox_record.match_room.letters.count == 1  ? Time.at(Time.now - inbox_record.created_at).strftime("%d日%H時間経過") : ""  
+  new_tag  = inbox_record.match_room.letters.count == 1  ?  elapsed_time(inbox_record.updated_at): ""  
        
 %>
 

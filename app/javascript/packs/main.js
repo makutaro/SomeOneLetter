@@ -17,7 +17,6 @@ $(window).on('turbolinks:load', function() {
       $('#hello-modal').modal("show")
     }
     
-
   // form_validataion 
   var forms = document.querySelectorAll('.needs-validation')
   Array.prototype.slice.call(forms)
@@ -37,25 +36,33 @@ $(window).on('turbolinks:load', function() {
 })
 
 // letterの確認モーダル呼び出し
-window.ShowPreviewModal = function(e){
+window.ShowPreviewModal = function(t,e){
+
+  e.preventDefault()  // フォーム送信をキャンセル
+  e.stopPropagation() // イベント伝搬をストップ
+  
   // formのvalueを取得
-  var form = $(e).parent().parent();
+  var form = $(t).parent().parent();
   var title   = form.find('[name = form-title]').val();
   var content = form.find('[name=form-content]').val();
   var room_id = form.find('[name=form-room-id]').val();
 
-  // previewの値を操作
-  $("#preview-title"  ).html(title);
-  $("#preview-content").html(content);
-  $("#preview-room-id").html(room_id);
+  if(title!="" && content!=""){
+    // previewの値を操作
+    $("#preview-title"  ).html(title);
+    $("#preview-content").html(content.replace(/\n/g, '<br>'));
+    $("#preview-room-id").html(room_id);
 
-  // formのfieldをセット
-  $("#preview-field-title"        ).val(title);
-  $("#preview-field-content"      ).val(content);
-  $("#preview-field-match_room_id").val(room_id);
+    // formのfieldをセット
+    $("#preview-field-title"        ).val(title);
+    $("#preview-field-content"      ).val(content);
+    $("#preview-field-match_room_id").val(room_id);
 
-  //モーダル起動
-  $("#preview-modal"  ).modal("show");
+    //モーダル起動
+    $("#preview-modal"  ).modal("show");
+  }else{
+    form.addClass('was-validated');
+  }
 }
 
 // $(".needs-validation").on(function(e) {

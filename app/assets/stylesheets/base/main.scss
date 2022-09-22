@@ -10,9 +10,8 @@ $gray-medium-light: #eaeaea;
 }
 
 .body_not_signed {
-  background: url("top.jpg") center no-repeat;
+  background: url("top_dark_2") center no-repeat;
   background-attachment: fixed;
-  background-color:#e1e1e1;
   background-size:cover ;
 }
 .body_signed_in {
@@ -44,20 +43,20 @@ $gray-medium-light: #eaeaea;
     //line-height: 1;
   }
   
-  h1 {
-    font-size: 4em !important;
-    letter-spacing: -2px !important ;
-    text-align: center !important;
-  }
+  // h1 {
+  //   font-size: 4em !important;
+  //   letter-spacing: -2px !important ;
+  //   text-align: center !important;
+  // }
 
-  h2 {
-    font-size: 3em !important;
-    letter-spacing: -2px !important ;
-    text-align: center !important;
-  }
+  // h2 {
+  //   font-size: 3em !important;
+  //   letter-spacing: -2px !important ;
+  //   text-align: center !important;
+  // }
 
-  h3 {
-    font-size: 2.5em !important;
-    letter-spacing: -2px !important ;
-    text-align: center !important;
-  }
+  // h3 {
+  //   font-size: 2.5em !important;
+  //   letter-spacing: -2px !important ;
+  //   text-align: center !important;
+  // }

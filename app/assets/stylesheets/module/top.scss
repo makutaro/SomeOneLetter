@@ -24,7 +24,28 @@
 .top-authentication {
   position:relative;
   text-align: center;
-  top: 50vh;
+  top: 60vh;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin: auto;
+  br{
+    margin-bottom: 2px;
+  }
+}
+
+.top-p2-title {
+  position:relative;
+  top: 20vh;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.top-p2-body {
+  position:relative;
+  text-align: center;
+  top: 20vh;
   left: 50%;
   transform: translate(-50%,-50%);
   margin: auto;
