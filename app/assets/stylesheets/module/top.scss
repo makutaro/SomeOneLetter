@@ -6,10 +6,6 @@
     scroll-snap-align: start;
     height: 100vh;
   }
-  .card{
-    height: 100vh;
-  }
-
 }
 
 .top-title {
@@ -45,11 +41,87 @@
 .top-p2-body {
   position:relative;
   text-align: center;
-  top: 20vh;
+  top: 23vh;
   left: 50%;
   transform: translate(-50%,-50%);
   margin: auto;
   br{
     margin-bottom: 2px;
   }
+}
+.top-p2-card{
+  position:relative;
+  height: 50vh;
+  top: 23vh;
+  left: 50%;
+  border-radius: 2.0rem !important;
+  text-align: center;
+  transform: translate(-50%);
+  //background-color: aqua;
+  .card{
+    position:relative;
+    left: 50%;
+    border-radius: 2.0rem !important;
+    text-align: center;
+    transform: translate(-50%);
+    width: 80%;
+    max-width: 675px;
+    opacity:0.8;
+    height: 11vh;
+    margin-bottom: 2.5rem;
+    .head{
+      margin:10px;
+    } 
+    }
+  }
+
+  .top-p3-title {
+    position:relative;
+    top: 20vh;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+  .top-p3-card{
+    padding: 2%;
+    position:relative;
+    height: 50vh;
+    top: 23vh;
+    left: 50%;
+    border-radius: 2.0rem !important;
+    width: 80%;
+    max-width: 675px;
+    opacity:0.8;
+    transform: translate(-50%);
+    //background-color: aqua;
+    li{ margin-bottom: 3%;}
+
+}
+
+/* 長方形 */
+.top-arrow {
+  position:relative;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+	font-size: 30px;
+	position: relative;
+	width: 0.6em;
+	height: 1em;
+	background-color: #ffffff;
+  &.p1{top: 65vh;}
+  &.p2{top: 15vh;}
+}
+/* 三角 */
+.top-arrow::before {
+	position: absolute;
+	top: 0.8em;
+	left: -0.5em;
+	width: 0;
+	height: 0;
+	content: "";
+	border-top: 0.8em solid #ffffff;
+	border-left: 0.8em solid transparent;
+	border-right: 0.8em solid transparent;
 }

@@ -1,7 +1,7 @@
-  <custom-card class="card" style="top:30vh">
-    <%= form_with model: @user,class: "custom-form", url: new_user_step1_path(resource_name) do |f| %>
+<div class="card login-form-card">
+    <%= form_with model: User.new ,class: "custom-form", url: new_user_step1_path(resource_name) do |f| %>
+    <h1 class="center mb-5">新規登録(1/2)</h1>
     <%= render "devise/shared/error_messages", resource: @user %>
-
     <div class="form-field">
       <%= f.label "メールアドレス" %><br />
       <%= f.text_field :email, autofocus: true, placeholder: "sample@example.com" ,autocomplete: "email", class: "form-control",value:"sample@example.com" %>
@@ -21,9 +21,9 @@
     </div>
 
     <div class="form-action text-center">
-      <%= f.submit "次へ",class: "btn btn-primary" %>
-      <%= link_to "キャンセル",root_url, class: "btn custom-btn btn-primary" %>
+      <div><%= f.submit "次へ",class: "btn custom btn-primary mb-3" %></div>
+      <div><%= link_to "もどる", root_url ,class: "btn custom btn-secondary" %></div>
     </div>
     <% end %>
-</custom-card>
+</div>
 <!-- <%= render "devise/shared/links" %> -->

@@ -37,26 +37,15 @@ $gray-medium-light: #eaeaea;
     text-align: center;
   }
   
-  /* typography */
-  
-  h1, h2, h3, h4, h5, h6 {
-    //line-height: 1;
-  }
-  
-  // h1 {
-  //   font-size: 4em !important;
-  //   letter-spacing: -2px !important ;
-  //   text-align: center !important;
-  // }
+.login-form-card {
+  margin-top:   20vh;
+  margin-left:  auto;
+  margin-right: auto;
 
-  // h2 {
-  //   font-size: 3em !important;
-  //   letter-spacing: -2px !important ;
-  //   text-align: center !important;
-  // }
+  padding: 3% 7% 3% 7%;
 
-  // h3 {
-  //   font-size: 2.5em !important;
-  //   letter-spacing: -2px !important ;
-  //   text-align: center !important;
-  // }
+  width: 70%;
+  max-width: 440px;
+  opacity:0.9;
+  border-radius: 2.0rem !important;
+}

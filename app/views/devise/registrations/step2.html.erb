@@ -1,7 +1,7 @@
-  <custom-card class="card" style="top:30vh">
+<div class="card login-form-card">
   <%= form_with(model: @user, class:"custom-form",url: user_registration_path ) do |f| %>
+    <h1 class="center mb-5">新規登録(2/2)</h1>
     <%= render "devise/shared/error_messages", resource: @user %>
-
     <%= f.hidden_field :email, :value => @user.email %> 
     <%= f.hidden_field :password, :value => @user.password %>
     <%= f.hidden_field :password_confirmation, :value => @user.password_confirmation %> 
@@ -22,8 +22,8 @@
     </div>
 
     <div class="form-action text-center">
-      <%= f.submit "登録",class: "btn btn-primary" %>
-      <%= link_to "キャンセル",root_url, class: "btn custom-btn btn-primary" %>
+      <div><%= f.submit "登録",class: "btn custom btn-primary mb-3" %></div>
+      <div><%= link_to "キャンセル",root_url, class: "btn custom btn-secondary" %></div>
     </div>
   <% end %>
-  </custom-card>
+  </div>

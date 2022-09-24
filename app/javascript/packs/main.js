@@ -4,6 +4,10 @@ function fixHeaderPadding(){
   let nav_height = $('#header-nav').css('height');
   $('#header').css('padding-bottom', nav_height);
 }
+    //点滅 1秒span
+    setInterval(function(){
+      $(".flash").fadeOut(1500).fadeIn(1500);
+    },3000);
 
 // ページが読み込まれるたびに呼び出し
 $(window).on('turbolinks:load', function() {
@@ -29,6 +33,9 @@ $(window).on('turbolinks:load', function() {
         form.classList.add('was-validated')
       }, false)
     })
+
+
+
   
   // scroll-innerタグ
   // const i = document.getElementById('scroll-inner');

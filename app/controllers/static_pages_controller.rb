@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
     if user_signed_in? 
       redirect_to home_url
     end
-  
   end
 
   def home
@@ -12,5 +11,4 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
-  
 end

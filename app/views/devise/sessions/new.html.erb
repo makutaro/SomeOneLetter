@@ -1,5 +1,6 @@
-  <custom-card class="card" style="top:30vh">
-    <%= form_for(resource, class:"custom-form", as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="card login-form-card">
+    <%= form_with model: User.new, class:"custom-form", url: session_path(resource_name) do |f| %>
+    <h1 class="center mb-5">ログイン</h1>
     <div class="form-column">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>,
@@ -16,10 +17,10 @@
       <%= f.label :パスワードを記録する %>
     </div>
     <% end %>
-
+    <%= render "devise/shared/links" %>
     <div class="form-action text-center">
-      <%= f.submit "Log in",class: "btn btn-primary" %>
+     <div><%= f.submit "サインイン",class: "btn custom btn-primary mb-3" %></div>
+     <div> <%= link_to "もどる", root_url ,class: "btn custom btn-secondary" %></div>
     </div>
     <% end %>
-    <%= render "devise/shared/links" %>
-</custom-card>
+</div>

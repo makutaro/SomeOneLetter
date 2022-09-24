@@ -3,7 +3,7 @@
 
 <div class="top-screen ">
 
-  <section class="area">
+  <section id="page-1" class="area">
     <div class=" top-title">
       <h1 class="text-white center display-1 bold"><strong>SomeOneLetter</strong></h1>
     </div>
@@ -12,24 +12,51 @@
       <%= link_to "新規登録", new_user_registration_url, class: "btn custom btn-clear m-3" %><br>
       <%= link_to "ログイン",new_user_session_path, class: "btn custom btn-clear m-3" %>
     </div>
+    <div class="top-arrow p1 flash"></div>
   </section>
 
-  <section id="page-1" class="area" ;>
+  <section id="page-2" class="area">
     <div class="top-p2-title">
       <h1 class="text-white center display-1"><strong>手紙。書いてますか？</strong></h1><br><br>
     </div>
     <div class="top-p2-body">
       <h1 class="text-white center">「SomeOneLetter」 は <br>
-      手紙を瓶に詰めて海に流す営みから着想を得た、<br>
-      世界一気軽なマッチング型文通サービス です。<br><br>
+        手紙を瓶に詰めて海に流す営みから着想を得た、<br>
+        世界一気軽なマッチング型文通サービス です。<br><br>
       </h1>
     </div>
-    
+    <div class="top-p2-card">
+      <div class="card c-1">
+        <div class="head"><h2>①手紙を書いて海に流す</h2></div>
+        <h3>流した手紙は、誰かほかのユーザのもとへ届きます</h3>
+      </div>
+      <div class="card c-2">
+        <div class="head"><h2>②返信する</h2></div>
+        <h3>手紙を受け取ったら、その手紙を返信することが出来ます</h3>
+      </div>
+      <div class="card c-3">
+      <div class="head"><h2>③つながる</h2></div>
+       <h3>顔も知らぬその人と、文通を楽しんでみましょう</h3>
+      </div>
+    </div>
+    <div class="top-arrow p2 flash"></div>
   </section>
 
-  <section id="page-2" class="area" ;>
-    <div class="card">
+  <section id="page-3" class="area" ;>
+    <div class="top-p3-title">
+      <h1 class="text-white center display-1"><strong>仕様と注意</strong></h1><br><br>
     </div>
+    <div class="card top-p3-card">
+      <ul>
+        <li><h3>一日に流せる手紙は5通までです</h3></li>
+        <li><h3>暴言、わいせつな文言など、不適切な内容はお控えください</h3></li>
+        <li><h3>初めて受け取った手紙は"受け取ってから7日間"でほかの誰かのもとへ流れてしまいます。</h3></li>
+        <li><h3>手紙は常に"1通づつ"のやり取りとなります(連続送信ができません)相手からの返信が来るまで返信が出来ないので、手紙は丁寧に心を込めて書きましょう</h3></li>
+        <li><h3>30日間ログインがないと、"新規の手紙が届かなくなってしまいます。"月に一度は様子を見に行きましょう</h3></li>
+      </ul>
+    </div>
+
+
   </section>
 
 </div>
