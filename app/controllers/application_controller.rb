@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
    
   # 認証が必要でないページを制御(現状topだけ)
-  before_action :authenticate_user!,:build_letter
+  before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: [:top]
 
   # インスタンスのsaveメソッド
@@ -13,10 +13,4 @@ class ApplicationController < ActionController::Base
       redirect_to request.referrer || root_url
      end
   end
-
-   # 新規送信用の@letter作成
-   def build_letter
-      @letter_new = current_user.letters.build if user_signed_in?
-   end
-
 end

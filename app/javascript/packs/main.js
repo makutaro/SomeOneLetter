@@ -1,3 +1,6 @@
+// ページが読み込まれるたびに呼び出し
+$(window).on('turbolinks:load', function() {
+
 // 指定したIDの要素を返却(id名,css要素名)
 // 例: (#body,height) => 30px
 function fixHeaderPadding(){ 
@@ -9,8 +12,7 @@ function fixHeaderPadding(){
       $(".flash").fadeOut(1500).fadeIn(1500);
     },3000);
 
-// ページが読み込まれるたびに呼び出し
-$(window).on('turbolinks:load', function() {
+
 
   // nav-barの高さに合わせてheaderのpaddingを自動調整
   fixHeaderPadding() 
@@ -33,14 +35,6 @@ $(window).on('turbolinks:load', function() {
         form.classList.add('was-validated')
       }, false)
     })
-
-
-
-  
-  // scroll-innerタグ
-  // const i = document.getElementById('scroll-inner');
-  // i.scrollTo(0, i.scrollHeight);
-})
 
 // letterの確認モーダル呼び出し
 window.ShowPreviewModal = function(t,e){
@@ -71,13 +65,4 @@ window.ShowPreviewModal = function(t,e){
     form.addClass('was-validated');
   }
 }
-
-// $(".needs-validation").on(function(e) {
-//   var title     = e.find('[name = form-title]'  ).val();
-//   var content   = e.find('[name = form-content]').val();
-//   var button    = e.find('[name = submit]'      ).val();
-
-//   if(content=="" || title==""){
-//     button.classList.add('disable')
-//   }
-// });
+})

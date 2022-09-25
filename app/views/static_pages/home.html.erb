@@ -1,33 +1,41 @@
 <% provide(:title, "【サービス名】") %>
 
-  <div class="home-upper-side">
-    <div class="col">
-      <%= if current_user.image.attached?
+<div class="home-upper-side">
+  <div class="col">
+    <%= if current_user.image.attached?
             image_tag current_user.image, size: "120x120", class:"center-block rounded-circle custom-image"
         else image_tag "bottle_ship.png",size:"120x120", class:"center-block rounded-circle custom-image"
       end %>
-      <div class="name"><%= current_user.name%></div>
-    </div>
+    <div class="name"><%= current_user.name%></div>
   </div>
+</div>
 
-    <div class="contaner" id="home-container">
-      <div class="row">
-        <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
-        <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
-        <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール"} %>
-      </div>
-      <div class="row">
-        <%= render 'shared/home/home_col', { image:"icons/gear",   url:home_url, text:"設定"} %>
-        <%= render 'shared/home/home_col', { image:"icons/wakaba", url:home_url, text:"注意とマナー"} %>
-        <%= render 'shared/home/home_col', { image:"icons/bell",   url:home_url, text:"お知らせ"} %>
-      </div>
-    </div>
+<div class="contaner" id="home-container">
+  <div class="row">
+    <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
+    <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
+  </div>
+  <div class="row">
+    <%= render 'shared/home/home_col', { image:"icons/gear",   url:home_url, text:"設定"} %>
+    <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール"} %>
+    <%= render 'shared/home/home_col', { image:"icons/wakaba", url:home_url, text:"注意とマナー"} %>
+  </div>
+</div>
 
-     <div class="contaner card custom">
-     お知らせ
-     </div>
+<div class="contaner card home-card pb-4">
+  <div class="home-head">
+    <%= image_tag( "icons/bell",size: "70x70")%>お知らせ
+  </div>
+  <div class="home-body">
+   <%= render @information  %>   
+  </div>
+</div>
 
-
-    <div>
-      <%= "現在#{current_user.active_flag ? "アクティブ" : "非アクティブ"} です" %>
-    </div>
+<div class="contaner card home-card pb-4">
+  <div class="home-head">
+    <%= image_tag( "icons/wakaba",size: "40x50")%>注意とマナー
+  </div>
+  <div class="home-body">
+   ちゅういだよ
+  </div>
+</div>

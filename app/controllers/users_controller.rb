@@ -7,6 +7,7 @@ class UsersController < ApplicationController
    # beforeアクション#
    ###################
    
+private
     # 正しいユーザーかどうか確認
     def correct_user
       if current_user.id != params[:id] .to_i
