@@ -5,7 +5,7 @@ class InboxRecord < ApplicationRecord
     belongs_to :match_room
 
     # scope 
-    scope :find_all_by_id,    -> (user_id) { where(user_id: user_id,hidden_flag: false).order(updated_at: :desc) }
+    scope :find_all_by_id,    -> (user_id) { where(user_id: user_id,hidden_flag: false).includes([:user, match_room: :letters]).order(updated_at: :desc) }
  
     # 検索条件
     # 「[letterが1通しかない] かつ [それが自身のletter] 」以外を返却

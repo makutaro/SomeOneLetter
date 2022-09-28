@@ -1,5 +1,10 @@
 <% provide(:title, "【サービス名】") %>
 
+<%
+ ###################
+ ###プロフィール画像## 
+ ####################
+%>
 <div class="home-upper-side">
   <div class="col">
     <%= if current_user.image.attached?
@@ -10,6 +15,95 @@
   </div>
 </div>
 
+<%
+ ########################
+ ###手紙を書いて海に流す## 
+ ########################
+%>
+<div class="contaner card home-card p-4">
+  <div class="home-head">
+    <%= image_tag( "icons/letter",size: "70x70")%>
+    <span class="title">手紙を書いて海に流す</span>
+  </div>
+  <div class="home-body center">
+   <button class="btn custom btn-primary" data-bs-toggle="modal" data-bs-target="#new-letter-modal">手紙を書く</button>
+  </div>
+</div>
+
+<%
+ ########################
+ ###   手紙を見る       ## 
+ ########################
+%>
+<div class="contaner card home-card p-4">
+  <div class="home-head">
+    <%= image_tag( "icons/post",size: "70x70")%>手紙をみる
+  </div>
+  <div class="home-body card inner-card center p-5">
+    <h2 class="mb-4">返信可能な手紙</h2>
+    <span class="text-danger display-2 bold">１通</span>
+    <%= link_to "受信箱を見る",inbox_record_url(id:current_user.id),class: "btn custom btn-primary mx-auto mt-4"%>
+  </div>
+</div>
+
+<%
+ ########################
+ ###   おしらせ        ## 
+ ########################
+%>
+<div class="contaner card home-card p-4">
+  <div class="home-head">
+    <%= image_tag( "icons/bell",size: "70x70")%>おしらせ
+  </div>
+  <div class="home-body mr-20p">
+   <%= render @information  %>   
+  </div>
+</div>
+
+<%
+ ########################
+ ###    注意とマナー    ## 
+ ########################
+%>
+<div class="contaner card home-card p-4">
+  <div class="home-head">
+    <%= image_tag( "icons/wakaba",size: "40x50")%>注意とマナー
+  </div>
+  <div class="home-body mr-10p">
+      <ul>
+        <li><h4>一日に流せる手紙は5通までです</h4></li><br>
+        <li><h4>暴言、わいせつな文言など、不適切な内容はお控えください</h4></li><br>
+        <li><h4>初めて受け取った手紙は"受け取ってから7日間"でほかの誰かのもとへ流れてしまいます。</h4></li><br>
+        <li><h4>手紙は常に"1通づつ"のやり取りとなります(連続送信ができません)<br>相手からの返信が来るまで返信が出来ないので、手紙は丁寧に心を込めて書きましょう</h4></li><br>
+        <li><h4>30日間ログインがないと、"新規の手紙が届かなくなってしまいます。<br>月に一度は様子を見に行きましょう</h4></li>
+      </ul>
+  </div>
+</div>
+
+<%
+ ########################
+ ###ポートフォリオとして## 
+ ########################
+%>
+<div class="contaner card home-card p-4">
+  <div class="home-head">
+    ポートフォリオとして
+  </div>
+  <div class="home-body mr-10p">
+  <ul>
+    <li><h4>当サービスはエンジニアとしての技術提示を目的としたポートフォリオとなります。<br>
+        商用サービスとして公開しておりませんので、不特定多数への公開はお控えください。</h4></li>
+    <br>
+    <li><h4>↓各種リンク。質問および面談の打診はお気軽に問い合わせください</h4></li>
+    <li><h4>twitter : <%= link_to "https://twitter.com/noisy_gameshop", "https://twitter.com/noisy_gameshop" %></h4></li>
+    <li><h4>wantedly: <%= link_to "https://www.wantedly.com/id/akira_yajima_i", "https://www.wantedly.com/id/akira_yajima_i"%></h4></li>
+    <li><h4>github  : <%= link_to "https://github.com/makutaro/SomeOneLetter", "https://github.com/makutaro/SomeOneLetter"%></h4></li>
+    <li><h4>メール  : akira_yajima_tw@gmail.com</h4></li>
+  </ul>
+  </div>
+</div>
+
+<!--
 <div class="contaner" id="home-container">
   <div class="row">
     <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
@@ -21,21 +115,4 @@
     <%= render 'shared/home/home_col', { image:"icons/wakaba", url:home_url, text:"注意とマナー"} %>
   </div>
 </div>
-
-<div class="contaner card home-card pb-4">
-  <div class="home-head">
-    <%= image_tag( "icons/bell",size: "70x70")%>お知らせ
-  </div>
-  <div class="home-body">
-   <%= render @information  %>   
-  </div>
-</div>
-
-<div class="contaner card home-card pb-4">
-  <div class="home-head">
-    <%= image_tag( "icons/wakaba",size: "40x50")%>注意とマナー
-  </div>
-  <div class="home-body">
-   ちゅういだよ
-  </div>
-</div>
+-->

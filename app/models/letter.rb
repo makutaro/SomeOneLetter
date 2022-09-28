@@ -3,7 +3,7 @@ class Letter < ApplicationRecord
   belongs_to :match_room
 
    # スコープ
-   scope :find_all_by_id, -> (id) { where(match_room_id: id).order(created_at: :asc) }
+   scope :find_all_by_id, -> (id) { where(match_room_id: id).includes(:user).order(created_at: :asc) }
 
    # バリデーション
    validates :title, presence: true, length: { maximum: 20 }
