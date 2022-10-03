@@ -63,6 +63,7 @@ window.ShowPreviewModal = function(t,e){
     $("#preview-modal"  ).modal("show");
   }else{
     form.addClass('was-validated');
+    
   }
 }
 })

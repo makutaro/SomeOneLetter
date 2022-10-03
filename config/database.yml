@@ -1,18 +1,32 @@
-# rails new後,config/database.ymlを
-# 下記値に書き換えること
+# adapter:   使用するデータベース種類
+# encoding:  文字コード
+# reconnect: 再接続するかどうか
+# database:  データベース名
+# pool:      コネクションプーリングで使用するコネクションの上限
+# username:  ユーザー名
+# password:  パスワード
+# host:      DBが動作しているホスト名
 
 default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  username: postgres
-  password: postgres
   pool: 5
 
 development:
   <<: *default
   database: myapp_development
+  username: postgres
+  password: postgres
 
 test:
   <<: *default
   database: myapp_test
+  username: postgres
+  password: postgres
+
+production:
+  <<: *default
+  database: myapp_production
+  username: postgres
+  password: someoneletter

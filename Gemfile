@@ -24,6 +24,7 @@ gem 'bootstrap-sass'
 gem 'active_storage_validations', '0.8.2'
 gem 'mini_magick',                '4.9.5'
 gem 'font-awesome-rails'
+gem 'carrierwave'
 
 # gem 'redis', '~> 4.0'
 
