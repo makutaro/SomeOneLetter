@@ -22,8 +22,6 @@ bundle exec rails db:create
 bundle exec rails db:migrate
 bundle exec rails db:seed
 
-rails s -b 0.0.0.0
-
 # DockerfileのCMDで渡されたコマンド（→Railsのサーバー起動）を続けて実行
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"

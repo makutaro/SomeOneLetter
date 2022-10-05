@@ -5,7 +5,6 @@ FROM ruby:2.7.6
 RUN apt-get update && apt-get install -y \
   build-essential \
   postgresql-client \
-  toastr \
   net-tools
 
 # nodejsをインストール
@@ -18,7 +17,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn && \
-  yarn add jquery@3.4.1 bootstrap@3.4.1
+  yarn add jquery@3.4.1 bootstrap@3.4.1 toastr
 
 RUN mkdir /myapp
 # ruby:2.5のデフォの作業dirは"/"であるため、必ず作業dirを作成
@@ -34,6 +33,8 @@ COPY . /myapp
 # Add a script to be executed every time the container starts.
  COPY entrypoint.sh /usr/bin/
  RUN chmod +x /usr/bin/entrypoint.sh
+ RUN bundle exec rails webpacker:install
+
  ENTRYPOINT ["entrypoint.sh"]
 
-# CMD ["rails", "server", "-b", "0.0.0.0"]
+ CMD ["rails", "server", "-b", "0.0.0.0"]
