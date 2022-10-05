@@ -34,6 +34,7 @@ COPY . /myapp
  COPY entrypoint.sh /usr/bin/
  RUN chmod +x /usr/bin/entrypoint.sh
  RUN bundle exec rails webpacker:install
+ RUN EDITOR=vim rails credentials:edit
 
  ENTRYPOINT ["entrypoint.sh"]
 
