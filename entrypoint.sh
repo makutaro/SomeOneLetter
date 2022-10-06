@@ -19,8 +19,11 @@ source ~/.bashrc
 
 # 初回のみ
 bundle exec rails db:create
+echo "-- create 完了 --"
 bundle exec rails db:migrate
-bundle exec rails db:seed
+echo "-- migrate 完了 --"
+bundle exec rails db:reset
+echo "-- reset 完了 --"
 
 # DockerfileのCMDで渡されたコマンド（→Railsのサーバー起動）を続けて実行
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
