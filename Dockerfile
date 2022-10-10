@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN mkdir /myapp
 # ruby:2.5のデフォの作業dirは"/"であるため、必ず作業dirを作成
 WORKDIR /myapp 
+
 # ローカルのGemfileとGemfile.lockをコンテナにコピー
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
@@ -30,12 +31,24 @@ RUN bundle install
 # これにより、二度目移行のbuild実行時にbindされたソースコードをイメージに含めることが可能
 COPY . /myapp
 
+# nginxようにフォルダ追加
+RUN mkdir -p tmp/sockets && \
+    mkdir -p /tmp/public && \
+    cp -rf /myapp/public/* /tmp/public
+
+# nginxから参照できるようにvolume設定
+VOLUME /myapp/public
+VOLUME /myapp/tmp
+
+
 # Add a script to be executed every time the container starts.
  COPY entrypoint.sh /usr/bin/
  RUN chmod +x /usr/bin/entrypoint.sh
  RUN bundle exec rails webpacker:install
+ RUN rails assets:precompile RAILS_ENV=production
  RUN EDITOR=vim rails credentials:edit
 
  ENTRYPOINT ["entrypoint.sh"]
 
- CMD ["rails", "server", "-b", "0.0.0.0"]
+# CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

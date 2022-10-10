@@ -7,14 +7,51 @@
 # password:  パスワード
 # host:      DBが動作しているホスト名
 
+# # dev 
+
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
+#   # host: sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com
+#   # username: postgres
+#   # password: someoneletter
+  
+# development:
+#   <<: *default
+#   databasse: myapp_development
+#   host: db
+#   username: postgres
+#   password: postgres
+
+# test:
+#   <<: *default
+#   database: myapp_test
+#   host: db
+#   username: postgres
+#   password: postgres
+
+# production:
+#   <<: *default
+#   database: myapp_production
+#   host: sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com
+#   username: postgres
+#   password: someoneletter
+
+  
+# production 
+
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  # host: sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com
+  # username: postgres
+  # password: someoneletter
   
 development:
   <<: *default
-  database: myapp_development
+  databasse: myapp_development
   host: db
   username: postgres
   password: postgres

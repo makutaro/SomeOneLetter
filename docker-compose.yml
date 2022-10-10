@@ -1,3 +1,4 @@
+# local用コンテナイメージ作成用
 version: '3.8'
 services:
   db:
@@ -8,18 +9,23 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  web:
+  app-div:
     # 直下のdockerfileを指定
     build: .
     volumes:
       - .:/myapp
     ports:
       - "3000:3000"
-    # command: /bin/bash
+    #command: /bin/bash
     # tty: true
     # stdin_open: true
-
-    # docker-compose up   : [db => web]の順に起動
-    # docker-compose down : [web => db]の順に停止
     depends_on:
      - db
+  web-div:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile-div
+    ports:
+      - 80:80
+    depends_on:
+      - app-div

@@ -7,6 +7,7 @@ function fixHeaderPadding(){
   let nav_height = $('#header-nav').css('height');
   $('#header').css('padding-bottom', nav_height);
 }
+
     //点滅 1秒span
     setInterval(function(){
       $(".flash").fadeOut(1500).fadeIn(1500);
