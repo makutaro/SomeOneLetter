@@ -8,14 +8,11 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-// 必要なJavaScriptファイルをrequireまたはimportする
+import "../src/main"
 import "bootstrap"
-// import "/myapp/app/assets/stylesheets/custom.scss"
-import "../stylesheets/application.scss";
+import "jquery/dist/jquery"
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-require("jquery")
-
 global.toastr = require("toastr")
-import "../stylesheets/application"

@@ -30,25 +30,23 @@ RUN bundle install
 
 # これにより、二度目移行のbuild実行時にbindされたソースコードをイメージに含めることが可能
 COPY . /myapp
+COPY entrypoint.sh /usr/bin/
 
 # nginxようにフォルダ追加
-RUN mkdir -p tmp/sockets && \
-    mkdir -p /tmp/public && \
-    cp -rf /myapp/public/* /tmp/public
+# RUN mkdir -p tmp/sockets && \
+#     mkdir -p /tmp/public && \
+#     cp -rf /myapp/public/* /tmp/public
 
 # nginxから参照できるようにvolume設定
 VOLUME /myapp/public
 VOLUME /myapp/tmp
 
+RUN chmod +x /usr/bin/entrypoint.sh
+RUN rails webpacker:install
+RUN rails assets:precompile RAILS_ENV=production
+RUN bin/webpack
+RUN EDITOR=vim rails credentials:edit
 
-# Add a script to be executed every time the container starts.
- COPY entrypoint.sh /usr/bin/
- RUN chmod +x /usr/bin/entrypoint.sh
- RUN bundle exec rails webpacker:install
- RUN rails assets:precompile RAILS_ENV=production
- RUN EDITOR=vim rails credentials:edit
+ENTRYPOINT ["entrypoint.sh"]
 
- ENTRYPOINT ["entrypoint.sh"]
-
-# CMD ["rails", "server", "-b", "0.0.0.0"]
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
