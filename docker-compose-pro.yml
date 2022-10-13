@@ -1,0 +1,12 @@
+# 商用のimage作成用
+version: '3.8'
+services:
+  web-pro:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile-pro
+    image: 149572532422.dkr.ecr.us-west-1.amazonaws.com/some_one_letter_web:latest
+
+  app-pro:
+    build: .
+    image: 149572532422.dkr.ecr.us-west-1.amazonaws.com/some_one_letter_app:latest

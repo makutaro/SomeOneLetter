@@ -10,15 +10,14 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   app-div:
-    # 直下のdockerfileを指定
     build: .
     volumes:
       - .:/myapp
     ports:
       - "3000:3000"
-    #command: /bin/bash
-    # tty: true
-    # stdin_open: true
+    command: /bin/bash
+    tty: true
+    stdin_open: true
     depends_on:
      - db
   web-div:
