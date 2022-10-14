@@ -5,18 +5,35 @@
   キャッチコピー
   ・手紙。書いてますか？
 
-  やること
-  1.権限外操作のセキュリティ制御
-    済・コントローラー制御実装
-    ・test実装
-
-  2.top画面改良
-    済・よこはば何とかする
-    済・簡単にLPを作成
-
-  5.inbox_show
-  済・includesで性能改善
-  ・スマホ最適
 
 ★方式開発
 ・RDS接続
+
+  # host: sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com
+  # username: postgres
+  # password: someoneletter
+
+masterkey
+  f33d2cb07deff755b6d025570028e726
+
+
+
+やること
+
+1.テスト書く
+2.スマホ最適
+3.circleci
+4.ジョブ
+5.seed作成→商用適用
+
+
+a= InboxRecord.find_count_replayable(5)
+a= InboxRecord.test(5)
+
+a = User.find(1)
+a.name
+
+a = InboxRecord.find(15)
+ap a
+a.last_letter
+ User.find(5).count_replayable

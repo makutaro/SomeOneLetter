@@ -15,9 +15,11 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
+    ## ↓ 開発用にpumaを起動させない#####
     command: /bin/bash
     tty: true
     stdin_open: true
+    ####################################
     depends_on:
      - db
   web-div:

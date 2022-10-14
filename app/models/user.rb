@@ -69,5 +69,13 @@ class User < ApplicationRecord
     # a = InboxRecord.find_all_by_id(self_id).plunk(:to_user_id)
     User.where(active_flag:true).where.not(id:self_id).pluck(:id).shuffle!.first
   end
+  
+  # 現在返信可能なletterの数を返す　
+  def count_replayable
+    count = 0
+    InboxRecord.where(user_id: self.id, hidden_flag: false).map do |f|
+     count += 1 if f.last_letter.user_id != self.id   
+    end
+    return count
+  end
 end
-

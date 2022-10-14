@@ -29,6 +29,6 @@ test:
 production:
   <<: *default
   database: myapp_production
-  host: sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com
-  username: postgres
-  password: someoneletter
+  host:     <%= ENV['DB_HOST']      || 'default' %>
+  username: <%= ENV['DB_USER_NAME'] || 'default' %>
+  password: <%= ENV['DB_PASS']      || 'default' %>

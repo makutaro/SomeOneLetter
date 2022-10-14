@@ -5,7 +5,7 @@ class InboxRecordsController < ApplicationController
     # GET  /inbox_records/[:id]
     def show
         @inbox_records = InboxRecord.find_all_by_id(current_user.id)                   # 対象レコードを全て取得
-        @inbox_records = @inbox_records.map {|f| f.ignore_wait_reply_records!}.compact # 返信待ちのレコードを除外
+        @inbox_records.map {|f| f.ignore_wait_reply_records!}.compact # 返信待ちのレコードを除外
     end
 
     # GET  /inbox_records/room/[id]
@@ -49,7 +49,7 @@ private
 
     # inbox_record_idが自身のuser_idであるかチェック
     def collect_inbox_record_id?(record_id)
-        unless InboxRecord(record_id).user_id == current_user.id
+        unless InboxRecord.find(record_id).user_id == current_user.id
             flash[:error] = "不正なアクセスです"
             redirect_to request.referrer || root_url
         end

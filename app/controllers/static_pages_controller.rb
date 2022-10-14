@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @information = Information.all
+   # @inbox_records_new_count = InboxRecord.find_count_by_new(current_user.id)
   end
 
   def contact
