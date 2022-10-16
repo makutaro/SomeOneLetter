@@ -8,10 +8,21 @@ user_01:
   name: user_01
   email: user01@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'user01') %>
+  location: '千葉県'
+  like_thing: 'くまさん'
+
   # confirmed_at: <%= Time.now - 100 %>
 
 user_02:
   name: user_02
   email: user02@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'user02') %>
-  # confirmed_at: <%= Time.now - 100 %>
+  location: '千葉県'
+  like_thing: 'くまさん'
+
+user_03:
+  name: user_03
+  email: user03@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'user03') %>
+  location: '千葉県'
+  like_thing: 'くまさん'

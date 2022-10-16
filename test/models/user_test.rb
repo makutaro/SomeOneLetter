@@ -1,21 +1,26 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # devise系のモジュールは今回使用しない為、コメントアウト
-  #include Devise::Test::ControllerHelpers
+  # devise系のモジュールを使用する場合は以下をinclude
+  # include Devise::Test::ControllerHelpers
 
-  def setup
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+  setup do
+    @user = User.new(
+      name: "Example User", 
+      email: "user@example.com",
+      password: "foobar", 
+      password_confirmation: "foobar",
+      location: '千葉県',
+      like_thing: 'くまさん')
   end
 
 # validate
 
-  test "valid_success" do
+  test "user_valid成功チェック" do
     assert @user.valid?  # 正常
   end
 
-  test "name_valid" do
+  test "user_name_validエラーチェック" do
     @user.name = "     "
     assert_not @user.valid?  # 空白
     @user.name = "a" * 21   
@@ -24,7 +29,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?  # 3文字以下 
   end
 
-  test "email_valid" do
+  test "user_email_validエラーチェック" do
     @user.email = "     "
     assert_not @user.valid? # 空白
     @user.email = ""        
@@ -52,7 +57,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  test "password_valid" do
+  test "user_password_validチェック" do
     @user.password              = "a" * 5  
     @user.password_confirmation = "a" * 5
     assert_not @user.valid?                # 6文字未満
@@ -63,20 +68,16 @@ class UserTest < ActiveSupport::TestCase
 
 # unique_column
 
-  test "name_unique" do
-    @user2 = User.new(name: "Example User", email: "user2@example.com",
-    password: "foobar", password_confirmation: "foobar")
-    @user2.save
-    assert_not @user.valid? # name重複
-  end
-
-  test "email_unique" do
-    @user2 = User.new(name: "Example User2", email: "user@example.com",
-    password: "foobar", password_confirmation: "foobar")
+  test "user_email_unique制約チェック" do
+    @user2 = User.new(
+      name: "Example User2", 
+      email: "user@example.com",
+      password: "foobar", 
+      password_confirmation: "foobar",
+      location: '千葉県',
+      like_thing: 'くまさん')
     @user2.save
     assert_not @user.valid? # email重複
-  end
+  end 
   
-
-    
 end

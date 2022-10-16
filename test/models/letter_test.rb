@@ -1,35 +1,34 @@
 require "test_helper"
-
 class LetterTest < ActiveSupport::TestCase
 
   def setup
     @user_01 = users(:user_01)
     @user_02 = users(:user_02)
-    @letter_01_01 = @user_01.letters.build(title:   "手紙_1",
-                                           content: "user_01です",
-                                           to_user_id: @user_02.id)
+    @letter_01_01 = @user_01.letters.build(
+      title:         "正常なタイトル",
+      content:       "正常な本文",
+      match_room_id: 1)  #match_room_idはdammy
   end
 
 # validate
 
-  test "valid_success" do
-    assert @letter_01_01.valid?  # 正常
-    assert @user_01.id == @letter_01_01.user_id #正常
-    assert @letter_01_01.to_user_id == @user_02.id 
+  test "letter_valid成功チェック" do  
+    assert @letter_01_01.valid?                    # 正常
+    assert @user_01.id == @letter_01_01.user_id    # 正常
   end
 
-  test "title_valid" do
-    @letter_01_01.title = ""
-    assert_not @letter_01_01.valid?
-    @letter_01_01.title = "a" * 21  # 21字以上
-    assert_not @letter_01_01.valid?
+  test "letter_title_validエラーチェック" do
+    @letter_01_01.title = ""          # タイトル空白 
+    assert_not @letter_01_01.valid?   # validエラー
+    @letter_01_01.title = "a" * 21    # 21字以上
+    assert_not @letter_01_01.valid?   # validエラー
 
   end
 
-  test "content_valid" do
-    @letter_01_01.title = ""
-    assert_not @letter_01_01.valid?
+  test "letter_content_valid_エラーチェック" do
+    @letter_01_01.title = ""         #content空白
+    assert_not @letter_01_01.valid?  # validエラー
     @letter_01_01.title = "a" * 301  # 301字以上
-    assert_not @letter_01_01.valid?
+    assert_not @letter_01_01.valid?  # validエラー
   end
 end

@@ -8,9 +8,7 @@ class InboxRecord < ApplicationRecord
 
     # scope 
     scope :find_all_by_id,    -> (user_id) { where(user_id: user_id,hidden_flag: false).includes([:user, match_room: :letters]).order(updated_at: :desc) }
-    #scope :find_count_replayable, -> (user_id) { joins(:last_letter).where(user_id: user_id,hidden_flag: false)}
-    scope :test, -> (user_id) { joins(:last_letter) }
- 
+  
     # 検索条件
     # 「[letterが1通しかない] かつ [それが自身のletter] 」以外を返却
     scope :filter_no_reply_letter, -> { where.not("? = 1", self.first.match_room.letters.count)

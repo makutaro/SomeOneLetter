@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
      else           # 失敗
       flash[:error] = error_msg
       redirect_to request.referrer || root_url
+      return false
      end
   end
 end

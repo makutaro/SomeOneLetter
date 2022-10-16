@@ -24,21 +24,11 @@ Rails.application.routes.draw do
     }
 
   # 静的ページ(home,about,contact)
-    root 'static_pages#top'
-    get  '/home',    to: 'static_pages#home'
-    get  '/about',   to: 'static_pages#about'
-    get  '/contact', to: 'static_pages#contact'
-
-
-  # userモデル(edit,inbox)
-  resources :users do
-    member do
-      get :match_room # GET  /users/[user_id]/match_room/[match_room_id]
-    end
-  end
+    root 'main_pages#top'
+    get  '/home',    to: 'main_pages#home'
 
   # letterモデル
-  resources :letters, only: [:new,:create,:destroy]
+  resources :letters, only: [:create,:destroy]
   
   # inbox_recordsモデル
   resources :inbox_records, only:[:show,:destroy] do
@@ -47,6 +37,9 @@ Rails.application.routes.draw do
       post :release
     end
   end
+
+  # roomモデル
+  resources :match_room, only:[:show]
 
   devise_scope :user do
     post 'new_user_step1', to: 'users/registrations#step1'

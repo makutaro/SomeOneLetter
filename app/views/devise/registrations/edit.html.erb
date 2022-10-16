@@ -1,17 +1,19 @@
-
-  <%= form_with model: @user, class: "edit-form", url: registration_path(resource_name), html: { method: :put } do |f| %>
+<%= form_with model: @user, class: "edit-form", url: registration_path(resource_name), html: { method: :put } do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
 
-  <%= if current_user.image.attached?
-           image_tag current_user.image, size: "100x100", class:"center-block rounded-circle custom-image"
-      else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle custom-image"
-      end
-  %>
-  <span class="image">
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-  </span>
-
-  <div class="form-field">
+  <div class="center">
+    <%= f.label :image,class:"form-image-file" do %>
+      <%= 
+        if current_user.image.attached? 
+              image_tag current_user.image, size: "100x100", class:"center-block rounded-circle custom-image"
+        else image_tag "bottle_ship.png",size:"100x100", class:"center-block rounded-circle custom-image"
+        end
+      %>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    <% end %>
+  </div>
+ 
+  <div class="form-field mx-auto">
     <%= f.label :ニックネーム %><br />
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
@@ -54,8 +56,8 @@
   </div>
 
   <div class="form-action text-center">
-    <%= f.submit "更新",class: "btn custom-btn btn-primary"%>
-    <%= link_to "Back", :back ,class: "btn custom-btn btn-secondary" %>
+    <%= f.submit "更新",class: "btn custom btn-primary"%>
+    <%= link_to "Back", home_url ,class: "btn custom btn-secondary" %>
   </div>
 <% end %>
 
@@ -64,7 +66,7 @@
     <div class="custom-form">
       <h4>※全ての情報が削除されます</h4>
       <div class="form-action">
-        <%= button_to "退会する", registration_path(resource_name),class: "btn custom-btn btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
+        <%= button_to "退会する", registration_path(resource_name),class: "btn custom btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
       </div>
     </div>
   </div>

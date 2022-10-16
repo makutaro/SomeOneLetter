@@ -1,16 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-user_01_01:
-  user: user_01
-  title: 手紙_1
-  content: "初めまして!僕の名前はuser_01です"
-  to_user_id: 2
-  reply_flag: false
-  
-
-user_02_01:
-  user: user_02
-  title: 手紙_2
+letter_01:
+  id: 1
+  title: letter_01です
   content: "初めまして!僕の名前はuser_02です"
-  to_user_id: 1
-  reply_flag: false
+  user_id: 2
+  match_room_id: 1
+
+letter_02:
+  id: 2
+  title: letter_02です
+  content: "初めまして!僕の名前はuser_03です"
+  user_id: 3
+  match_room_id: 1
+
+letter_03:
+  id: 3
+  title: letter_03です
+  content: "初めまして!僕の名前はuser_02です"
+  user_id: 2
+  match_room_id: 1

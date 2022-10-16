@@ -21,18 +21,18 @@ masterkey
 やること
 
 1.テスト書く
-2.スマホ最適
 3.circleci
 4.ジョブ
 5.seed作成→商用適用
-
+2.スマホ最適
 
 a= InboxRecord.find_count_replayable(5)
 a= InboxRecord.test(5)
 
 a = User.find(1)
 a.name
-
+       
+       
 a = InboxRecord.find(15)
 ap a
 a.last_letter

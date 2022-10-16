@@ -6,13 +6,14 @@
  ####################
 %>
 <div class="home-upper-side">
-  <div class="col">
+  <%= link_to edit_user_registration_url,class: "col" do%>
     <%= if current_user.image.attached?
             image_tag current_user.image, size: "120x120", class:"center-block rounded-circle custom-image"
         else image_tag "bottle_ship.png",size:"120x120", class:"center-block rounded-circle custom-image"
-      end %>
+        end 
+    %>
+  <% end %>
     <div class="name"><%= current_user.name%></div>
-  </div>
 </div>
 
 <%
@@ -41,7 +42,10 @@
   </div>
   <div class="home-body card inner-card center p-5">
     <h2 class="mb-4">返信可能な手紙</h2>
-    <span class="text-danger display-2 bold"><%= current_user.count_replayable %>通</span>
+    <div>
+     <span class="text-danger display-2 bold"><%= current_user.count_replayable %></span>
+     <span class="text-danger display-5 bold">通</span>
+    </div>
     <%= link_to "受信箱を見る",inbox_record_url(id:current_user.id),class: "btn custom btn-primary mx-auto mt-4"%>
   </div>
 </div>
@@ -71,11 +75,10 @@
   </div>
   <div class="home-body mr-10p">
       <ul>
-        <li><h4>一日に流せる手紙は5通までです</h4></li><br>
         <li><h4>暴言、わいせつな文言など、不適切な内容はお控えください</h4></li><br>
         <li><h4>初めて受け取った手紙は"受け取ってから7日間"でほかの誰かのもとへ流れてしまいます。</h4></li><br>
         <li><h4>手紙は常に"1通づつ"のやり取りとなります(連続送信ができません)<br>相手からの返信が来るまで返信が出来ないので、手紙は丁寧に心を込めて書きましょう</h4></li><br>
-        <li><h4>30日間ログインがないと、"新規の手紙が届かなくなってしまいます。<br>月に一度は様子を見に行きましょう</h4></li>
+        <li><h4>30日間ログインがないと、"新規の手紙"が届かなくなってしまいます。<br>月に一度は様子を見に行きましょう</h4></li>
       </ul>
   </div>
 </div>
@@ -108,16 +111,5 @@
   <div class="row">
     <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
     <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
-  </div>
-  <div class="row">
-    <%= render 'shared/home/home_col', { image:"icons/gear",   url:home_url, text:"設定"} %>
-    <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール"} %>
-    <%= render 'shared/home/home_col', { image:"icons/wakaba", url:home_url, text:"注意とマナー"} %>
-  </div>
-  
-  <p>Jqueryテスト</p>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("p").text("成功！！");
-  });
-</script>
+    <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール編集"} %>
+</div>
