@@ -32,9 +32,10 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
 # railsコマンド各種
+RUN EDITOR=vim rails credentials:edit
 RUN rails assets:precompile RAILS_ENV=production
 RUN bin/webpack
-RUN EDITOR=vim rails credentials:edit
+
 
 # 起動コマンド各種
 ENTRYPOINT ["entrypoint.sh"]

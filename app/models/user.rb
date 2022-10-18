@@ -16,6 +16,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :location, presence: true
+  validates :like_thing, presence: true
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: "画像のフォーマットが不適切です" },
                              size:  { less_than: 5.megabytes,
@@ -37,7 +38,6 @@ class User < ApplicationRecord
   def display_image
        image.variant(resize_to_limit: [70, 70])
      end
-
 
   # dammy生成用のクラスメソッド(作成数,)
   def self.create_dammy(num, to_user_id)

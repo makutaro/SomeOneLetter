@@ -29,9 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
       render '/devise/registrations/step2'
     else
-      # invalid
-      logger.debug(@user.errors.full_messages)
-
       render '/devise/registrations/new'
     end
 
@@ -41,7 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user =User.new(sign_up_params)
     @user.image.attch(params[:user][:image]) if params[:user][:image] 
-    
     @user.save
     yield @user if block_given?
     if @user.persisted?
@@ -114,12 +110,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # Strong Parametes
   def step1_params
-
     # .validメソッド使用の為、ダミー値を設定。DBには保存しない
     params[:user][:name]       = "dammy"
     params[:user][:like_thing] = "dammy"
     params[:user][:location]   = 1
-  
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :like_thing, :location)
   end
 end
