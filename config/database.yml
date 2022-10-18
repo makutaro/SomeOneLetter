@@ -14,7 +14,7 @@ default: &default
   
 development:
   <<: *default
-  databasse: myapp_development
+  database: myapp_development
   host: db
   username: postgres
   password: postgres

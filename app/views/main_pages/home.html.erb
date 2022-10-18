@@ -31,6 +31,8 @@
   </div>
 </div>
 
+
+
 <%
  ########################
  ###   手紙を見る       ## 
@@ -46,7 +48,7 @@
      <span class="text-danger display-2 bold"><%= current_user.count_replayable %></span>
      <span class="text-danger display-5 bold">通</span>
     </div>
-    <%= link_to "受信箱を見る",inbox_record_url(id:current_user.id),class: "btn custom btn-primary mx-auto mt-4"%>
+    <%= link_to "受信箱を見る",inbox_records_url,class: "btn custom btn-primary mx-auto mt-4"%>
   </div>
 </div>
 
@@ -110,6 +112,6 @@
 <div class="contaner" id="home-container">
   <div class="row">
     <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
-    <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_record_url(id:current_user.id), text:"届いた手紙"} %>
+    <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_records_url, text:"届いた手紙"} %>
     <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール編集"} %>
 </div>

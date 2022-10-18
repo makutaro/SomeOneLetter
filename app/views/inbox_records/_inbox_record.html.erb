@@ -14,7 +14,7 @@
 %>
 
 <%# レコード部分  %>
-<%= link_to room_inbox_records_url(inbox_id:inbox_record.id,room_id:inbox_record.match_room_id), class: "inbox-card" do%>
+<%= link_to match_room_path(inbox_record.match_room_id), class: "inbox-card" do%>
 
   <div class="inbox-record">
     <div class="inbox-image"> 

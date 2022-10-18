@@ -18,8 +18,11 @@
         <h3><%= text %></h3>
       </div>
       <div class="m-footer">
-        <button type="button" class="btn cuhtom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
-        <%= render "shared/release_form" %>
+        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
+        <%= form_with(url:release_inbox_records_url) do |f| %>
+          <%= f.hidden_field :id,    :value => @inbox_record.id  %>
+          <%= f.submit "ながす",class: "btn custom btn-primary m-1"%>
+        <% end %>
       </div>
     </div>
   </div>

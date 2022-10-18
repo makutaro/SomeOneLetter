@@ -9,7 +9,7 @@
     </button>
 
     <%# roomページの場合  %>
-    <% if current_page?(room_inbox_records_url) %>
+    <% if request.fullpath.include? "match_rooms/" %>
       <div id="header-logo" , class=" align-items-center navbar-brand">
        <% if @inbox_record.to_user.image.attached? %>
         <%= image_tag @inbox_record.to_user.image,size:"35x35", class:"d-inline-block align-top rounded-circle custom-image" %>
@@ -36,7 +36,5 @@
         </li>
       </ul>
     </div>
-
   </nav>
-
 </header>

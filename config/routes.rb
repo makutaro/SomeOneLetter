@@ -1,17 +1,3 @@
-  # deviseで使用するroute定義
-  # ここに定義しないrouteはgemに定義されたctrlが参照される
-  # ココ => /usr/local/bundle/gems/devise-4.8.1/lib/devise
-  # あくまでカスタマイズしたいrouteのみを記述すること
-
-  # ※メモ
-  # GET   /users        index
-  # GET   /users/1      show
-  # GET   /users        new
-  # POST  /users        create
-  # GET   /users/1/edit edit
-  # PATCH /users/1      update
-  # DELETE /users/1     destory
-
 Rails.application.routes.draw do
 
     #devise関連
@@ -22,6 +8,9 @@ Rails.application.routes.draw do
       sessions:            'users/sessions',          # ユーザのログイン
       unlocks:             'users/unlocks'
     }
+    devise_scope :user do
+      post 'new_user_step1', to: 'users/registrations#step1'
+    end
 
   # 静的ページ(home,about,contact)
     root 'main_pages#top'
@@ -31,18 +20,21 @@ Rails.application.routes.draw do
   resources :letters, only: [:create,:destroy]
   
   # inbox_recordsモデル
-  resources :inbox_records, only:[:show,:destroy] do
+  resources :inbox_records, only:[:index,:destroy] do
     collection do
-      get  :room
       post :release
     end
   end
-
+  
   # roomモデル
-  resources :match_room, only:[:show]
-
-  devise_scope :user do
-    post 'new_user_step1', to: 'users/registrations#step1'
-  end
+  resources :match_rooms, only:[:show]
 end
+  # ※メモ
+  # GET   /users        index
+  # GET   /users/1      show
+  # GET   /users        new
+  # POST  /users        create
+  # GET   /users/1/edit edit
+  # PATCH /users/1      update
+  # DELETE /users/1     destory
 

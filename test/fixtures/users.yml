@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 
 user_01:
+  id: 1
   name: user_01
   email: user01@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'user01') %>
@@ -14,6 +15,7 @@ user_01:
   # confirmed_at: <%= Time.now - 100 %>
 
 user_02:
+  id: 2
   name: user_02
   email: user02@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'user02') %>
@@ -21,6 +23,7 @@ user_02:
   like_thing: 'くまさん'
 
 user_03:
+  id: 3
   name: user_03
   email: user03@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'user03') %>
