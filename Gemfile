@@ -17,6 +17,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'faker'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'rails-i18n'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'

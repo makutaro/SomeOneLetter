@@ -18,8 +18,9 @@ module Myapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    
-    #config.i18n.default_locale = :ja
+     
+    # 日本語の設定
+    config.i18n.default_locale = :ja
 
     # field_with_errorsタグを読み込まない(レイアウトが崩れるので。。。)
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }

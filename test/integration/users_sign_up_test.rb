@@ -10,12 +10,15 @@ class UsersSignUpTest < ActionDispatch::IntegrationTest
   end
 
   test "サインアップ => プロフィール編集 => サインアウト" do
+    #サインアップ_step1
     get new_user_session_path
     post new_user_step1_path, params: { 
       user: { email:                 "sample@example.com",
               password:              "makutaro",
               password_confirmation: "makutaro" } }
     assert_template 'devise/registrations/step2'
+    
+    #サインアップ_step2
     assert_difference 'User.count', 1 do  
       post user_registration_path, params: { 
         user: { name:                  "makutaro",
@@ -24,20 +27,12 @@ class UsersSignUpTest < ActionDispatch::IntegrationTest
                 password_confirmation: "makutaro",
                 like_thing:            "チャーハン",
                 location:              "千葉県" } }
+      assert_redirected_to root_path
     end
+
+    #プロフィール編集
+    get edit_user_registration_path
+    
   end
-  
-  # test "invalid signup information" do
-  #   get signup_path
-  #   assert_no_difference 'User.count' do
-  #     post users_path, params: { user: { name:  "",
-  #                                         email: "user@invalid",
-  #                                         password:              "foo",
-  #                                         password_confirmation: "bar" } }
-  #   end
-  #   assert_template 'users/new'
-  #   assert_select 'div#<CSS id for error explanation>'
-  #   assert_select 'div.<CSS class for field with error>'
-  # end
 
 end

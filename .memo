@@ -15,8 +15,7 @@
 
 masterkey
   f33d2cb07deff755b6d025570028e726
-
-
+  
 
 やること
 
@@ -32,7 +31,7 @@ a= InboxRecord.test(5)
 a = User.find(1)
 a.name
        
-       
+
 a = InboxRecord.find(15)
 ap a
 a.last_letter

@@ -47,6 +47,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
                 password_confirmation: "makutaro",
                 like_thing:            "チャーハン",
                 location:              "千葉県" } }
+        assert_redirected_to root_path
     end
   end
 end
