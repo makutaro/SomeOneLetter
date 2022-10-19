@@ -36,7 +36,6 @@ RUN EDITOR=vim rails credentials:edit
 RUN rails assets:precompile RAILS_ENV=production
 RUN bin/webpack
 
-
 # 起動コマンド各種
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

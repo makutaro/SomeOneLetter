@@ -27,6 +27,7 @@
           toastr['<%= toast_alert(type) %>']('<%= msg %>');
         </script>
       <% end %>
+      <% flash.clear %>
       
    <%# main %>
       <% if user_signed_in? %>

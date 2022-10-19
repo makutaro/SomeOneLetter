@@ -12,7 +12,7 @@ private
     def correct_user
       if current_user.id != params[:id] .to_i
         flash[:danger] = "不正なURLです"
-        redirect_to(root_url)
+        redirect_to root_url
       end
     end
 end

@@ -16,17 +16,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource/registrations#step1
   def step1
-
-    # 一部ダミーで@user作成
-    @user = User.new(step1_params)
-
+    @user = User.new(step1_params) # 一部ダミーで@user作成
     if @user.valid?
-      # valid
-      # dammyデータを削除
-      @user.name = nil;
+      @user.name = nil;            # dammyデータを削除
       @user.like_thing = nil;
       @user.location = nil;
-
       render '/devise/registrations/step2'
     else
       render '/devise/registrations/new'

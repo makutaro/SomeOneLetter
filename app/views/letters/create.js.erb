@@ -2,7 +2,7 @@
 <% flash.each do |type, message| %>
   toastr['<%= toast_alert(type) %>']('<%= message %>');
 <% end %>
-<% flash.clear  %>
+<% flash.clear %>
 
 <%# modal閉じる %>
 $('#new-letter-modal').modal('hide')
@@ -18,4 +18,5 @@ $("#preview-modal").modal("hide")
 
   <%# letterを追加 %>
   $("#add-modal").html("<%= escape_javascript(render 'letters/letter', letter: @letter) %>")
+  
 <% end %>
