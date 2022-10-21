@@ -25,18 +25,24 @@ private
   end
 
   def create_reply_letter
-    collect_room_id?(@letter.match_room_id)                        #room_idが正当な値であるかチェック
-    @type = "reply"
-    @letter.match_room.inbox_records.map{|f| f.touch}              # inbox_recordのtimestamp更新
-    save_safe(@letter,"返信しました","不明なエラーです")             # DB保存(@letter,@match_room,@inbox_record)
+    if collect_room_id?(@letter.match_room_id)? &&
+       judge_sendable? then
+      @type = "reply"
+      @letter.match_room.inbox_records.map{|f| f.touch}              # inbox_recordのtimestamp更新
+      save_safe(@letter,"返信しました","不明なエラーです")             # DB保存(@letter,@match_room,@inbox_record)  
+    else
+      flash[:error] = "不正なアクセスです"
+      return redirect_to request.referrer || root_url
+    end 
   end
 
   #room_idが正当な値であるかチェック
   def collect_room_id?(room_id)
     unless InboxRecord.where(match_room_id:room_id).pluck(:user_id).include?(current_user.id)
-      flash[:error] = "不正なアクセスです"
-      redirect_to request.referrer || root_url
-    end
+  end
+  
+  def judge_sendable?
+    unless @letter.match_room.last_letter.user_id == @letter.user_id
   end
 
 end

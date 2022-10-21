@@ -4,13 +4,10 @@
   #mine_tag = if inbox_record.match_room.letters.last.user_id == current_user.id ? "返信待ち" : ""
   if inbox_record.match_room.letters.last.user_id == current_user.id
       mine_tag      = "返信済み"
-      replyable_tag = ""
   else
-      mine_tag      = ""
       replyable_tag = "返信可能"
   end
   new_tag  = inbox_record.match_room.letters.count == 1  ?  elapsed_time(inbox_record.updated_at): ""  
-       
 %>
 
 <%# レコード部分  %>
@@ -28,9 +25,13 @@
       <div class="inbox-content"><%= inbox_record.match_room.letters.last.title %> <%= inbox_record.match_room.letters.last.content[0,10] %>・・・</div>
     </div>
     <div class="inbox-tag">
-      <span class="new-tag"      ><%= new_tag  %>      </span>
-      <span class="mine-tag"     ><%= mine_tag %>      </span>
-      <span class="replyable_tag"><%= replyable_tag %> </span>
+      <span class="new-tag"><%= new_tag  %></span>
+      <% if mine_tag %>
+        <span class="mine-tag"> 返信済み </span>
+      <% end  %>
+      <% if replyable_tag %>
+        <span class="replyable-tag"> 返信可能 </span>
+      <% end  %>
     </div>
     <div class="inbox-time"><%= inbox_record.match_room.letters.last.created_at.strftime('%Y/%m/%d %k:%M') %></div>
   </div>

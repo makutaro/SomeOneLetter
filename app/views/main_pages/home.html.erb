@@ -45,7 +45,7 @@
   <div class="home-body card inner-card center p-5">
     <h2 class="mb-4">返信可能な手紙</h2>
     <div>
-     <span class="text-danger display-2 bold"><%= current_user.count_replayable %></span>
+     <span id="replayavle-count" class="text-danger display-2 bold"><%= current_user.count_replayable %></span>
      <span class="text-danger display-5 bold">通</span>
     </div>
     <%= link_to "受信箱を見る",inbox_records_url,class: "btn custom btn-primary mx-auto mt-4"%>
