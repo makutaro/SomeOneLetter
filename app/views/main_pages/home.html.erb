@@ -24,7 +24,7 @@
 <div class="contaner card home-card p-4">
   <div class="home-head">
     <%= image_tag( "icons/letter",size: "70x70")%>
-    <span class="title">手紙を書いて海に流す</span>
+    <span class="title h1">手紙を書いて海に流す</span>
   </div>
   <div class="home-body center">
    <button class="btn custom btn-primary" data-bs-toggle="modal" data-bs-target="#new-letter-modal">手紙を書く</button>
@@ -40,7 +40,8 @@
 %>
 <div class="contaner card home-card p-4">
   <div class="home-head">
-    <%= image_tag( "icons/post",size: "70x70")%>手紙をみる
+    <%= image_tag( "icons/post",size: "70x70")%>
+    <span class="title h1">手紙をみる</span>
   </div>
   <div class="home-body card inner-card center p-5">
     <h2 class="mb-4">返信可能な手紙</h2>
@@ -59,7 +60,8 @@
 %>
 <div class="contaner card home-card p-4">
   <div class="home-head">
-    <%= image_tag( "icons/bell",size: "70x70")%>おしらせ
+    <%= image_tag( "icons/bell",size: "70x70")%>
+    <span class="title h1">おしらせ</span>
   </div>
   <div class="home-body mr-20p">
    <%= render @information  %>   
@@ -73,7 +75,8 @@
 %>
 <div class="contaner card home-card p-4">
   <div class="home-head">
-    <%= image_tag( "icons/wakaba",size: "40x50")%>注意とマナー
+    <%= image_tag( "icons/wakaba",size: "40x50")%>
+    <span class="title h1">注意とマナー</span>
   </div>
   <div class="home-body mr-10p">
       <ul>
@@ -95,23 +98,22 @@
     ポートフォリオとして
   </div>
   <div class="home-body mr-10p">
-  <ul>
+  <ul class="list-unstyled">
     <li><h4>当サービスはエンジニアとしての技術提示を目的としたポートフォリオとなります。<br>
         商用サービスとして公開しておりませんので、不特定多数への公開はお控えください。</h4></li>
     <br>
     <li><h4>↓各種リンク。質問および面談の打診はお気軽に問い合わせください</h4></li>
-    <li><h4>twitter : <%= link_to "https://twitter.com/noisy_gameshop", "https://twitter.com/noisy_gameshop" %></h4></li>
-    <li><h4>wantedly: <%= link_to "https://www.wantedly.com/id/akira_yajima_i", "https://www.wantedly.com/id/akira_yajima_i"%></h4></li>
-    <li><h4>github  : <%= link_to "https://github.com/makutaro/SomeOneLetter", "https://github.com/makutaro/SomeOneLetter"%></h4></li>
-    <li><h4>メール  : akira_yajima_tw@gmail.com</h4></li>
+    <li><h4>・twitter : <%= link_to "https://twitter.com/noisy_gameshop", "https://twitter.com/noisy_gameshop" %></h4></li>
+    <li><h4>・wantedly: <%= link_to "https://www.wantedly.com/id/akira_yajima_i", "https://www.wantedly.com/id/akira_yajima_i"%></h4></li>
+    <li><h4>・github  : <%= link_to "https://github.com/makutaro/SomeOneLetter", "https://github.com/makutaro/SomeOneLetter"%></h4></li>
+    <li><h4>・メール  : akira_yajima_tw@gmail.com</h4></li>
   </ul>
   </div>
 </div>
 
-
-<div class="contaner" id="home-container">
+<div class="contaner home-container">
   <div class="row">
     <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
-    <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_records_url, text:"届いた手紙"} %>
+    <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_records_url, text:"手紙をみる"} %>
     <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール編集"} %>
 </div>

@@ -11,15 +11,15 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="m-header">
-        <h2><%= title %></h2>
+        <h1><%= title %></h1>
       </div>
       <%= image_tag "#{image}", size: "143x200", class:"m-image center" %>
       <div class="m-body">
         <h3><%= text %></h3>
       </div>
       <div class="m-footer">
-        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
         <%= link_to "破棄する","/inbox_records/#{@inbox_record.id}",method:"delete",class: "btn custom btn-danger m-1"%>
+        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal" aria-label="Close">もどる</button>
       </div>
     </div>
   </div>

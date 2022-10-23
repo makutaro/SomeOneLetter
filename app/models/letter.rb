@@ -21,4 +21,5 @@ class Letter < ApplicationRecord
           content: "dammy_content"
         )
    end
+   
 end

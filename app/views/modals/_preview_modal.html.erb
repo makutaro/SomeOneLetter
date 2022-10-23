@@ -17,12 +17,12 @@
         </div>
       </div>
       <div class="m-footer">
-        <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">とじる</button>
         <%= form_with(model: Letter.new, url:letters_url, local: false) do |f| %>
           <%= f.hidden_field :title,         id:"preview-field-title"  %>
           <%= f.hidden_field :content,       id:"preview-field-content" %>
           <%= f.hidden_field :match_room_id, id:"preview-field-match_room_id" %>
           <input type="submit" value="ながす" class="btn custom btn-primary m-1" data-bs-dismiss="modal">
+          <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">とじる</button>
         <% end %>
       </div>
     </div>

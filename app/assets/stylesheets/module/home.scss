@@ -30,15 +30,15 @@
     font-weight: bold;
   }
 }
-#home-container{
-  margin: 0px 5px 0px 5px ;
+.home-container{
+  margin: 0px 15px 0px 15px ;
   flex-wrap: wrap;
   align-content: flex-start;
 }
 
 .home-col-card {
+  margin: 0.5em;
   border-radius: 1rem !important;
-  margin:  6px;
   padding-top: 30px;
   padding-bottom: 25px;  
   height: fit-content;

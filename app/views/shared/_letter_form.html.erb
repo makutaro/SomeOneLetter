@@ -23,17 +23,22 @@
 <%= form_with model: Letter.new, id:"cleate-letter-form", class:"custom-form needs-validation" do |f| %>
   <%= f.hidden_field :match_room_id, :value => match_room_id, name:"form-room-id" %>
   
-  <div class="form-column">
+  <div class="form-column m-3">
     <%= f.text_field :title, placeholder: title, value: title_default, class: "form-control center-block", name:"form-title",required: true %>
   </div>
 
-  <div class="form-column">
+  <div class="form-column m-3">
     <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block", name:"form-content",required: true %>
   </div>
+  
+  <h3 class="text-danger center" >
+    ※一度返信すると、返信がくるまで再送ができません。<br>
+    内容をよく考えて送信しましょう。          
+  </h3>
 
   <div class="form-action text-center">
     <%# jsにて、form取り込み => #preview-modal起動  %>
-    <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">閉じる</button>
     <button name="submit" type="submit" class="btn custom btn-primary m-1" onclick="ShowPreviewModal(this,event);">確認</button>
+    <button type="button" class="btn custom btn-secondary m-1" data-bs-dismiss="modal">閉じる</button>
   </div>
 <% end %>

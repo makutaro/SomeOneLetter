@@ -16,24 +16,27 @@
   <div class="inbox-record">
     <div class="inbox-image"> 
       <%= if inbox_record.to_user.image.attached?
-             image_tag inbox_record.to_user.image, size: "80x80", class:"center-block rounded-circle"
-        else image_tag "bottle_ship_white.png",size:"80x80", class:"center-block rounded-circle"
+             image_tag inbox_record.to_user.image, size: "60x60", class:"center-block rounded-circle"
+        else image_tag "bottle_ship_white.png",size:"60x60", class:"center-block rounded-circle"
       end %> 
     </div>
     <div class="inbox-body">
-      <div class="inbox-name"><%= inbox_record.to_user.name %></div>
-      <div class="inbox-content"><%= inbox_record.match_room.letters.last.title %> <%= inbox_record.match_room.letters.last.content[0,10] %>・・・</div>
+      <h3 class="inbox-name"><%= inbox_record.to_user.name %></h3>
+      <h5 class="inbox-content"><%= inbox_record.match_room.letters.last.title %> <%= inbox_record.match_room.letters.last.content[0,10] %>・・・</h5>
     </div>
     <div class="inbox-tag">
-      <span class="new-tag"><%= new_tag  %></span>
+      <h5 class="new-tag"><%= new_tag  %></h5>
       <% if mine_tag %>
-        <span class="mine-tag"> 返信済み </span>
+        <h5 class="mine-tag"> 返信済み </h5>
       <% end  %>
       <% if replyable_tag %>
-        <span class="replyable-tag"> 返信可能 </span>
+        <h5 class="replyable-tag"> 返信可能 </h5>
       <% end  %>
     </div>
-    <div class="inbox-time"><%= inbox_record.match_room.letters.last.created_at.strftime('%Y/%m/%d %k:%M') %></div>
+    <div>
+      <h5 class="inbox-time"><%= inbox_record.match_room.letters.last.created_at.strftime('%Y/%m/%d') %></h5>
+      <h5 class="inbox-time"><%= inbox_record.match_room.letters.last.created_at.strftime('%k:%M') %></h5>
+    </div>
   </div>
   
 <% end %>

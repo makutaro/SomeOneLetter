@@ -52,31 +52,22 @@
 
 .inbox-record {
   display: flex;
-  height:80px;
   .inbox-image {
     margin-right: 4px;
-    flex-basis: 80px;
   }
   .inbox-body{
     flex-grow:2;
     .inbox-name{
-      font-weight: bold;
-      font-size: 2.1rem;
     }
     .inbox-content{
       font-weight: lighter;
-      font-size: 1.5rem;
     }
   }
   .inbox-time {
-    line-height: 80px;
-    font-size: 1.5em;
-    flex-basis: 128px; 
+   flex-basis: 128px; 
    text-align: right;
   }
   .inbox-tag {
-     line-height: 80px;
-     font-size: 17px;
     .new-tag      { background-color: greenyellow;
                     margin-right: 2px; }
     .mine-tag     { background-color: #d9d9d9;
