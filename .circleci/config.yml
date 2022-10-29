@@ -1,26 +1,13 @@
-version: 2.1
-# build => test => deploy
-# パッケージされたビルドコマンド/パイプライン
-# 今回は"ruby"といういうorbsを利用
-orbs:
+version: 2.1 # circleciのversion
+
+orbs:  # orbsを定義
   ruby: circleci/ruby@1.4.0
   node: circleci/node@2
   aws-ecr: circleci/aws-ecr@6.15
   aws-ecs: circleci/aws-ecs@2.0.0
 
-jobs:
-  # build:
-  #   docker:
-  #     - image: cimg/ruby:3.1.0
-  #   executor: ruby/default
-  #   steps:
-  #     - checkout # gitコードをコンテナにマウント
-  #     - ruby/install-deps
-  #     - node/install-packages: 
-  #         pkg-manager: yarn
-  #         cache-key: "yarn.lock"
-
-  rails-deploy:
+jobs: # ジョブを定義
+  rails-deploy: # 一つ目のジョブ。build => deployを実行。
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
@@ -39,11 +26,20 @@ jobs:
           family: 'sample'                   # ECSのタスク定義名
           cluster-name: 'sample-cluster'     # ECSのクラスター名かARNのフルパス
           service-name: 'sample-alb-service' # サービス名
-          # containerはタスク定義で設定したコンテナ名にする
           container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
 
-# ここで複数のjobsの依存関係を定義
 workflows:
-  sample: # buildを実行するだけのワークフロー
-    jobs:
-      - rails-deploy
+  build_test_deploy: # ワークフロー名
+    jobs:            # 実行ジョブのリスト定義
+      - rails-deploy # rails-deploy実行
+   
+  # build:
+  #   docker:
+  #     - image: cimg/ruby:3.1.0
+  #   executor: ruby/default
+  #   steps:
+  #     - checkout # gitコードをコンテナにマウント
+  #     - ruby/install-deps
+  #     - node/install-packages: 
+  #         pkg-manager: yarn
+  #         cache-key: "yarn.lock"
