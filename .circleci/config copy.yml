@@ -6,9 +6,19 @@ orbs:  # orbsを定義
   aws-ecr: circleci/aws-ecr@6.15
   aws-ecs: circleci/aws-ecs@2.0.0
 
-workflows:
-  build_test_deploy: # ワークフロー名
-    jobs:            # 実行ジョブのリスト定義
+jobs: # ジョブを定義
+  build:
+    docker:
+      - image: cimg/ruby:3.1.0
+    executor: ruby/default
+    steps:
+      - checkout # gitコードをコンテナにマウント
+      - ruby/install-deps
+      - node/install-packages: 
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+
+  rails-deploy: # 一つ目のジョブ。build => deployを実行。
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
@@ -28,3 +38,9 @@ workflows:
           cluster-name: 'sample-cluster'     # ECSのクラスター名かARNのフルパス
           service-name: 'sample-alb-service' # サービス名
           container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
+
+workflows:
+  build_test_deploy: # ワークフロー名
+    jobs:            # 実行ジョブのリスト定義
+      - build
+      - rails-deploy # rails-deploy実行

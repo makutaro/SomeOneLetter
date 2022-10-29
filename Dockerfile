@@ -16,6 +16,9 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y yarn 
 
+# circleci関連
+RUN curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | bash
+
 # yarn install & bundle install ※キャッシュを生かす為、先に実行
 RUN mkdir /myapp
 WORKDIR /myapp 
