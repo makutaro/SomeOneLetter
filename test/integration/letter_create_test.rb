@@ -4,6 +4,7 @@ class LetterCreateTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
+    @user1 = users(:user_01)
     @user2 = users(:user_02)
     @user3 = users(:user_03)
   end
@@ -13,13 +14,13 @@ class LetterCreateTest < ActionDispatch::IntegrationTest
       sign_in(@user2)
       get inbox_records_path 
        assert_select "div.inbox-record", 1       # レコード数1
-       assert_select "span.replyable-tag", 0     # 返信可能タグ数1
+       assert_select ".replyable-tag", 0     # 返信可能タグ数1
       
     # user3 返信x2 => 二回目エラー
       sign_in(@user3)
       get inbox_records_path  
        assert_select "div.inbox-record", 1       # レコード数1
-       assert_select "span.replyable-tag", 1     # 返信可能タグ数1
+       assert_select ".replyable-tag", 1     # 返信可能タグ数1
       get match_room_path(1)
        assert_difference 'Letter.count', 1 do 
         post letters_path, params: { letter: { title: "title", content: "content", match_room_id: 1 } }, xhr: true
@@ -33,7 +34,7 @@ class LetterCreateTest < ActionDispatch::IntegrationTest
       sign_in(@user2)
       get inbox_records_path
        assert_select "div.inbox-record", 1       # レコード数1
-       assert_select "span.replyable-tag", 1     # 返信可能タグ数1
+       assert_select ".replyable-tag", 1     # 返信可能タグ数1
       get match_room_path(1)
        assert_difference 'Letter.count', 1 do 
          post letters_path, params: { letter: { title: "title", content: "content", match_room_id: 1 } }, xhr: true
@@ -56,7 +57,20 @@ class LetterCreateTest < ActionDispatch::IntegrationTest
     # user2 削除したため、レコードなし
       sign_in(@user2)
       get inbox_records_path  
-      assert_select "div.inbox-record", 0       # レコード数0
+       assert_select "div.inbox-record", 0       # レコード数0
+  end
 
+  test "user1_letter送信=>user1影響確認" do 
+    # user1 送信
+    sign_in(@user1)
+    get inbox_records_path  
+     assert_select "div.inbox-record", 0       # レコード数0
+     assert_select "#sendable_count", "10"     # 返信可能数10 
+     assert_difference 'Letter.count', 1 do 
+      post letters_path, params: { letter: { title: "title", content: "content" } }, xhr: true
+     end
+    get inbox_records_path  
+     assert_select "div.inbox-record", 0       # レコード数0(変更なし)
+     assert_select "#sendable_count", "9"      # 返信可能数9
   end
 end

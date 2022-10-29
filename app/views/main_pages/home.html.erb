@@ -95,7 +95,7 @@
 %>
 <div class="contaner card home-card p-4">
   <div class="home-head">
-    ポートフォリオとして
+    <span class="title h1">ポートフォリオとして</span>
   </div>
   <div class="home-body mr-10p">
   <ul class="list-unstyled">
@@ -115,5 +115,5 @@
   <div class="row">
     <%= render 'shared/home/home_col', { image:"icons/letter", id:"#new-letter-modal", text:"手紙をながす"} %>
     <%= render 'shared/home/home_col', { image:"icons/post",   url:inbox_records_url, text:"手紙をみる"} %>
-    <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール編集"} %>
+    <%= render 'shared/home/home_col', { image:"icons/gear",   url:edit_user_registration_url, text:"プロフィール"} %>
 </div>

@@ -9,6 +9,11 @@ $('#new-letter-modal').modal('hide')
 $('#reply-letter-modal').modal('hide')
 $("#preview-modal").modal("hide")
 
+<% if @type == "new" %>
+  <%# モーダルのカウント更新 %>
+  $('#sendable_count').html('<%= current_user.sendable_count%>')
+<% end %>
+
 <% if @type == "reply" %>
   <%# ボタンの切り替え %>
   $('#no-reply-btn').removeClass('hidden')

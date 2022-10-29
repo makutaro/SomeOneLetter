@@ -5,9 +5,9 @@ class InboxRecordsController < ApplicationController
 
     # GET  /inbox_records
     def index
-        @inbox_records = InboxRecord.find_all_by_id(current_user.id)  # 対象レコードを全て取得
-        @inbox_records.map {|f| f.ignore_wait_reply_records!}.compact # 返信待ちのレコードを除外
-    end
+        @inbox_records_before = InboxRecord.find_all_by_id(current_user.id)  # 対象レコードを全て取得
+        @inbox_records = @inbox_records_before.map {|f| f.ignore_wait_reply_records!}.compact # 返信待ちのレコードを除外
+     end
 
     # DELETE /inbox_records/[id]
     def destroy

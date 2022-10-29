@@ -50,8 +50,8 @@
     <%= f.text_field :location ,class: "form-control" %>
   </div>
 
-  <div class="form-field">
-    <%= f.label "現在のパスワード ※必須" %><br />
+  <div class="form-field mt-5">
+    <%= f.label "現在のパスワード"%><%= f.label "※更新に必須です",class: "text-danger" %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" ,class: "form-control" %>
   </div>
 

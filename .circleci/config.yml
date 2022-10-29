@@ -1,22 +1,49 @@
 version: 2.1
+# build => test => deploy
+# パッケージされたビルドコマンド/パイプライン
+# 今回は"ruby"といういうorbsを利用
 orbs:
   ruby: circleci/ruby@1.4.0
-jobs:
-  build:
-    docker:
-      - image: cimg/ruby:3.1.0
-    executor: ruby/default
-    steps:
-      - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+  node: circleci/node@2
+  aws-ecr: circleci/aws-ecr@6.15
+  aws-ecs: circleci/aws-ecs@2.0.0
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+jobs:
+  # build:
+  #   docker:
+  #     - image: cimg/ruby:3.1.0
+  #   executor: ruby/default
+  #   steps:
+  #     - checkout # gitコードをコンテナにマウント
+  #     - ruby/install-deps
+  #     - node/install-packages: 
+  #         pkg-manager: yarn
+  #         cache-key: "yarn.lock"
+
+  rails-deploy:
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true # ECRにリポジトリがなかったら創る
+          dockerfile: ./Dockerfile
+          repo: rails-sample # ECRのリポジトリ
+          tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update: #
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'sample'                   # ECSのタスク定義名
+          cluster-name: 'sample-cluster'     # ECSのクラスター名かARNのフルパス
+          service-name: 'sample-alb-service' # サービス名
+          # containerはタスク定義で設定したコンテナ名にする
+          container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
+
+# ここで複数のjobsの依存関係を定義
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  sample: # buildを実行するだけのワークフロー
     jobs:
-      - build
+      - rails-deploy

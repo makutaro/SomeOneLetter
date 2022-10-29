@@ -31,10 +31,16 @@
     <%= f.text_area :content, placeholder: "本文", class:"form-control text  center-block", name:"form-content",required: true %>
   </div>
   
-  <h3 class="text-danger center" >
-    ※一度返信すると、返信がくるまで再送ができません。<br>
-    内容をよく考えて送信しましょう。          
-  </h3>
+  <% if type=="reply"  %>
+    <h3 class="text-danger center" >
+      ※一度返信すると、返信がくるまで再送ができません。<br>
+      内容をよく考えて送信しましょう。          
+    </h3>
+  <% elsif  type=="new"%>
+    <h3 class="text-danger center" >
+      本日の送信可能数 <span id="sendable_count"><%= current_user.sendable_count %></span>/10
+    </h3>
+  <% end  %>
 
   <div class="form-action text-center">
     <%# jsにて、form取り込み => #preview-modal起動  %>

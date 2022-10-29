@@ -22,6 +22,12 @@ class User < ApplicationRecord
                              size:  { less_than: 5.megabytes,
                                       message: "画像のサイズが5MBを超えています" }
 
+  def image=(val)
+    # val = MiniMagick.source(val).resize "30, 30"
+    val = self.image.variant(resize_to_limit: [30, 30])
+    debugger
+  end
+
  # enum定義
  enum location: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -66,7 +72,6 @@ class User < ApplicationRecord
 
   # 条件に合致するuser_idを検索 => activeかつランダム
   def self.find_to_user_id(self_id)
-    # a = InboxRecord.find_all_by_id(self_id).plunk(:to_user_id)
     User.where(active_flag:true).where.not(id:self_id).pluck(:id).shuffle!.first
   end
   
@@ -77,5 +82,11 @@ class User < ApplicationRecord
      count += 1 if f.last_letter.user_id != self.id   
     end
     return count
+  end
+
+  # sendable_countを1減らす
+  def reduce_sendable_count!
+    self.sendable_count -= 1
+    self.save
   end
 end

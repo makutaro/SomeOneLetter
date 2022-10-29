@@ -20,6 +20,7 @@ private
         @match_room.inbox_records.build(user_id: current_user.id, to_user_id: to_user_id)   # @inbox_record作成(自身と相手)
         @match_room.inbox_records.build(user_id: to_user_id, to_user_id: current_user.id)
       save_safe(@letter,"投稿しました","不明なエラーです")                                   # DB保存(@letter,@match_room,@inbox_record)
+      current_user.reduce_sendable_count!                                                 # userのsendable_countを1減らす
       flash[:info] = "「#{User.find(to_user_id).like_thing}」が好きな人のもとに届いた気がする"
   end
 
