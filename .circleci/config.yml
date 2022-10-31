@@ -19,9 +19,9 @@ workflows:
           region: $AWS_REGION
           registry-id: AWS_ECR_REGISTRY_ID
           executor: aws-ecr/default
+          remote-docker-layer-caching: true
           repo: some_one_letter_app # ECRのリポジトリ
           tag: "${CIRCLE_SHA1}"
-          docker-layer-caching: true # build時にキャッシュ利用
           filters:
             branches:
               only: master
