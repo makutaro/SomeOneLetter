@@ -14,7 +14,7 @@ workflows:
     jobs:            # 実行ジョブのリスト定義
       - aws-ecr/build-and-push-image:
           executor: aws-ecr/default
-          account-url: AWS_ECR_ACCOUNT_URL
+          #account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
@@ -29,6 +29,6 @@ workflows:
           requires:
             - aws-ecr/build-and-push-image
           family: 'SomeOneLetter-task-define' # ECSのタスク定義名
-          cluster-name: 'SOL-2'               # ECSのクラスター名かARNのフルパス
+          cluster: 'SOL-2'               # ECSのクラスター名かARNのフルパス
           service-name: 'SOL_v3'              # サービス名
           container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
