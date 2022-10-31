@@ -19,6 +19,7 @@ workflows:
           create-repo: true # ECRにリポジトリがなかったら創る
           #account-url: AWS_ECR_ACCOUNT_URL
           region: $AWS_REGION
+          registry-id: AWS_ECR_REGISTRY_ID
           dockerfile: Dockerfile
           executor: aws-ecr/default
           repo: some_one_letter_app # ECRのリポジトリ
@@ -30,6 +31,6 @@ workflows:
           requires:
             - aws-ecr/build-and-push-image
           family: 'SomeOneLetter-task-define' # ECSのタスク定義名
-          cluster: 'SOL-2'               # ECSのクラスター名かARNのフルパス
+          cluster: 'SOL-2'                    # ECSのクラスター名かARNのフルパス
           service-name: 'SOL_v3'              # サービス名
           container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
