@@ -18,9 +18,9 @@ echo "alias r='rails'" >> ~/.bashrc
 source ~/.bashrc
 
 # 初回のみ
-rails db:migrate:reset
+rails sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com:migrate:reset
 echo "-- migrate 完了 --"
-rails db:reset
+rails sol-db-1.crey0dpymmpe.us-west-1.rds.amazonaws.com:reset
 echo "-- reset 完了 --"
 
 # DockerfileのCMDで渡されたコマンド（→Railsのサーバー起動）を続けて実行
