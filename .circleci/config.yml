@@ -1,3 +1,6 @@
+# メモ 
+# localでの実行コマンド => circleci config validate
+#
 version: 2.1 # circleciのversion
 
 orbs:  # orbsを定義
@@ -16,7 +19,7 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true # ECRにリポジトリがなかったら創る
           dockerfile: ./Dockerfile
-          repo: rails-sample # ECRのリポジトリ
+          repo: some_one_letter_app # ECRのリポジトリ
           tag: "${CIRCLE_SHA1}"
           filters:
             branches:
@@ -24,7 +27,7 @@ workflows:
       - aws-ecs/deploy-service-update: #
           requires:
             - aws-ecr/build-and-push-image
-          family: 'sample'                   # ECSのタスク定義名
-          cluster-name: 'sample-cluster'     # ECSのクラスター名かARNのフルパス
-          service-name: 'sample-alb-service' # サービス名
+          family: 'SomeOneLetter-task-define' # ECSのタスク定義名
+          cluster-name: 'SOL-2'               # ECSのクラスター名かARNのフルパス
+          service-name: 'SOL_v3'              # サービス名
           container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"

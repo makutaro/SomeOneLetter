@@ -1,0 +1,34 @@
+version: 2.1 # circleciのversion
+
+orbs:  # orbsを定義
+  ruby: circleci/ruby@1.4.0
+  node: circleci/node@2
+  aws-ecr: circleci/aws-ecr@6.15
+  aws-ecs: circleci/aws-ecs@2.0.0
+
+jobs: # ジョブを定義
+  rails-deploy: # 一つ目のジョブ。build => deployを実行。
+    - aws-ecr/build-and-push-image:
+        account-url: AWS_ECR_ACCOUNT_URL
+        region: AWS_REGION
+        aws-access-key-id: AWS_ACCESS_KEY_ID
+        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+        create-repo: true # ECRにリポジトリがなかったら創る
+        dockerfile: ./Dockerfile
+        repo: rails-sample # ECRのリポジトリ
+        tag: "${CIRCLE_SHA1}"
+        filters:
+          branches:
+            only: master
+    - aws-ecs/deploy-service-update: #
+        requires:
+          - aws-ecr/build-and-push-image
+        family: 'sample'                   # ECSのタスク定義名
+        cluster-name: 'sample-cluster'     # ECSのクラスター名かARNのフルパス
+        service-name: 'sample-alb-service' # サービス名
+        container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
+
+workflows:
+  build_test_deploy: # ワークフロー名
+    jobs:            # 実行ジョブのリスト定義
+      - rails-deploy # rails-deploy実行
