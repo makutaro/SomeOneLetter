@@ -29,5 +29,5 @@ workflows:
             - aws-ecr/build-and-push-image
           family: 'SomeOneLetter-task-define' # ECSのタスク定義名
           cluster: 'SOL-2'                    # ECSのクラスター名かARNのフルパス
-          service-name: 'SOL-2-service'              # サービス名
+          service-name: 'SOL-2-service'       # サービス名
           container-image-name-updates: "container=app,tag=${CIRCLE_SHA1}"
