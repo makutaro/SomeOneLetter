@@ -16,13 +16,12 @@ workflows:
           aws-cli-version: latest
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true # ECRにリポジトリがなかったら創る
-          #account-url: AWS_ECR_ACCOUNT_URL
           region: $AWS_REGION
           registry-id: AWS_ECR_REGISTRY_ID
-          dockerfile: Dockerfile
           executor: aws-ecr/default
           repo: some_one_letter_app # ECRのリポジトリ
           tag: "${CIRCLE_SHA1}"
+          docker-layer-caching: true # build時にキャッシュ利用
           filters:
             branches:
               only: master
