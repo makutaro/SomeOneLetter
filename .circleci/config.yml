@@ -6,13 +6,14 @@ version: 2.1 # circleciのversion
 orbs:  # orbsを定義
   ruby: circleci/ruby@1.4.0
   node: circleci/node@2
-  aws-ecr: circleci/aws-ecr@6.15
-  aws-ecs: circleci/aws-ecs@2.0.0
+  aws-ecr: circleci/aws-ecr@8.1.3
+  aws-ecs: circleci/aws-ecs@3.2.0
 
 workflows:
   build_test_deploy: # ワークフロー名
     jobs:            # 実行ジョブのリスト定義
       - aws-ecr/build-and-push-image:
+          executor: aws-ecr/default
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
