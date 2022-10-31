@@ -20,6 +20,7 @@ source ~/.bashrc
 # 初回のみ
 echo "-- set開始--"
 rails db:environment:set RAILS_ENV=production
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 echo "-- set完了--"
 rails db:migrate:reset
 echo "-- migrate 完了 --"
