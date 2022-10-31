@@ -19,13 +19,13 @@ source ~/.bashrc
 
 # 初回のみ
 echo "-- set開始--"
-rails db:environment:set RAILS_ENV=production
-DISABLE_DATABASE_ENVIRONMENT_CHECK=1
-echo "-- set完了--"
-rails db:migrate:reset
-echo "-- migrate 完了 --"
-rails db:reset
-echo "-- reset 完了 --"
+# rails db:environment:set RAILS_ENV=production
+# DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+# echo "-- set完了--"
+# rails db:migrate:reset
+# echo "-- migrate 完了 --"
+# rails db:reset
+# echo "-- reset 完了 --"
 
 # DockerfileのCMDで渡されたコマンド（→Railsのサーバー起動）を続けて実行
 # Then exec the container's main process (what's set as CMD in the Dockerfile).SSS
