@@ -18,12 +18,12 @@ echo "alias r='rails'" >> ~/.bashrc
 source ~/.bashrc
 
 # 初回のみ
-# bundle exec rails db:create
-# echo "-- create 完了 --"
-# bundle exec rails db:migrate
-# echo "-- migrate 完了 --"
-# bundle exec rails db:reset
-# echo "-- reset 完了 --"
+rails db:create
+echo "-- create 完了 --"
+rails db:migrate:reset
+echo "-- migrate 完了 --"
+rails db:reset
+echo "-- reset 完了 --"
 
 # DockerfileのCMDで渡されたコマンド（→Railsのサーバー起動）を続けて実行
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
