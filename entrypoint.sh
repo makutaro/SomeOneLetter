@@ -18,6 +18,7 @@ echo "alias r='rails'" >> ~/.bashrc
 source ~/.bashrc
 
 # 初回のみ
+echo "-- set開始--"
 rails db:environment:set RAILS_ENV=production
 echo "-- set完了--"
 rails db:migrate:reset
