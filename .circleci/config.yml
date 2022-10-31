@@ -1,6 +1,5 @@
 # メモ 
 # localでの実行コマンド => circleci config validate
-#
 version: 2.1 # circleciのversion
 
 orbs:  # orbsを定義
