@@ -22,12 +22,6 @@ class User < ApplicationRecord
                              size:  { less_than: 5.megabytes,
                                       message: "画像のサイズが5MBを超えています" }
 
-  def image=(val)
-    # val = MiniMagick.source(val).resize "30, 30"
-    val = self.image.variant(resize_to_limit: [30, 30])
-    debugger
-  end
-
  # enum定義
  enum location: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -45,16 +39,15 @@ class User < ApplicationRecord
        image.variant(resize_to_limit: [70, 70])
      end
 
-  # dammy生成用のクラスメソッド(作成数,)
-  def self.create_dammy(num, to_user_id)
+  # dammy生成用のクラスメソッド(作成数)
+  def self.create_dammy(num)
     num.times do |f|
       a= User.create(
-        :name     => "user#{ f.to_s }",
-        :email    => "user#{ f.to_s }@example.com", 
+        :name     => "dammy_#{ f.to_s }",
+        :email    => "dammy#{ f.to_s }@example.com", 
         :password => 'makutaro',
         :location => '東京都',
-        :like_thing=> 'うさぎさん')
-      a.create_letter(to_user_id)
+        :like_thing=> 'チョコレート')
     end
   end
 
@@ -70,11 +63,11 @@ class User < ApplicationRecord
       @letter.save!
     end
 
-  # 条件に合致するuser_idを検索 => activeかつランダム
+  # activeかつランダムなuser_idを返却 
   def self.find_to_user_id(self_id)
     User.where(active_flag:true).where.not(id:self_id).pluck(:id).shuffle!.first
   end
-  
+
   # 現在返信可能なletterの数を返す　
   def count_replayable
     count = 0
@@ -89,4 +82,25 @@ class User < ApplicationRecord
     self.sendable_count -= 1
     self.save
   end
+
+  # 指定したnameのユーザーへ手紙を送信(seed用)
+  def send_letter_new(target_id,title,content)
+    letter = self.letters.build( title:   title,
+                                 content: content)
+    match_room = letter.build_match_room                                                # @match_room作成
+      match_room.inbox_records.build(user_id: self.id, to_user_id: target_id)   # @inbox_record作成(自身と相手)
+      match_room.inbox_records.build(user_id: target_id, to_user_id: self.id)
+    letter.save
+    return match_room.id
+  end
+
+  # 指定しのユーザへ手紙を返信(seed用)
+  def send_letter_reply(target_id,title,content,room_id)
+    letter = self.letters.build( title:   title,
+                                 content: content,
+                                 match_room_id: room_id)
+    letter.match_room.inbox_records.map{|f| f.touch} # inbox_recordのtimestamp更新
+    letter.save
+  end
+
 end

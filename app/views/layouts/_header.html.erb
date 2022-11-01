@@ -12,7 +12,7 @@
     <% if request.fullpath.include? "match_rooms/" %>
       <div id="header-logo" , class=" align-items-center navbar-brand">
        <% if @inbox_record.to_user.image.attached? %>
-        <%= image_tag @inbox_record.to_user.image,size:"35x35", class:"d-inline-block align-top rounded-circle custom-image" %>
+        <%= image_tag @inbox_record.to_user.image,size:"35x35", class:"d-inline-block align-top rounded-circle" %>
        <% else %>
         <%= image_tag "bottle_ship.png",size:"35x35", class:"d-inline-block align-top " %>
        <% end %>
@@ -23,7 +23,7 @@
     <% else %>
       <a id="header-logo" , class="align-items-center navbar-brand" href="<%= root_url %>">
         <%= image_tag "bottle_ship.png",size:"35x35", class:"d-inline-block align-top " %>
-        Some_One_Letter
+        SOME_ONE_LETTER
       </a>
     <% end %>
 

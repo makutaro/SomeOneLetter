@@ -4,7 +4,8 @@ FROM ruby:2.7.6
 RUN apt-get update && apt-get install -y \
   build-essential \
   postgresql-client \
-  net-tools
+  net-tools \
+  redis-server
 
 # nodejs
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
@@ -18,6 +19,9 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 
 # circleci
 RUN curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | bash
+
+# timezone
+ENV TZ Asia/Tokyo
 
 # yarn install & bundle install ※キャッシュを生かす為、先に実行
 RUN mkdir /myapp
