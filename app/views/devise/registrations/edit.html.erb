@@ -56,17 +56,15 @@
   </div>
 
   <div class="form-action text-center">
-    <%= f.submit "更新",class: "btn custom btn-primary"%>
-    <%= link_to "Back", home_url ,class: "btn custom btn-secondary" %>
+    <%= f.submit "更新",class: "btn custom btn-primary mt-3"%>
+    <%= link_to "Back", home_url ,class: "btn custom btn-secondary mt-3" %>
   </div>
 <% end %>
 
   <div class="card edit-card center">
-    <h3 class="center">会員情報削除</h3>
-    <div class="custom-form">
-      <h4>※全ての情報が削除されます</h4>
-      <div class="form-action">
+    <h2 class="center">会員情報削除</h2>
+      <h4 class="text-danger">※全ての情報が削除されます</h4>
+      <div class="form-action mt-5">
         <%= button_to "退会する", registration_path(resource_name),class: "btn custom btn-danger ", data: { confirm: "全てのユーザー情報が削除されます。よろしいですか？" }, method: :delete %>
       </div>
-    </div>
   </div>

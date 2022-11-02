@@ -1,22 +1,26 @@
 
 <% if defined? url %>
-  <button class="col card home-col-card" onclick="location.href='<%=url%>'">
+<div class="col">
+<%=link_to url,class:"card home-col-card",method:method  do%>
     <div class="home-col-image">
       <%= image_tag( image,size: "70x70")%>
     </div>
     <div class="home-col-text">
       <%= text%>
     </div>
-  </button>
+  <%end  %>
+</div>
 
 <% elsif defined? id %>
-  <button type="button" class="col card home-col-card" data-bs-toggle="modal" data-bs-target="<%=id%>">
+<div class="col">
+  <a type="button" class="card home-col-card" data-bs-toggle="modal" data-bs-target="<%=id%>">
     <div class="home-col-image">
       <%= image_tag( image,size: "70x70")%>
     </div>
     <div class="home-col-text">
       <%= text%>
     </div>
-  </button>
+  </a>
+</div>
   
 <% end %>

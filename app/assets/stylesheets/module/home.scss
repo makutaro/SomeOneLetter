@@ -22,28 +22,31 @@
   }
 }
 
-.home-upper-side {
-  margin-bottom: 40px;
+.home-profile {
+  width: 120px;
+  margin: auto;
   .name {
     font-size: 35px;
     text-align: center;
     font-weight: bold;
   }
-}
-.home-container{
-  margin: 0px 15px 0px 15px ;
-  flex-wrap: wrap;
-  align-content: flex-start;
+  .link {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .home-col-card {
-  margin: 0.5em;
+  margin: 0px 5px 30px 5px;
+  text-decoration: none;
+  color: black;
   border-radius: 1rem !important;
   padding-top: 30px;
-  padding-bottom: 25px;  
-  height: fit-content;
+  padding-bottom: 30px;  
   background-color: #ffffff75 !important;
   &:hover {
+    text-decoration: none;
+    color: black;   
     background-color: #ffffff !important;
   }
 }
@@ -59,17 +62,18 @@
 }
 
 .home-card{
-  margin: 20px 5px 20px 5px ;
-  // height: 100px;
+  margin: 40px 5px 40px 5px ;
   border-radius: 2.0rem !important;
   background-color: #ffffff75 !important;
+  min-width: 200px;
    .home-head{
+    margin-bottom: 2rem;
     text-align: center;
     font-size: 2.5rem;
     font-weight: bold;
-    margin: 2rem;
    }
    .inner-card{
+    padding: 15px 0px 15px 0px; 
     margin: auto;
     width: 70%;
     border-radius: 2em;
