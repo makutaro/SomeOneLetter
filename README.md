@@ -1,39 +1,56 @@
-# README
+# SomeOneLetter
 
-##############
-##    git   ##
-##############
+## 概要
+* SomeOneLetterは、手紙を瓶に詰めて海に流す営みから着想を得た`世界一気軽なマッチング型文通サービス` です。<br>
+  * あなたが手紙を海に流すと、その手紙がアクティブなユーザの誰かのもとに流れ着きます。(送信)<br>
+  * 同様に、誰かから届いたの手紙を確認し、その手紙の送り主に返信することができます。(返信)<br>
+  * 返信は確実に相手のもとへ届き、継続的に文通を行う事ができます。あとはごゆっくり。(マッチング)<br>
 
-  ## 初期設定コマンド
-    git init                                           => 新規リポジトリ作成。railsはデフォで実行済み
-    git config --global user.name "Akira_Yajima"           => 名前を設定
-    git config --global user.email tw21wryy@gmail.com  => emailを設定
-    git config --global alias.co checkout              => checkout=co のエイリアス
-    git config --global credential.helper (linux)"cache --timeout=86400" 
-                                          (win)wincred                   => passのキャッシュ保持
-    git config --global -l                             => 設定のリスト表示
-    git config --global -unset [value]                 => 設定の削除          
+## 開発意図
+本サービスの開発意図は主に以下の二点です。<br>
+* 「ECサイト」「twitter_likeなSNS」「一般的なマッチングアプリ」のような、開発ノウハウが確立されているものではなく、<br>
+DB設計やドメインの振る舞いを1から検討されたサービスでないと、ポートフォリオとしての価値が保証できないと考えたため。<br>
 
-    git remote add origin https://github.com/makutaro/[PJ_NAME] => リモートoriginの設定(今回はgithub)
-        * 事前にgithubにリポジトリを作成しておくこと!
+* twitterやfacebookのような「フォロワーが多い人ほど声が大きくなる」性質があり、<br>コミュニケーションSNSのアンチテーゼとして、`総理大臣も小学生でも、完全に平等にコミュニケーションを行えるSNS`を作ってみたいと考えたため。<br>
 
-  ## コミット操作コマンド
-    git add -A              => 対象ファイルをステージング(-A=ALL)
-    git commit -m "MESSAGE" => ローカルリポジトリに保存(-aで add -A を含む)
-    git push origin master  => リモートリポジトリに保存
+## 仕様技術
+* フロントエンド
+  * HTML/CSS
+  * SCSS
+  * Javascript
+  * bootstrap 5.1.3
+  * webpack
+  * jquery 3.4.1
+  * Ajax
+* バックエンド
+  * Ruby 2.7.6
+  * Ruby on Rails 6.1.4
+  * minitest
+* インフラ
+  * nginx
+  * Docker / Docker-compose
+  * AWS (ECS / Fargate / RDS / S3 / VPC / IAM / Route53 / ACM / ALB ) 
+  * CircleCI
+  * Postgres / Puma / Nginx
+* 今後実装予定
+  * テストコード改修 minitest => Rspec (実施中)
+  * terraformインフラのコード化
+  * Next.jsによフロントエンドの完全SPA化
 
-    git checkout -b "新規ブランチ名"   => ブランチを作成し移動
-    git checkout -f                    => 直前のコミットまで戻る  
-    git checkout master               => masterへ移動
-    git merge "ブランチ名"            =>対象ブランチ名を現在のブランチをマージ
+## 拘り
+* スマホ操作を想定したUI設計。レスポンシブデザイン対応。
+* ユーザーのactive機能、7日間の手紙の保留による自動リリース機能など、手紙の循環を促す機能の実装
+* nginx + rails + RDS　によるWeb3層アーキテクチャの実現
+* ECS + Fargate によるインフラの完全サーバレス可による運用コストへのアプローチ
+* AutoScaling、冗長構成(単一障害点なし)、負荷分散、商用運用を想定した可用性、保守性へのアプローチ
 
- ## コミット確認コマンド
-    git status              => ステージングされているファイルの確認
-    git log                 => コミット状況の確認
+## ER図
+![ER図 (1)](https://user-images.githubusercontent.com/92739738/200107036-e8f89dc6-b332-4717-9833-e356d2178311.png)
 
-##############
-##  Docker  ##
-##############
+## インフラ構成図
+![aws_infra](https://user-images.githubusercontent.com/92739738/200003088-5a49d90a-51e2-4612-aa30-ddc785100445.png)
 
- ## 運用コマンド
-    docker-compose exec web bash
+## 機能一覧
+ * 新規登録、ログイン機能
+ * プロフィール編集機能
+ * 手紙の閲覧機能

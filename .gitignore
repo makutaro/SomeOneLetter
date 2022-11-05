@@ -24,10 +24,12 @@
 
 /public/assets
 .byebug_history
+/ignore_dir/*
 
 # ※ 以下2ファイルは"sudo EDITOR="vi" rails credentials:edit"で作成
 /config/master.key
 /config/credentials.yml.enc
+
 
 /public/packs
 /public/packs-test
