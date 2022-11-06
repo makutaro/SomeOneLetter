@@ -13,14 +13,14 @@ echo "alias r='rails'" >> ~/.bashrc
 source ~/.bashrc
 
 # 初回のみ
-# echo "-- set開始--"
-# RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:drop
-# echo "-- set完了--"
-# rake db:create RAILS_ENV=production
-# echo "-- create 完了 --"
-# rake db:migrate RAILS_ENV=production
-# echo "-- migrate 完了 --"
-# rake db:seed RAILS_ENV=production
-# echo "-- seed 完了 --"
+echo "-- set開始--"
+RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:drop
+echo "-- set完了--"
+rake db:create RAILS_ENV=production
+echo "-- create 完了 --"
+rake db:migrate RAILS_ENV=production
+echo "-- migrate 完了 --"
+rake db:seed RAILS_ENV=production
+echo "-- seed 完了 --"
 
 exec "$@"
