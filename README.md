@@ -6,6 +6,11 @@ SomeOneLetterは、手紙を瓶に詰めて海に流す営みから着想を得�
 * 同様に、誰かから届いたの手紙を確認し、その手紙の送り主に返信することができます。(返信)<br>
 * 返信は確実に相手のもとへ届き、その後、継続的に文通を行う事ができます。あとはごゆっくり。(マッチング)<br>
 
+## 画面抜粋
+<img width="1399" alt="キャプチャ連結2" src="https://user-images.githubusercontent.com/92739738/200179755-f9534e27-a4cf-4689-96aa-daae8e418566.PNG">
+
+<img width="1354" alt="キャプチャ_連結" src="https://user-images.githubusercontent.com/92739738/200179674-a83b081c-2ccc-437f-ae8c-fb21ec246c1a.PNG">
+
 ## URL
 http://someoneletter.com/ <br>
 ※コストの都合、毎日9:00~21:00以外の時間帯は開放しておりません。<br>

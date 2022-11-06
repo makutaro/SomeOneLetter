@@ -25,15 +25,15 @@
 .home-profile {
   width: 120px;
   margin: auto;
-  .name {
-    font-size: 35px;
-    text-align: center;
-    font-weight: bold;
-  }
   .link {
     text-decoration: none;
     color: black;
   }
+}
+.home-profile-name {
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .home-col-card {

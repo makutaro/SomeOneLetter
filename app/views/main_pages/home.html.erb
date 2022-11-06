@@ -11,9 +11,9 @@
            image_tag current_user.image, size: "120x120", class:"center-block rounded-circle bg-white mt-5"
       else image_tag "bottle_ship.png",size:"120x120", class:"center-block rounded-circle bg-white mt-5"
     end %>
-    <div class="name"><%= current_user.name%></div>
   <% end %>
 </div>
+ <div class="home-profile-name"><%= current_user.name%></div>
 
  <%#
  ######################## 
