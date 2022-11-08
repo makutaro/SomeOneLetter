@@ -83,3 +83,21 @@ https://someoneletter.com/ <br>
 * 不足する技術(フロントエンドフレームワーク,Rspecによるテスト等)については、参画前、及び参画後の業務時間外で確実にキャッチアップします。<br>
 * コーディングに限らず、インフラにも強い関心があります(AWS_saa保有済み)。入社後一年以内に、担当サービスにおけるインフラ担当の分身になります。<br>
 * お時間は頂きません。採用担当様の都合が合い次第、是非ともオフラインで直接会話をさせて頂きたいです。
+
+## 備考 ~localでの環境再現手順~
+
+### 前提条件
+* docker-desktopをインストール済み
+* ホストマシンのポート80を開放していないこと。
+
+### 手順
+1. 任意のディレクトリで下記コマンドを実行<br>
+   * `clone https://github.com/makutaro/SomeOneLetter.git`
+2. SomeOneLetter直下に移動し、以下を実行
+   * `docker-comopse build` (sassのインストールに何故か2分程かかります💦。現在原因解析中)
+   * `docker-compose up`
+3. dbを作成する為、以下を実行
+   * `docker exec -it someoneletter_app-div_1 rails db:create`
+   * `docker exec -it someoneletter_app-div_1 rails db:migrate`
+   * `docker exec -it someoneletter_app-div_1 rails db:seed`
+4. ブラウザ(Chrome,safari)にてlocalhost:80にアクセス

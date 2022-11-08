@@ -40,6 +40,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 
 # railsコマンド各種
 RUN EDITOR=vim rails credentials:edit
+RUN rails assets:precompile RAILS_ENV=development
 RUN rails assets:precompile RAILS_ENV=production
 RUN bin/webpack
 
