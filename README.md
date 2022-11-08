@@ -88,11 +88,12 @@ https://someoneletter.com/ <br>
 
 ### 前提条件
 * docker-desktopをインストール済み
-* ホストマシンのポート80を開放していないこと。
+* gitをインストール済み
+* ホストマシンのポート80を開放していないこと。(本アプリで使用するため)
 
 ### 手順
 1. 任意のディレクトリで下記コマンドを実行<br>
-   * `clone https://github.com/makutaro/SomeOneLetter.git`
+   * `git clone https://github.com/makutaro/SomeOneLetter.git`
 2. SomeOneLetter直下に移動し、以下を実行
    * `docker-comopse build` (sassのインストールに何故か2分程かかります💦。現在原因解析中)
    * `docker-compose up`
