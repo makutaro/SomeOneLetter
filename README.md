@@ -75,8 +75,8 @@ https://someoneletter.com/ <br>
  * 手紙の返信機能
  * 手紙のリリース機能
  * 手紙のブロック機能
- * 期限切れの手紙の自動リリース機能
- * 30日間未ログイン時のユーザーの非アクティブ化機能
+ * 期限切れの手紙の自動リリース機能(実装中)
+ * 30日間未ログイン時のユーザーの非アクティブ化機能(実装中)
 
 ## 最後に。転職活動における意気込み。
  お忙しい中、閲覧頂きありがとうございます。
@@ -95,9 +95,9 @@ https://someoneletter.com/ <br>
 1. 任意のディレクトリで下記コマンドを実行<br>
    * `git clone https://github.com/makutaro/SomeOneLetter.git`
 2. SomeOneLetter直下に移動し、以下を実行
-   * `docker-comopse build` (sassのインストールに何故か2分程かかります💦。現在原因解析中)
+   * `docker-comopse build` (sassc 2.4.0のインストールに何故か2分程かかります💦。現在原因解析中)
    * `docker-compose up`
-3. dbを作成する為、以下を実行
+3. 初回はdbを作成する為、以下を実行
    * `docker exec -it someoneletter_app-div_1 rails db:create`
    * `docker exec -it someoneletter_app-div_1 rails db:migrate`
    * `docker exec -it someoneletter_app-div_1 rails db:seed`
