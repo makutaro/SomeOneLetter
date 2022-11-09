@@ -97,8 +97,7 @@ https://someoneletter.com/ <br>
 2. SomeOneLetter直下に移動し、以下を実行
    * `docker-comopse build` (sassc 2.4.0のインストールに何故か2分程かかります💦。現在原因解析中)
    * `docker-compose up`
-3. 初回はdbを作成する為、以下を実行
-   * `docker exec -it someoneletter_app-div_1 rails db:create`
-   * `docker exec -it someoneletter_app-div_1 rails db:migrate`
-   * `docker exec -it someoneletter_app-div_1 rails db:seed`
-4. ブラウザ(Chrome,safari)にてlocalhost:80にアクセス
+3. コンテナが全て起動したことを確認したのち、別途ターミナル(windowsであればpoweshell)を立ち上げ、SomeOneLetter直下に移動
+4. 以下のコマンドを実行(DB作成、パッケージの更新、コンパイル)
+   * `docker exec -it someoneletter_app-div_1 sh setup.sh`
+5. ブラウザ(Chrome,safari推奨)にて`http://localhost:80`にアクセス
