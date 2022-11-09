@@ -9,5 +9,5 @@ bundle install
 echo "-- yarn install実行--"
 yarn install
 echo "-- asset:compile 実行--"
-rails rails assets:precompile
+rails assets:precompile
 echo "-- complete!!--"
