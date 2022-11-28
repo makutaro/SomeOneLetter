@@ -13,7 +13,7 @@ SomeOneLetterは、手紙を瓶に詰めて海に流す営みから着想を得�
 
 ## URL
 https://someoneletter.com/ <br>
-※コストの都合、毎日9:00~21:00以外の時間帯は開放しておりません。<br>
+※コストの都合上、面接時以外は開放しておりません。<br>
 * サンプルユーザー(メールアドレス,パスワード)
   * ID：sample01@example.com, sample01
   * ID：sample02@example.com, sample02
